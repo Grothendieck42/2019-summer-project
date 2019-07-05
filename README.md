@@ -1,7 +1,7 @@
 # 2019-summer-project
 summer course project
 
-![build](https://travis-ci.org/codyly/2019-summer-project.svg?branch=master)
+![build](https://www.travis-ci.org/VamosC/2019-summer-project.svg?branch=master)
 
 
 ### Zero Edition
