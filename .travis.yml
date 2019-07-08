@@ -2,4 +2,6 @@ os: osx
 osx_image: xcode10.1
 language: cpp
 script:
-  cmake . && make
+	qmake imageProcess/imageProcess.pro
+notifications:
+	email: false
