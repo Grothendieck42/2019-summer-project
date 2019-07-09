@@ -66,7 +66,7 @@
      <string>取消</string>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QGraphicsView" name="image1">
     <property name="geometry">
      <rect>
       <x>60</x>
