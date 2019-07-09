@@ -1,10 +1,16 @@
+#pragma once
 #include <QApplication>
-#include "../Window/mainwindow.h"
+#include "../View/mainwindow.h"
+#include <iostream>
+#include "../Model/Model.h"
+#include "../ViewModel/ViewModel.h"
 
 class ImageApp
 {
 private:
-    MainWindow mainWindow;
+    std::shared_ptr<MainWindow> view;
+    std::shared_ptr<Model> model;
+    std::shared_ptr<ViewModel> viewModel;
 public:
     ImageApp();
     ~ImageApp();

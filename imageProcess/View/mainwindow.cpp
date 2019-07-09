@@ -12,3 +12,13 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::update()
+{
+    // to-do
+}
+
+void MainWindow::setImage(std::shared_ptr<Image> image)
+{
+    this->image = image;
+}
