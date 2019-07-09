@@ -2,6 +2,7 @@
 #include "../ViewModel/ViewModel.h"
 #include <any>
 #include <string>
+#include <QDebug>
 
 OpenFileCommand::OpenFileCommand(std::shared_ptr<ViewModel> view_model) : viewModel(view_model)
 {
@@ -20,7 +21,7 @@ void OpenFileCommand::exec()
     viewModel->openImage(file_name);
 }
 
-void OpenFileCommand::setParameter(std::shared_ptr<Parameter> &param)
+void OpenFileCommand::setParameter(const std::shared_ptr<Parameter> &param)
 {
     parameter = param;
 }

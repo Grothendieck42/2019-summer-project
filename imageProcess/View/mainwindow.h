@@ -2,7 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsView>
+#include <QPushButton>
+#include <QFileDialog>
+#include <QString>
+#include <QPixmap>
+#include <QGraphicsScene>
 #include "../Common/myImage.h"
+#include "../Command/OpenFileCommand.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,10 +24,19 @@ public:
     void update();
     void setImage(std::shared_ptr<Image> image);
     ~MainWindow();
+    void setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCommand);
+
+private slots:
+    void on_inputImage_clicked();
 
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<Image> image;
+    QGraphicsView* graphView;
+    QPushButton* inputImageButton;
+    QGraphicsScene *scene;
+
+    std::shared_ptr<OpenFileCommand> openFileCommand;
 };
 
 #endif // MAINWINDOW_H

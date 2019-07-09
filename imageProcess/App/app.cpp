@@ -1,4 +1,5 @@
 #include "app.h"
+#include <QDebug>
 
 ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_shared<Model>()), viewModel(std::make_shared<ViewModel>())
 {
@@ -8,8 +9,12 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     model->setViewModel(viewModel);
     // view model绑定命令
     viewModel->setOpenFileCommand(viewModel);
+    // view model绑定view
+    viewModel->setView(view);
     // 绑定底层图片
     view->setImage(model->getImage());
+    // view绑定命令
+    view->setOpenFileCommand(viewModel->getOpenFileCommand());
 }
 
 ImageApp::~ImageApp()

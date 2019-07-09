@@ -13,6 +13,7 @@ Model::~Model()
 void Model::openImage(const std::string &file_name)
 {
     image->openImage(file_name);
+    notify();
 }
 
 void Model::saveImage(const std::string &file_name)

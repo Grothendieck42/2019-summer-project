@@ -9,6 +9,7 @@ private:
 public:
     Image();
     ~Image();
+    void show();
     QImage getQImage();
     void openImage(const std::string &file_path);
     void saveImage(const std::string &file_path);

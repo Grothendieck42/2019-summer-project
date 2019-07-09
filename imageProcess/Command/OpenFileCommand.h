@@ -13,6 +13,6 @@ private:
 public:
     OpenFileCommand(std::shared_ptr<ViewModel> view_model);
 	~OpenFileCommand();
-    void setParameter(std::shared_ptr<Parameter> &param);
+    void setParameter(const std::shared_ptr<Parameter> &param);
 	void exec();
 };
