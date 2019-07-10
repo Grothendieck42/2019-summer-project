@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../Parameter/FileParameter.h"
+#include "Notification/UpdateNotification.h"
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    updateNotification(std::make_shared<UpdateNotification>(this))
 {
     ui->setupUi(this);
     scene = new QGraphicsScene;//图像显示
@@ -26,7 +27,7 @@ void MainWindow::update()
     graphView->show();
 }
 
-void MainWindow::setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCommand)
+void MainWindow::setOpenFileCommand(std::shared_ptr<Command> openFileCommand)
 {
     this->openFileCommand = openFileCommand;
 }
@@ -45,8 +46,12 @@ void MainWindow::on_inputImage_clicked()
     }
     else
     {
-        auto param = std::make_shared<FileParameter>(fileName.toStdString());
-        openFileCommand->setParameter(param);
+        openFileCommand->setParameter(fileName.toStdString());
         openFileCommand->exec();
     }
+}
+
+std::shared_ptr<UpdateNotification> MainWindow::getNotification()
+{
+    return updateNotification;
 }

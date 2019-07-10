@@ -10,7 +10,8 @@
 #include <QGraphicsScene>
 #include "../Common/myImage.h"
 #include "../Common/ImageList.h"
-#include "../Command/OpenFileCommand.h"
+#include "../Common/Command.h"
+#include "Notification/UpdateNotification.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,8 +26,8 @@ public:
     void update();
     void setImageList(std::shared_ptr<ImageList> imageList);
     ~MainWindow();
-    void setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCommand);
-
+    void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
+    std::shared_ptr<UpdateNotification> getNotification();
 private slots:
     void on_inputImage_clicked();
 
@@ -37,7 +38,8 @@ private:
     QPushButton* inputImageButton;
     QGraphicsScene *scene;
 
-    std::shared_ptr<OpenFileCommand> openFileCommand;
+    std::shared_ptr<UpdateNotification> updateNotification;
+    std::shared_ptr<Command> openFileCommand;
 };
 
 #endif // MAINWINDOW_H

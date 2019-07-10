@@ -1,8 +1,8 @@
 #pragma once
 #include <memory>
 #include "../View/mainwindow.h"
-#include "../Command/OpenFileCommand.h"
-#include <iostream>
+#include "Command/OpenFileCommand.h"
+#include "../Common/Notification.h"
 
 class Model;
 
@@ -12,13 +12,16 @@ private:
     std::shared_ptr<MainWindow> view;
     std::shared_ptr<Model> model;
     std::shared_ptr<OpenFileCommand> openFileCommand;
+    std::shared_ptr<ImageList> image_list;
+    std::shared_ptr<Notification> notification;
 public:
     ViewModel();
     ~ViewModel();
-    void setModel(std::shared_ptr<Model> &model_ptr);
-    void setView(std::shared_ptr<MainWindow> &view);
+    void setModel(std::shared_ptr<Model> model_ptr);
+    void setImageList(std::shared_ptr<ImageList> image_list);
+    std::shared_ptr<ImageList> getImageList();
     std::shared_ptr<OpenFileCommand> getOpenFileCommand();
-    void openImage(std::string file_name);
-    void setOpenFileCommand(std::shared_ptr<ViewModel> view_model);
-    void update();
+    void openImage(const std::string &file_name);
+    void setUpdateNotification(std::shared_ptr<Notification> notification);
+    std::shared_ptr<Notification> getUpdateNotification();
 };

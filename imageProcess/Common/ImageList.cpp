@@ -16,6 +16,7 @@ QImage ImageList::getQImage()
 }
 Image& ImageList::getImage()
 {
+    assert(image_list.size() != 0);
 	return image_list[image_list.size()-1];
 }
 void ImageList::addImage(const Image& image)

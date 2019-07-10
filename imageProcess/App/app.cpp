@@ -5,16 +5,16 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
 {
     // view model绑定model
     viewModel->setModel(model);
-    // model绑定view model
-    model->setViewModel(viewModel);
-    // view model绑定命令
-    viewModel->setOpenFileCommand(viewModel);
-    // view model绑定view
-    viewModel->setView(view);
-    // 绑定底层图片
-    view->setImageList(model->getImageList());
+    // view model绑定数据
+    viewModel->setImageList(model->getImageList());
+    // view绑定view model中的数据
+    view->setImageList(viewModel->getImageList());
     // view绑定命令
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
+    // view model绑定notifiacation
+    viewModel->setUpdateNotification(view->getNotification());
+    // model绑定notification
+    model->setUpdateNotification(viewModel->getUpdateNotification());
 }
 
 ImageApp::~ImageApp()
