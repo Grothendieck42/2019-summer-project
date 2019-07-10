@@ -11,6 +11,23 @@ summer course project
 
 
 
+### 基本功能
+
+- 导入图像
+- 导出图像
+- 调整对比度
+- 调整亮度
+- 旋转
+- 裁剪
+
+### 扩展功能
+
+- 人脸标注
+- 美颜（滤波等相关算法）
+- 证件照生成
+
+
+
 ### Reference
 
 - http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html

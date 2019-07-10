@@ -9,6 +9,7 @@
 #include <QPixmap>
 #include <QGraphicsScene>
 #include "../Common/myImage.h"
+#include "../Common/ImageList.h"
 #include "../Command/OpenFileCommand.h"
 
 namespace Ui {
@@ -22,7 +23,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void update();
-    void setImage(std::shared_ptr<Image> image);
+    void setImageList(std::shared_ptr<ImageList> imageList);
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCommand);
 
@@ -31,7 +32,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    std::shared_ptr<Image> image;
+    std::shared_ptr<ImageList> imageList;
     QGraphicsView* graphView;
     QPushButton* inputImageButton;
     QGraphicsScene *scene;

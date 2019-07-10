@@ -1,6 +1,6 @@
 #include "Model.h"
 
-Model::Model() : image(std::make_shared<Image>())
+Model::Model() : imageList(std::make_shared<ImageList>())
 {
 
 }
@@ -12,18 +12,20 @@ Model::~Model()
 
 void Model::openImage(const std::string &file_name)
 {
-    image->openImage(file_name);
+    Image image;
+    image.openImage(file_name);
+    imageList->addImage(image);
     notify();
 }
 
 void Model::saveImage(const std::string &file_name)
 {
-    image->saveImage(file_name);
+    imageList->getImage().saveImage(file_name);
 }
 
-std::shared_ptr<Image> Model::getImage()
+std::shared_ptr<ImageList> Model::getImageList()
 {
-    return image;
+    return imageList;
 }
 
 void Model::notify()

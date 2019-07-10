@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    scene->addPixmap(QPixmap::fromImage(image->getQImage()));
+    scene->addPixmap(QPixmap::fromImage(imageList->getQImage()));
     graphView->setScene(scene);
     graphView->show();
 }
@@ -31,9 +31,9 @@ void MainWindow::setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCom
     this->openFileCommand = openFileCommand;
 }
 
-void MainWindow::setImage(std::shared_ptr<Image> image)
+void MainWindow::setImageList(std::shared_ptr<ImageList> imageList)
 {
-    this->image = image;
+    this->imageList = imageList;
 }
 
 void MainWindow::on_inputImage_clicked()

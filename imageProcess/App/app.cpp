@@ -12,7 +12,7 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     // view model绑定view
     viewModel->setView(view);
     // 绑定底层图片
-    view->setImage(model->getImage());
+    view->setImageList(model->getImageList());
     // view绑定命令
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
 }

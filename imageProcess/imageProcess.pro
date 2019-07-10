@@ -35,7 +35,8 @@ SOURCES += \
         Parameter/FileParameter.cpp \
         Parameter/Parameter.cpp \
         Common/myImage.cpp \
-        Utility/utility.cpp
+        Utility/utility.cpp \
+        Common/ImageList.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -51,7 +52,8 @@ HEADERS += \
         Command/OpenFileCommand.h \
         Parameter/FileParameter.h \
         Parameter/Parameter.h \
-        Utility/utility.h
+        Utility/utility.h \
+        Common/ImageList.h
 FORMS += \
        View/mainwindow.ui
 
