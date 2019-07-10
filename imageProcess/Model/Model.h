@@ -8,7 +8,6 @@
 class Model
 {
 private:
-    std::shared_ptr<ViewModel> viewModel;
     std::shared_ptr<ImageList> imageList;
     std::shared_ptr<Notification> notification;
 public:

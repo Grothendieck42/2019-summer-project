@@ -9,7 +9,6 @@ class Model;
 class ViewModel
 {
 private:
-    std::shared_ptr<MainWindow> view;
     std::shared_ptr<Model> model;
     std::shared_ptr<OpenFileCommand> openFileCommand;
     std::shared_ptr<ImageList> image_list;
