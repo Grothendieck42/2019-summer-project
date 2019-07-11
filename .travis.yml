@@ -1,10 +1,5 @@
 os: osx
 osx_image: xcode10.1
 language: cpp
-addons:
-  homebrew:
-    packages:
-    - opencv
-	- qt
 script: true
 
