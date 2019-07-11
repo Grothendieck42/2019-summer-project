@@ -1,8 +1,10 @@
 os: osx
 osx_image: xcode10.1
 language: cpp
-before_install:
-	- sudo brew install opencv
-	- sudo brew install qt
+addons:
+  homebrew:
+    packages:
+    - opencv
+	- qt
 script: true
 
