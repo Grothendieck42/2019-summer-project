@@ -26,6 +26,8 @@ void Model::openImage(const std::string &file_name)
     notification->notify();
 }
 
+
+
 void Model::saveImage(const std::string &file_name)
 {
     imageList->getImage().saveImage(file_name);

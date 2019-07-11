@@ -32,6 +32,12 @@ void MainWindow::setOpenFileCommand(std::shared_ptr<Command> openFileCommand)
     this->openFileCommand = openFileCommand;
 }
 
+void MainWindow::setSaveFileCommand(std::shared_ptr<Command> saveFileCommand)
+{
+    this->saveFileCommand = saveFileCommand;
+}
+
+
 void MainWindow::setQImage(std::shared_ptr<QImage> qImage)
 {
     this->qImage = qImage;
@@ -54,4 +60,18 @@ void MainWindow::on_actionopen_triggered()
 std::shared_ptr<Notification> MainWindow::getNotification()
 {
     return updateNotification;
+}
+
+void MainWindow::on_actionsave_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this);
+    if(fileName.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        saveFileCommand->setParameter(fileName.toStdString());
+        saveFileCommand->exec();
+    }
 }

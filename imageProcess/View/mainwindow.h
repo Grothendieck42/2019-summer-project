@@ -28,10 +28,13 @@ public:
     void setQImage(std::shared_ptr<QImage> qImage);
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
+    void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
     void on_actionopen_triggered();
+
+    void on_actionsave_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +45,7 @@ private:
 
     std::shared_ptr<UpdateNotification> updateNotification;
     std::shared_ptr<Command> openFileCommand;
+    std::shared_ptr<Command> saveFileCommand;
 };
 
 #endif // MAINWINDOW_H
