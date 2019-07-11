@@ -25,8 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++17
 
 SOURCES += \
-        ViewModel/Command/SaveFileCommand.cpp \
         main.cpp \
+        ViewModel/Command/SaveFileCommand.cpp \
         View/mainwindow.cpp \
         App/app.cpp \
         ViewModel/ViewModel.cpp \
@@ -38,7 +38,8 @@ SOURCES += \
         Common/ImageList.cpp \
         Common/Notification.cpp \
         View/Notification/UpdateNotification.cpp \
-        ViewModel/Notification/UpdateDataNotification.cpp
+        ViewModel/Notification/UpdateDataNotification.cpp \
+    ViewModel/Command/savefilecommand.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -53,7 +54,10 @@ HEADERS += \
         Common/ImageList.h \
         Common/Notification.h \
         View/Notification/UpdateNotification.h \
-        ViewModel/Notification/UpdateDataNotification.h
+        ViewModel/Notification/UpdateDataNotification.h \
+    ViewModel/Command/SaveFileCommand.h \
+    ViewModel/Command/SaveFileCommand.h \
+    ViewModel/Command/SaveFileCommand.h
 FORMS += \
        View/mainwindow.ui
 
