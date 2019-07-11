@@ -4,4 +4,4 @@ language: cpp
 script:
 	qmake imageProcess/imageProcess.pro
 notifications:
-	email: false
+    email: false

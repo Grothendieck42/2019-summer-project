@@ -1,6 +1,6 @@
 #include "Model.h"
 
-Model::Model() : image(std::make_shared<Image>())
+Model::Model() : imageList(std::make_shared<ImageList>())
 {
 
 }
@@ -10,29 +10,33 @@ Model::~Model()
 
 }
 
+// Model对于当前图片的操作需要这样来完成
+// 首先获取当前图片的引用
+// Image& image = imageList->getImage();
+// 进行操作后需要通知更改
+// notification->notify();
+// 具体操作写在myImage.cpp Image对象中
+// Model层调用底层的方法
+
 void Model::openImage(const std::string &file_name)
 {
-    image->openImage(file_name);
-    notify();
+    Image image;
+    image.openImage(file_name);
+    imageList->addImage(image);
+    notification->notify();
 }
 
 void Model::saveImage(const std::string &file_name)
 {
-    image->saveImage(file_name);
+    imageList->getImage().saveImage(file_name);
 }
 
-std::shared_ptr<Image> Model::getImage()
+std::shared_ptr<ImageList> Model::getImageList()
 {
-    return image;
+    return imageList;
 }
 
-void Model::notify()
+void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
-    viewModel->update();
+    this->notification = notification;
 }
-
-void Model::setViewModel(std::shared_ptr<ViewModel> view_model)
-{
-    viewModel = view_model;
-}
-

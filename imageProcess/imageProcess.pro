@@ -30,12 +30,13 @@ SOURCES += \
         App/app.cpp \
         ViewModel/ViewModel.cpp \
         Model/Model.cpp \
-        Command/Command.cpp \
-        Command/OpenFileCommand.cpp \
-        Parameter/FileParameter.cpp \
-        Parameter/Parameter.cpp \
+        Common/Command.cpp \
+        ViewModel/Command/OpenFileCommand.cpp \
         Common/myImage.cpp \
-        Utility/utility.cpp
+        Utility/utility.cpp \
+        Common/ImageList.cpp \
+        Common/Notification.cpp \
+        View/Notification/UpdateNotification.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -43,15 +44,12 @@ HEADERS += \
         Common/myImage.h \
         ViewModel/ViewModel.h \
         Model/Model.h \
-        App/app.h \
-        Common/myImage.h \
-        ViewModel/ViewModel.h \
-        Model/Model.h \
-        Command/Command.h \
-        Command/OpenFileCommand.h \
-        Parameter/FileParameter.h \
-        Parameter/Parameter.h \
-        Utility/utility.h
+        Common/Command.h \
+        ViewModel/Command/OpenFileCommand.h \
+        Utility/utility.h \
+        Common/ImageList.h \
+        Common/Notification.h \
+        View/Notification/UpdateNotification.h
 FORMS += \
        View/mainwindow.ui
 

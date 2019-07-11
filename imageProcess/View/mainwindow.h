@@ -9,7 +9,9 @@
 #include <QPixmap>
 #include <QGraphicsScene>
 #include "../Common/myImage.h"
-#include "../Command/OpenFileCommand.h"
+#include "../Common/ImageList.h"
+#include "../Common/Command.h"
+#include "Notification/UpdateNotification.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,22 +24,23 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void update();
-    void setImage(std::shared_ptr<Image> image);
+    void setImageList(std::shared_ptr<ImageList> imageList);
     ~MainWindow();
-    void setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCommand);
-
+    void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
+    std::shared_ptr<UpdateNotification> getNotification();
 private slots:
 
     void on_actionopen_triggered();
 
 private:
     Ui::MainWindow *ui;
-    std::shared_ptr<Image> image;
+    std::shared_ptr<ImageList> imageList;
     QGraphicsView* graphView;
     QPushButton* inputImageButton;
     QGraphicsScene *scene;
 
-    std::shared_ptr<OpenFileCommand> openFileCommand;
+    std::shared_ptr<UpdateNotification> updateNotification;
+    std::shared_ptr<Command> openFileCommand;
 };
 
 #endif // MAINWINDOW_H

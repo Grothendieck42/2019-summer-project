@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../Parameter/FileParameter.h"
+#include "Notification/UpdateNotification.h"
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    updateNotification(std::make_shared<UpdateNotification>(this))
 {
     ui->setupUi(this);
     scene = new QGraphicsScene;//图像显示
@@ -21,20 +22,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    QPixmap pic=QPixmap::fromImage(image->getQImage());
-    scene->addPixmap(pic.scaled(graphView->size(),Qt::KeepAspectRatio));
+    scene->addPixmap(QPixmap::fromImage(imageList->getQImage()).scaled(graphView->size(),Qt::KeepAspectRatio));
     graphView->setScene(scene);
     graphView->show();
 }
 
-void MainWindow::setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCommand)
+void MainWindow::setOpenFileCommand(std::shared_ptr<Command> openFileCommand)
 {
     this->openFileCommand = openFileCommand;
 }
 
-void MainWindow::setImage(std::shared_ptr<Image> image)
+void MainWindow::setImageList(std::shared_ptr<ImageList> imageList)
 {
-    this->image = image;
+    this->imageList = imageList;
 }
 
 void MainWindow::on_actionopen_triggered()
@@ -46,8 +46,12 @@ void MainWindow::on_actionopen_triggered()
     }
     else
     {
-        auto param = std::make_shared<FileParameter>(fileName.toStdString());
-        openFileCommand->setParameter(param);
+        openFileCommand->setParameter(fileName.toStdString());
         openFileCommand->exec();
     }
+}
+
+std::shared_ptr<UpdateNotification> MainWindow::getNotification()
+{
+    return updateNotification;
 }
