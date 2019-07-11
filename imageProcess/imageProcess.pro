@@ -58,7 +58,6 @@ FORMS += \
 INCLUDEPATH += /usr/local/include/
 
 LIBS += -L/usr/local/lib \
-
      -lopencv_core \
      -lopencv_ml \
      -lopencv_photo \
