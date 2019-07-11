@@ -4,6 +4,7 @@ language: cpp
 before install:
 - brew install qt
 - brew install opencv
+- which qmake
 script: 
 - qmake
 
