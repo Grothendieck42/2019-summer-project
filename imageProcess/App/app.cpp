@@ -11,8 +11,6 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
-    // model绑定notification
-    model->setUpdateNotification(viewModel->getUpdateDataNotification());
 }
 
 ImageApp::~ImageApp()
