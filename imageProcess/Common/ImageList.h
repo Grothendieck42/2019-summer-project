@@ -12,7 +12,7 @@ public:
 
     // 返回引用
     // 目的是为了修改相关的image
-	Image& getImage();
+    Image getImage();
     void addImage(const Image& image);
 	void deleteImage();
 };

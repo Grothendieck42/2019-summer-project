@@ -14,7 +14,7 @@ QImage ImageList::getQImage()
 	assert(image_list.size() != 0);
 	return image_list[image_list.size()-1].getQImage();
 }
-Image& ImageList::getImage()
+Image ImageList::getImage()
 {
     assert(image_list.size() != 0);
 	return image_list[image_list.size()-1];

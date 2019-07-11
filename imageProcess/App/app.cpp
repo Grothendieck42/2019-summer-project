@@ -1,5 +1,4 @@
 #include "app.h"
-#include <QDebug>
 
 ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_shared<Model>()), viewModel(std::make_shared<ViewModel>())
 {

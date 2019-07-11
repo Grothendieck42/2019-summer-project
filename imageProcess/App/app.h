@@ -1,10 +1,8 @@
 #pragma once
 #include <QApplication>
 #include "../View/mainwindow.h"
-#include <iostream>
 #include "../Model/Model.h"
 #include "../ViewModel/ViewModel.h"
-#include "../View/Notification/UpdateNotification.h"
 
 class ImageApp
 {

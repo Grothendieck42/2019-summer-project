@@ -11,8 +11,8 @@ Model::~Model()
 }
 
 // Model对于当前图片的操作需要这样来完成
-// 首先获取当前图片的引用
-// Image& image = imageList->getImage();
+// 首先获取当前图片的拷贝
+// Image image = imageList->getImage();
 // 进行操作后需要通知更改
 // notification->notify();
 // 具体操作写在myImage.cpp Image对象中
