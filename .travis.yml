@@ -8,5 +8,7 @@ install:
 - export LDFLAGS="-L/usr/local/opt/qt/lib"
 - export CPPFLAGS="-I/usr/local/opt/qt/include"
 script: 
+- cd imageProcess
 - qmake
+- make
 
