@@ -17,6 +17,7 @@ ViewModel::~ViewModel()
 void ViewModel::setModel(std::shared_ptr<Model> model_ptr)
 {
     model = model_ptr;
+    model->setUpdateNotification(updateNotification);
 }
 
 std::shared_ptr<OpenFileCommand> ViewModel::getOpenFileCommand()
