@@ -5,8 +5,9 @@ install:
 - brew install qt
 - brew install opencv
 - echo 'export PATH="/usr/local/opt/qt/bin:$PATH"' >> ~/.bash_profile
-- export LDFLAGS="-L/usr/local/opt/qt/lib"
-- export CPPFLAGS="-I/usr/local/opt/qt/include"
+- echo 'export LDFLAGS="-L/usr/local/opt/qt/lib"' >> ~/.bash_profile
+- echo 'export CPPFLAGS="-I/usr/local/opt/qt/include"' >>
+  ~/.bash_profile
 - source ~/.bash_profile
 script: 
 - cd imageProcess
