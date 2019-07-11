@@ -20,10 +20,9 @@ public:
     ViewModel();
     ~ViewModel();
     void setModel(std::shared_ptr<Model> model_ptr);
-    std::shared_ptr<OpenFileCommand> getOpenFileCommand();
+    std::shared_ptr<Command> getOpenFileCommand();
     void openImage(const std::string &file_name);
     std::shared_ptr<QImage> getQImage();
-    std::shared_ptr<UpdateDataNotification> getUpdateDataNotification();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void notify();
 };

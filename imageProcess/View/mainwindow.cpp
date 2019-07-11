@@ -51,7 +51,7 @@ void MainWindow::on_actionopen_triggered()
     }
 }
 
-std::shared_ptr<UpdateNotification> MainWindow::getNotification()
+std::shared_ptr<Notification> MainWindow::getNotification()
 {
     return updateNotification;
 }

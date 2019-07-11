@@ -20,7 +20,7 @@ void ViewModel::setModel(std::shared_ptr<Model> model_ptr)
     model->setUpdateNotification(updateNotification);
 }
 
-std::shared_ptr<OpenFileCommand> ViewModel::getOpenFileCommand()
+std::shared_ptr<Command> ViewModel::getOpenFileCommand()
 {
     return openFileCommand;
 }
@@ -44,9 +44,4 @@ void ViewModel::notify()
 {
     *qImage = model->getImageList()->getQImage();
     notification->notify();
-}
-
-std::shared_ptr<UpdateDataNotification> ViewModel::getUpdateDataNotification()
-{
-    return updateNotification;
 }
