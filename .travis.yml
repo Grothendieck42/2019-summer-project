@@ -4,5 +4,6 @@ language: cpp
 before_install:
 	- brew install qt
 install: true
-script: true
+script: 
+	- qmake
 
