@@ -2,6 +2,7 @@ os: osx
 osx_image: xcode10.1
 language: cpp
 before install:
+- brew install oclint
 - brew install qt
 - brew install opencv
 - which qmake
