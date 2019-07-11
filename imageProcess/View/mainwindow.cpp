@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    scene->addPixmap(QPixmap::fromImage(imageList->getQImage()));
+    scene->addPixmap(QPixmap::fromImage(imageList->getQImage()).scaled(graphView->size(),Qt::KeepAspectRatio));
     graphView->setScene(scene);
     graphView->show();
 }
@@ -37,7 +37,7 @@ void MainWindow::setImageList(std::shared_ptr<ImageList> imageList)
     this->imageList = imageList;
 }
 
-void MainWindow::on_inputImage_clicked()
+void MainWindow::on_actionopen_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this);
     if(fileName.isEmpty())

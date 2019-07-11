@@ -30,7 +30,8 @@ public:
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     std::shared_ptr<UpdateNotification> getNotification();
 private slots:
-    void on_inputImage_clicked();
+
+    void on_actionopen_triggered();
 
 private:
     Ui::MainWindow *ui;
