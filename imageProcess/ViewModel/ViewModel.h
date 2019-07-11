@@ -1,8 +1,10 @@
 #pragma once
 #include <memory>
-#include "../View/mainwindow.h"
+#include <QImage>
+#include "../Common/ImageList.h"
 #include "Command/OpenFileCommand.h"
 #include "../Common/Notification.h"
+#include "Notification/UpdateDataNotification.h"
 
 class Model;
 
@@ -11,16 +13,16 @@ class ViewModel
 private:
     std::shared_ptr<Model> model;
     std::shared_ptr<OpenFileCommand> openFileCommand;
-    std::shared_ptr<ImageList> image_list;
+    std::shared_ptr<QImage> qImage;
     std::shared_ptr<Notification> notification;
+    std::shared_ptr<UpdateDataNotification> updateNotification;
 public:
     ViewModel();
     ~ViewModel();
     void setModel(std::shared_ptr<Model> model_ptr);
-    void setImageList(std::shared_ptr<ImageList> image_list);
-    std::shared_ptr<ImageList> getImageList();
-    std::shared_ptr<OpenFileCommand> getOpenFileCommand();
+    std::shared_ptr<Command> getOpenFileCommand();
     void openImage(const std::string &file_name);
+    std::shared_ptr<QImage> getQImage();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
-    std::shared_ptr<Notification> getUpdateNotification();
+    void notify();
 };

@@ -8,6 +8,7 @@
 #include <QString>
 #include <QPixmap>
 #include <QGraphicsScene>
+#include <memory>
 #include "../Common/myImage.h"
 #include "../Common/ImageList.h"
 #include "../Common/Command.h"
@@ -24,17 +25,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void update();
-    void setImageList(std::shared_ptr<ImageList> imageList);
+    void setQImage(std::shared_ptr<QImage> qImage);
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
-    std::shared_ptr<UpdateNotification> getNotification();
+    std::shared_ptr<Notification> getNotification();
 private slots:
 
     void on_actionopen_triggered();
 
 private:
     Ui::MainWindow *ui;
-    std::shared_ptr<ImageList> imageList;
+    std::shared_ptr<QImage> qImage;
     QGraphicsView* graphView;
     QPushButton* inputImageButton;
     QGraphicsScene *scene;

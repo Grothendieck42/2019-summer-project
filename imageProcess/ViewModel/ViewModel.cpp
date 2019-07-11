@@ -2,7 +2,9 @@
 #include "../Model/Model.h"
 
 ViewModel::ViewModel() 
-    : openFileCommand(std::make_shared<OpenFileCommand>(this))
+    : openFileCommand(std::make_shared<OpenFileCommand>(this)),
+      qImage(std::make_shared<QImage>()),
+      updateNotification(std::make_shared<UpdateDataNotification>(this))
 {
 
 }
@@ -15,9 +17,10 @@ ViewModel::~ViewModel()
 void ViewModel::setModel(std::shared_ptr<Model> model_ptr)
 {
     model = model_ptr;
+    model->setUpdateNotification(updateNotification);
 }
 
-std::shared_ptr<OpenFileCommand> ViewModel::getOpenFileCommand()
+std::shared_ptr<Command> ViewModel::getOpenFileCommand()
 {
     return openFileCommand;
 }
@@ -27,14 +30,9 @@ void ViewModel::openImage(const std::string &file_name)
     model->openImage(file_name);
 }
 
-void ViewModel::setImageList(std::shared_ptr<ImageList> image_list)
+std::shared_ptr<QImage> ViewModel::getQImage()
 {
-    this->image_list = image_list;
-}
-
-std::shared_ptr<ImageList> ViewModel::getImageList()
-{
-    return image_list;
+    return qImage;
 }
 
 void ViewModel::setUpdateNotification(std::shared_ptr<Notification> notification)
@@ -42,7 +40,8 @@ void ViewModel::setUpdateNotification(std::shared_ptr<Notification> notification
     this->notification = notification;
 }
 
-std::shared_ptr<Notification> ViewModel::getUpdateNotification()
+void ViewModel::notify()
 {
-    return notification;
+    *qImage = model->getImageList()->getQImage();
+    notification->notify();
 }
