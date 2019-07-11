@@ -13,7 +13,6 @@ class ViewModel
 private:
     std::shared_ptr<Model> model;
     std::shared_ptr<OpenFileCommand> openFileCommand;
-    std::shared_ptr<ImageList> image_list;
     std::shared_ptr<QImage> qImage;
     std::shared_ptr<Notification> notification;
     std::shared_ptr<UpdateDataNotification> updateNotification;
