@@ -58,6 +58,7 @@ FORMS += \
 INCLUDEPATH += /usr/local/include/
 
 LIBS += -L/usr/local/lib \
+
      -lopencv_core \
      -lopencv_ml \
      -lopencv_photo \
@@ -77,7 +78,7 @@ LIBS += -L/usr/local/lib \
      -lopencv_video \
      -lopencv_videostab \
      -v
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
