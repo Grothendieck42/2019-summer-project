@@ -1,11 +1,9 @@
 os: osx
 osx_image: xcode10.1
-addons:
-  homebrew:
-    packages:
-    - beanstalk
-	- qt
 language: cpp
+before install:
+- brew install qt
+- brew install opencv
 script: 
-	- qmake
+- qmake
 
