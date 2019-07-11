@@ -7,7 +7,6 @@ private:
     MainWindow* view;
 public:
     UpdateNotification(MainWindow* view);
-	void setParameter(std::any params);
 	void notify();
 	~UpdateNotification();
 };

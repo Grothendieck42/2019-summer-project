@@ -25,7 +25,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void update();
-    void setImageList(std::shared_ptr<ImageList> imageList);
+    void setQImage(std::shared_ptr<QImage> qImage);
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     std::shared_ptr<UpdateNotification> getNotification();
@@ -35,7 +35,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    std::shared_ptr<ImageList> imageList;
+    std::shared_ptr<QImage> qImage;
     QGraphicsView* graphView;
     QPushButton* inputImageButton;
     QGraphicsScene *scene;

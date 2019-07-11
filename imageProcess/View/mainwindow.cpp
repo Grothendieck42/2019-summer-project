@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    scene->addPixmap(QPixmap::fromImage(imageList->getQImage()).scaled(graphView->size(),Qt::KeepAspectRatio));
+    scene->addPixmap(QPixmap::fromImage(*qImage).scaled(graphView->size(),Qt::KeepAspectRatio));
     graphView->setScene(scene);
     graphView->show();
 }
@@ -32,9 +32,9 @@ void MainWindow::setOpenFileCommand(std::shared_ptr<Command> openFileCommand)
     this->openFileCommand = openFileCommand;
 }
 
-void MainWindow::setImageList(std::shared_ptr<ImageList> imageList)
+void MainWindow::setQImage(std::shared_ptr<QImage> qImage)
 {
-    this->imageList = imageList;
+    this->qImage = qImage;
 }
 
 void MainWindow::on_actionopen_triggered()

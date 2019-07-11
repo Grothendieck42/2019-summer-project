@@ -3,11 +3,6 @@
 
 UpdateNotification::UpdateNotification(MainWindow* view) : view(view){}
 
-void UpdateNotification::setParameter(std::any params)
-{
-	
-}
-
 void UpdateNotification::notify()
 {
 	view->update();
