@@ -1,7 +1,9 @@
 os: osx
 osx_image: xcode10.1
 language: cpp
+install:
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew install opencv
+	brew install qt
 script:
 	qmake imageProcess/imageProcess.pro
-notifications:
-    email: false
