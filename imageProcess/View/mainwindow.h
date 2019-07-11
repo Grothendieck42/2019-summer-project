@@ -27,7 +27,8 @@ public:
     void setOpenFileCommand(std::shared_ptr<OpenFileCommand> openFileCommand);
 
 private slots:
-    void on_inputImage_clicked();
+
+    void on_actionopen_triggered();
 
 private:
     Ui::MainWindow *ui;

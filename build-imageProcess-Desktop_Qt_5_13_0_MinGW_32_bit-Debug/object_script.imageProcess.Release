@@ -1,0 +1,12 @@
+release/main.o
+release/mainwindow.o
+release/app.o
+release/ViewModel.o
+release/Model.o
+release/Command.o
+release/OpenFileCommand.o
+release/FileParameter.o
+release/Parameter.o
+release/myImage.o
+release/utility.o
+release/moc_mainwindow.o

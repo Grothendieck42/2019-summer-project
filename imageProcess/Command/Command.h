@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <memory>
 #include "../Parameter/Parameter.h"
 // interface
 // 各种Command需要继承这一接口
