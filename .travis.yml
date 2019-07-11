@@ -1,9 +1,6 @@
 os: osx
 osx_image: xcode10.1
 language: cpp
-before_install:
-	- brew install qt
-install: true
 script: 
 	- qmake
 
