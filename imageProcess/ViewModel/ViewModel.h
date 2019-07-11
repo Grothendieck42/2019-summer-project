@@ -1,6 +1,5 @@
 #pragma once
 #include <memory>
-#include "../View/mainwindow.h"
 #include "Command/OpenFileCommand.h"
 #include "../Common/Notification.h"
 
@@ -17,7 +16,6 @@ public:
     ViewModel();
     ~ViewModel();
     void setModel(std::shared_ptr<Model> model_ptr);
-    void setImageList(std::shared_ptr<ImageList> image_list);
     std::shared_ptr<ImageList> getImageList();
     std::shared_ptr<OpenFileCommand> getOpenFileCommand();
     void openImage(const std::string &file_name);

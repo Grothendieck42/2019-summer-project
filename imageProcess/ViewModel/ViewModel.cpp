@@ -27,14 +27,10 @@ void ViewModel::openImage(const std::string &file_name)
     model->openImage(file_name);
 }
 
-void ViewModel::setImageList(std::shared_ptr<ImageList> image_list)
-{
-    this->image_list = image_list;
-}
 
 std::shared_ptr<ImageList> ViewModel::getImageList()
 {
-    return image_list;
+    return model->getImageList();
 }
 
 void ViewModel::setUpdateNotification(std::shared_ptr<Notification> notification)

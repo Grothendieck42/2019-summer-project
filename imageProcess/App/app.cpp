@@ -5,8 +5,6 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
 {
     // view model绑定model
     viewModel->setModel(model);
-    // view model绑定数据
-    viewModel->setImageList(model->getImageList());
     // view绑定view model中的数据
     view->setImageList(viewModel->getImageList());
     // view绑定命令
