@@ -8,6 +8,7 @@
 #include <QString>
 #include <QPixmap>
 #include <QGraphicsScene>
+#include <memory>
 #include "../Common/myImage.h"
 #include "../Common/ImageList.h"
 #include "../Common/Command.h"
