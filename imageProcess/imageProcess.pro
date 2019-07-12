@@ -33,12 +33,14 @@ SOURCES += \
         Model/Model.cpp \
         Common/Command.cpp \
         ViewModel/Command/OpenFileCommand.cpp \
+        ViewModel/Command/LightContrastCommand.cpp \
         Common/myImage.cpp \
         Utility/utility.cpp \
         Common/ImageList.cpp \
         Common/Notification.cpp \
         View/Notification/UpdateNotification.cpp \
-        ViewModel/Notification/UpdateDataNotification.cpp
+        ViewModel/Notification/UpdateDataNotification.cpp \
+        View/lightconstractdialog.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -49,13 +51,17 @@ HEADERS += \
         Model/Model.h \
         Common/Command.h \
         ViewModel/Command/OpenFileCommand.h \
+        ViewModel/Command/LightContrastCommand.h \
         Utility/utility.h \
         Common/ImageList.h \
         Common/Notification.h \
         View/Notification/UpdateNotification.h \
-        ViewModel/Notification/UpdateDataNotification.h
+        ViewModel/Notification/UpdateDataNotification.h \
+    View/lightconstractdialog.h \
+        Common/Common.h
 FORMS += \
-       View/mainwindow.ui
+       View/mainwindow.ui \
+    View/lightconstractdialog.ui
 
 INCLUDEPATH += /usr/local/opt/opencv/include/opencv4
 LIBS += -L/usr/local/opt/opencv/lib \

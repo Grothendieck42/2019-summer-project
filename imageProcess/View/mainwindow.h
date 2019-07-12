@@ -9,6 +9,7 @@
 #include <QPixmap>
 #include <QGraphicsScene>
 #include <memory>
+#include "lightconstractdialog.h"
 #include "../Common/myImage.h"
 #include "../Common/ImageList.h"
 #include "../Common/Command.h"
@@ -29,6 +30,7 @@ public:
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
+    void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -36,13 +38,15 @@ private slots:
 
     void on_actionsave_triggered();
 
+    void on_actionchange_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
     QGraphicsView* graphView;
-    QPushButton* inputImageButton;
     QGraphicsScene *scene;
 
+    LightConstractDialog lightDialog;
     std::shared_ptr<UpdateNotification> updateNotification;
     std::shared_ptr<Command> openFileCommand;
     std::shared_ptr<Command> saveFileCommand;

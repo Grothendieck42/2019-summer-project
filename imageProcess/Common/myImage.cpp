@@ -22,6 +22,22 @@ void Image::saveImage(const std::string &file_path)
     cv::imwrite(file_path, image);
 }
 
+void Image::changeImageLightContrast(int light, int contrast)
+{
+	for(auto i = 0; i < image.rows; i++)
+	{
+		for(auto j = 0; j < image.cols; j++)
+		{
+			// 3通道
+			for(auto c = 0; c < 3; c++)
+			{
+                image.at<cv::Vec3b>(i, j)[c]  = cv::saturate_cast<uchar>((contrast*0.01*image.at<cv::Vec3b>(i, j)[c]) + light);
+			}
+		}
+	}
+}
+
+
 QImage Image::getQImage()
 {
     return MatToQImage(image);

@@ -4,6 +4,7 @@
 ViewModel::ViewModel() 
     : openFileCommand(std::make_shared<OpenFileCommand>(this)),
       saveFileCommand(std::make_shared<SaveFileCommand>(this)),
+      lightContrastCommand(std::make_shared<LightContrastCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this))
 {
@@ -31,6 +32,11 @@ std::shared_ptr<Command> ViewModel::getSaveFileCommand()
     return saveFileCommand;
 }
 
+std::shared_ptr<Command> ViewModel::getLightContrastCommand()
+{
+  return lightContrastCommand;
+}
+
 void ViewModel::openImage(const std::string &file_name)
 {
     model->openImage(file_name);
@@ -39,6 +45,11 @@ void ViewModel::openImage(const std::string &file_name)
 void ViewModel::saveImage(const std::string &file_name)
 {
     model->saveImage(file_name);
+}
+
+void ViewModel::changeImageLightContrast(int light, int contrast)
+{
+  model->changeImageLightContrast(light, contrast);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

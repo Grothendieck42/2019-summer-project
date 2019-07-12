@@ -38,6 +38,14 @@ std::shared_ptr<ImageList> Model::getImageList()
     return imageList;
 }
 
+void Model::changeImageLightContrast(int light, int contrast)
+{
+	Image image = imageList->getImage();
+    image.changeImageLightContrast(light, contrast);
+	imageList->addImage(image);
+	notification->notify();
+}
+
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
     this->notification = notification;

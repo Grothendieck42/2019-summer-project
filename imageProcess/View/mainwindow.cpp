@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     scene = new QGraphicsScene;//图像显示
     graphView = this->findChild<QGraphicsView*>("image1");
-    inputImageButton = this->findChild<QPushButton*>("inputImage");
 }
 
 MainWindow::~MainWindow()
@@ -35,6 +34,11 @@ void MainWindow::setOpenFileCommand(std::shared_ptr<Command> openFileCommand)
 void MainWindow::setSaveFileCommand(std::shared_ptr<Command> saveFileCommand)
 {
     this->saveFileCommand = saveFileCommand;
+}
+
+void MainWindow::setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand)
+{
+    lightDialog.setLightContrastCommand(lightContrastCommand);
 }
 
 
@@ -74,4 +78,9 @@ void MainWindow::on_actionsave_triggered()
         saveFileCommand->setParameter(fileName.toStdString());
         saveFileCommand->exec();
     }
+}
+
+void MainWindow::on_actionchange_triggered()
+{
+    lightDialog.show();
 }

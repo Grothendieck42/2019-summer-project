@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>855</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -44,6 +44,7 @@
     <addaction name="actionopen"/>
     <addaction name="actionsave"/>
     <addaction name="menu_2"/>
+    <addaction name="actionchange"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -84,6 +85,11 @@
   <action name="action_jpg">
    <property name="text">
     <string>.jpeg</string>
+   </property>
+  </action>
+  <action name="actionchange">
+   <property name="text">
+    <string>change</string>
    </property>
   </action>
  </widget>
