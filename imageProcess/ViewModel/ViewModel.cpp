@@ -47,9 +47,9 @@ void ViewModel::saveImage(const std::string &file_name)
     model->saveImage(file_name);
 }
 
-void ViewModel::changeImageLightContrast(int light, int contrast)
+void ViewModel::changeImageLightContrast(int old_light, int old_contrast, int light, int contrast)
 {
-  model->changeImageLightContrast(light, contrast);
+  model->changeImageLightContrast(old_light, old_contrast, light, contrast);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

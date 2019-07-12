@@ -8,6 +8,8 @@ private:
     // Command负责发送指令给ViewModel
     // ViewModel类似于控制器Controller的作用
     ViewModel* viewModel;
+    int old_light;
+    int old_contrast;
     int light;
     int contrast;
 public:

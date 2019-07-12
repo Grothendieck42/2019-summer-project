@@ -38,10 +38,10 @@ std::shared_ptr<ImageList> Model::getImageList()
     return imageList;
 }
 
-void Model::changeImageLightContrast(int light, int contrast)
+void Model::changeImageLightContrast(int old_light, int old_contrast, int light, int contrast)
 {
 	Image image = imageList->getImage();
-    image.changeImageLightContrast(light, contrast);
+    image.changeImageLightContrast(old_light, old_contrast, light, contrast);
 	imageList->addImage(image);
 	notification->notify();
 }

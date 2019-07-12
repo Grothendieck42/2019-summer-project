@@ -1,6 +1,7 @@
 #include "lightconstractdialog.h"
 #include "ui_lightconstractdialog.h"
 #include "../Common/Common.h"
+#include <QDebug>
 
 LightConstractDialog::LightConstractDialog(QWidget *parent) :
     QDialog(parent),
@@ -20,7 +21,8 @@ LightConstractDialog::~LightConstractDialog()
 
 void LightConstractDialog::on_buttonBox_accepted()
 {
-    lightContrastCommand->setParameter(lightContrast{.light = lightBoard->value(), .contrast = contrastBoard->value()});
+    lightContrastCommand->setParameter(lightContrast{.light = lightBoard->value(), .contrast = contrastBoard->value(), .old_light = old_light,
+                                       .old_contrast = old_contrast});
     lightContrastCommand->exec();
 }
 
@@ -51,4 +53,14 @@ void LightConstractDialog::on_lightSlide_valueChanged(int value)
 void LightConstractDialog::setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand)
 {
     this->lightContrastCommand = lightContrastCommand;
+}
+
+void LightConstractDialog::setOldLight()
+{
+    old_light = this->lightBoard->value();
+}
+
+void LightConstractDialog::setOldContrast()
+{
+    old_contrast = this->contrastBoard->value();
 }

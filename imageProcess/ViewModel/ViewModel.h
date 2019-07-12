@@ -29,7 +29,7 @@ public:
     std::shared_ptr<Command> getLightContrastCommand();
     void openImage(const std::string &file_name);
     void saveImage(const std::string &file_name);
-    void changeImageLightContrast(int light, int contrast);
+    void changeImageLightContrast(int old_light ,int old_contrast, int light, int contrast);
     std::shared_ptr<QImage> getQImage();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void notify();

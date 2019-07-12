@@ -82,5 +82,7 @@ void MainWindow::on_actionsave_triggered()
 
 void MainWindow::on_actionchange_triggered()
 {
+    lightDialog.setOldLight();
+    lightDialog.setOldContrast();
     lightDialog.show();
 }
