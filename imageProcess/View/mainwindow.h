@@ -38,8 +38,6 @@ private slots:
 
     void on_actionsave_triggered();
 
-    void on_actionchange_triggered();
-
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
