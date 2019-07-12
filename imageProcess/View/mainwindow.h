@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QGraphicsView>
-#include <QPushButton>
 #include <QFileDialog>
 #include <QString>
 #include <QPixmap>
@@ -29,6 +28,8 @@ public:
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
+    void setToGrayCommmand(std::shared_ptr<Command> toGrayCommand);
+    void setToBinaryCommmand(std::shared_ptr<Command> toBinaryCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -36,16 +37,21 @@ private slots:
 
     void on_actionsave_triggered();
 
+    void on_actionToGray_triggered();
+
+    void on_actionToBinary_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
     QGraphicsView* graphView;
-    QPushButton* inputImageButton;
     QGraphicsScene *scene;
 
     std::shared_ptr<UpdateNotification> updateNotification;
     std::shared_ptr<Command> openFileCommand;
     std::shared_ptr<Command> saveFileCommand;
+    std::shared_ptr<Command> toGrayCommand;
+    std::shared_ptr<Command> toBinaryCommand;
 };
 
 #endif // MAINWINDOW_H

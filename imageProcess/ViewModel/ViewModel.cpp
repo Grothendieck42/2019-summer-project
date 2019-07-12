@@ -4,6 +4,8 @@
 ViewModel::ViewModel() 
     : openFileCommand(std::make_shared<OpenFileCommand>(this)),
       saveFileCommand(std::make_shared<SaveFileCommand>(this)),
+      toGrayCommand(std::make_shared<ToGrayCommand>(this)),
+      toBinaryCommand(std::make_shared<ToBinaryCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this))
 {
@@ -31,6 +33,16 @@ std::shared_ptr<Command> ViewModel::getSaveFileCommand()
     return saveFileCommand;
 }
 
+std::shared_ptr<Command> ViewModel::getToGrayCommand()
+{
+    return toGrayCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getToBinaryCommand()
+{
+    return toBinaryCommand;
+}
+
 void ViewModel::openImage(const std::string &file_name)
 {
     model->openImage(file_name);
@@ -39,6 +51,16 @@ void ViewModel::openImage(const std::string &file_name)
 void ViewModel::saveImage(const std::string &file_name)
 {
     model->saveImage(file_name);
+}
+
+void ViewModel::toGray()
+{
+    model->toGray();
+}
+
+void ViewModel::toBinary(int& threshold)
+{
+    model->toBinary(threshold);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

@@ -9,6 +9,8 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     // view绑定命令
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
     view->setSaveFileCommand(viewModel->getSaveFileCommand());
+    view->setToGrayCommmand(viewModel->getToGrayCommand());
+    view->setToBinaryCommmand(viewModel->getToBinaryCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
 }

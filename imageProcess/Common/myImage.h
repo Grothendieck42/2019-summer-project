@@ -1,5 +1,8 @@
 #pragma once
 #include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 #include <QImage>
 
 class Image
@@ -13,4 +16,6 @@ public:
     QImage getQImage();
     void openImage(const std::string &file_path);
     void saveImage(const std::string &file_path);
+    void toGray();
+    void toBinary(int& threshold);
 };

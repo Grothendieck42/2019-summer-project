@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     scene = new QGraphicsScene;//图像显示
     graphView = this->findChild<QGraphicsView*>("image1");
-    inputImageButton = this->findChild<QPushButton*>("inputImage");
 }
 
 MainWindow::~MainWindow()
@@ -22,7 +21,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    scene->addPixmap(QPixmap::fromImage(*qImage).scaled(graphView->size(),Qt::KeepAspectRatio));
+    scene->addPixmap(QPixmap::fromImage(*qImage));//.scaled(graphView->size(),Qt::KeepAspectRatio)
     graphView->setScene(scene);
     graphView->show();
 }
@@ -37,6 +36,15 @@ void MainWindow::setSaveFileCommand(std::shared_ptr<Command> saveFileCommand)
     this->saveFileCommand = saveFileCommand;
 }
 
+void MainWindow::setToGrayCommmand(std::shared_ptr<Command> toGrayCommand)
+{
+    this->toGrayCommand = toGrayCommand;
+}
+
+void MainWindow::setToBinaryCommmand(std::shared_ptr<Command> toBinaryCommand)
+{
+    this->toBinaryCommand = toBinaryCommand;
+}
 
 void MainWindow::setQImage(std::shared_ptr<QImage> qImage)
 {
@@ -74,4 +82,16 @@ void MainWindow::on_actionsave_triggered()
         saveFileCommand->setParameter(fileName.toStdString());
         saveFileCommand->exec();
     }
+}
+
+void MainWindow::on_actionToGray_triggered()
+{
+    toGrayCommand->exec();
+}
+
+void MainWindow::on_actionToBinary_triggered()
+{
+    int threshold=100;
+    toBinaryCommand->setParameter(threshold);
+    toBinaryCommand->exec();
 }

@@ -22,6 +22,14 @@ void Image::saveImage(const std::string &file_path)
     cv::imwrite(file_path, image);
 }
 
+void Image::toGray(){
+    cv::cvtColor(image,image,cv::COLOR_RGB2GRAY);
+}
+
+void Image::toBinary(int& threshold){
+    cv::threshold(image, image, threshold, 255, cv::THRESH_BINARY);
+}
+
 QImage Image::getQImage()
 {
     return MatToQImage(image);

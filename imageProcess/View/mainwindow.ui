@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>855</width>
-    <height>684</height>
+    <width>940</width>
+    <height>782</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>855</width>
+     <width>940</width>
      <height>26</height>
     </rect>
    </property>
@@ -45,7 +45,15 @@
     <addaction name="actionsave"/>
     <addaction name="menu_2"/>
    </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <addaction name="actionToGray"/>
+    <addaction name="actionToBinary"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_3"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -84,6 +92,21 @@
   <action name="action_jpg">
    <property name="text">
     <string>.jpeg</string>
+   </property>
+  </action>
+  <action name="actionToGray">
+   <property name="text">
+    <string>转化为灰度图</string>
+   </property>
+  </action>
+  <action name="actionToColor">
+   <property name="text">
+    <string>转化为彩色图</string>
+   </property>
+  </action>
+  <action name="actionToBinary">
+   <property name="text">
+    <string>二值化</string>
    </property>
   </action>
  </widget>
