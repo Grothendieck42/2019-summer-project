@@ -21,8 +21,7 @@ LightConstractDialog::~LightConstractDialog()
 
 void LightConstractDialog::on_buttonBox_accepted()
 {
-    lightContrastCommand->setParameter(lightContrast{.light = lightBoard->value(), .contrast = contrastBoard->value(), .old_light = old_light,
-                                       .old_contrast = old_contrast});
+    lightContrastCommand->setParameter(lightContrast{.light = lightBoard->value(), .contrast = contrastBoard->value()});
     lightContrastCommand->exec();
 }
 
@@ -55,12 +54,3 @@ void LightConstractDialog::setLightContrastCommand(std::shared_ptr<Command> ligh
     this->lightContrastCommand = lightContrastCommand;
 }
 
-void LightConstractDialog::setOldLight()
-{
-    old_light = this->lightBoard->value();
-}
-
-void LightConstractDialog::setOldContrast()
-{
-    old_contrast = this->contrastBoard->value();
-}

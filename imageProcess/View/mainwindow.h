@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QGraphicsView>
-#include <QPushButton>
 #include <QFileDialog>
 #include <QString>
 #include <QPixmap>
@@ -31,12 +30,20 @@ public:
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
     void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
+    void setToGrayCommmand(std::shared_ptr<Command> toGrayCommand);
+    void setToBinaryCommmand(std::shared_ptr<Command> toBinaryCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
     void on_actionopen_triggered();
 
     void on_actionsave_triggered();
+
+    void on_actionToGray_triggered();
+
+    void on_actionToBinary_triggered();
+
+    void on_actionlight_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -48,6 +55,8 @@ private:
     std::shared_ptr<UpdateNotification> updateNotification;
     std::shared_ptr<Command> openFileCommand;
     std::shared_ptr<Command> saveFileCommand;
+    std::shared_ptr<Command> toGrayCommand;
+    std::shared_ptr<Command> toBinaryCommand;
 };
 
 #endif // MAINWINDOW_H

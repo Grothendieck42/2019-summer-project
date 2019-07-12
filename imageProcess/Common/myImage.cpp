@@ -22,7 +22,7 @@ void Image::saveImage(const std::string &file_path)
     cv::imwrite(file_path, image);
 }
 
-void Image::changeImageLightContrast(int old_light, int old_contrast, int light, int contrast)
+void Image::changeImageLightContrast(int light, int contrast)
 {
 	for(auto i = 0; i < image.rows; i++)
 	{
@@ -31,10 +31,18 @@ void Image::changeImageLightContrast(int old_light, int old_contrast, int light,
 			// 3通道
 			for(auto c = 0; c < 3; c++)
 			{
-                image.at<cv::Vec3b>(i, j)[c]  = cv::saturate_cast<uchar>((contrast*0.01*(image.at<cv::Vec3b>(i, j)[c] - old_light) / (0.01 * old_contrast)) + light);
+                image.at<cv::Vec3b>(i, j)[c]  = cv::saturate_cast<uchar>((contrast*0.01*(image.at<cv::Vec3b>(i, j)[c])) + light);
 			}
 		}
 	}
+}
+
+void Image::toGray(){
+    cv::cvtColor(image,image,cv::COLOR_RGB2GRAY);
+}
+
+void Image::toBinary(int& threshold){
+    cv::threshold(image, image, threshold, 255, cv::THRESH_BINARY);
 }
 
 

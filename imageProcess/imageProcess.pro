@@ -26,6 +26,8 @@ CONFIG += c++17
 
 SOURCES += \
         ViewModel/Command/SaveFileCommand.cpp \
+        ViewModel/Command/ToBinaryCommand.cpp \
+        ViewModel/Command/ToGrayCommand.cpp \
         main.cpp \
         View/mainwindow.cpp \
         App/app.cpp \
@@ -47,6 +49,8 @@ HEADERS += \
         App/app.h \
         Common/myImage.h \
         ViewModel/Command/SaveFileCommand.h \
+        ViewModel/Command/ToBibaryCommand.h \
+        ViewModel/Command/ToGrayCommand.h \
         ViewModel/ViewModel.h \
         Model/Model.h \
         Common/Command.h \

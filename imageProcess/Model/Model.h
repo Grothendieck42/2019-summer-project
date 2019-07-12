@@ -15,7 +15,9 @@ public:
     ~Model();
     void openImage(const std::string &file_name);
     void saveImage(const std::string &file_name);
-    void changeImageLightContrast(int old_light , int old_contrast, int light, int contrast);
+    void changeImageLightContrast(int light, int contrast);
+    void toGray();
+    void toBinary(int& threshold);
     std::shared_ptr<ImageList> getImageList();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
 };

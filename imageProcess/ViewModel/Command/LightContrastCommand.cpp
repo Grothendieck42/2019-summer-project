@@ -15,14 +15,12 @@ LightContrastCommand::~LightContrastCommand()
 
 void LightContrastCommand::exec()
 {
-    viewModel->changeImageLightContrast(old_light, old_contrast, light, contrast);
+    viewModel->changeImageLightContrast(light, contrast);
 }
 
 void LightContrastCommand::setParameter(std::any params)
 {
     auto light_contrast = std::any_cast<struct lightContrast>(&params);
-    old_light = light_contrast->old_light;
-    old_contrast = light_contrast->old_contrast;
     contrast = light_contrast->contrast;
     light = light_contrast->light;
 }

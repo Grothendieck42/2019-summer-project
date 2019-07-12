@@ -1,18 +1,17 @@
 #pragma once
+#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
-class LightContrastCommand: public Command 
+class ToGrayCommand: public Command
 {
 private:
     // Command负责发送指令给ViewModel
     // ViewModel类似于控制器Controller的作用
     ViewModel* viewModel;
-    int light;
-    int contrast;
 public:
-    LightContrastCommand(ViewModel* view_model);
-	~LightContrastCommand();
+    ToGrayCommand(ViewModel* view_model);
+    ~ToGrayCommand();
     void setParameter(std::any params);
     void exec();
 };

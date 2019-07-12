@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    scene->addPixmap(QPixmap::fromImage(*qImage).scaled(graphView->size(),Qt::KeepAspectRatio));
+    scene->addPixmap(QPixmap::fromImage(*qImage));//.scaled(graphView->size(),Qt::KeepAspectRatio)
     graphView->setScene(scene);
     graphView->show();
 }
@@ -41,6 +41,15 @@ void MainWindow::setLightContrastCommand(std::shared_ptr<Command> lightContrastC
     lightDialog.setLightContrastCommand(lightContrastCommand);
 }
 
+void MainWindow::setToGrayCommmand(std::shared_ptr<Command> toGrayCommand)
+{
+    this->toGrayCommand = toGrayCommand;
+}
+
+void MainWindow::setToBinaryCommmand(std::shared_ptr<Command> toBinaryCommand)
+{
+    this->toBinaryCommand = toBinaryCommand;
+}
 
 void MainWindow::setQImage(std::shared_ptr<QImage> qImage)
 {
@@ -80,9 +89,19 @@ void MainWindow::on_actionsave_triggered()
     }
 }
 
-//void MainWindow::on_actionchange_triggered()
-//{
-//    lightDialog.setOldLight();
-//    lightDialog.setOldContrast();
-//    lightDialog.show();
-//}
+void MainWindow::on_actionToGray_triggered()
+{
+    toGrayCommand->exec();
+}
+
+void MainWindow::on_actionToBinary_triggered()
+{
+    int threshold=100;
+    toBinaryCommand->setParameter(threshold);
+    toBinaryCommand->exec();
+}
+
+void MainWindow::on_actionlight_triggered()
+{
+        lightDialog.show();
+}

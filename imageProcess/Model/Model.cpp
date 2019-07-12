@@ -26,11 +26,25 @@ void Model::openImage(const std::string &file_name)
     notification->notify();
 }
 
-
-
 void Model::saveImage(const std::string &file_name)
 {
     imageList->getImage().saveImage(file_name);
+}
+
+void Model::toGray()
+{
+    Image newImage=imageList->getImage();
+    newImage.toGray();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::toBinary(int &threshold)
+{
+    Image newImage=imageList->getImage();
+    newImage.toBinary(threshold);
+    imageList->addImage(newImage);
+    notification->notify();
 }
 
 std::shared_ptr<ImageList> Model::getImageList()
@@ -38,10 +52,10 @@ std::shared_ptr<ImageList> Model::getImageList()
     return imageList;
 }
 
-void Model::changeImageLightContrast(int old_light, int old_contrast, int light, int contrast)
+void Model::changeImageLightContrast(int light, int contrast)
 {
 	Image image = imageList->getImage();
-    image.changeImageLightContrast(old_light, old_contrast, light, contrast);
+    image.changeImageLightContrast(light, contrast);
 	imageList->addImage(image);
 	notification->notify();
 }
