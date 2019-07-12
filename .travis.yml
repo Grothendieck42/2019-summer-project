@@ -1,7 +1,16 @@
 os: osx
 osx_image: xcode10.1
 language: cpp
-script:
-	qmake imageProcess/imageProcess.pro
-notifications:
-    email: false
+install:
+- brew install qt
+- brew install opencv
+- echo 'export PATH="/usr/local/opt/qt/bin:$PATH"' >> ~/.bash_profile
+- echo 'export LDFLAGS="-L/usr/local/opt/qt/lib"' >> ~/.bash_profile
+- echo 'export CPPFLAGS="-I/usr/local/opt/qt/include"' >>
+  ~/.bash_profile
+- source ~/.bash_profile
+script: 
+- cd imageProcess
+- qmake
+- make
+
