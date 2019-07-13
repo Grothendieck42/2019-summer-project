@@ -29,7 +29,9 @@ public:
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
+    void setAverBlurCommand(std::shared_ptr<Command> averBlurCommand);
     void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
+    void setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand);
     void setToGrayCommmand(std::shared_ptr<Command> toGrayCommand);
     void setToBinaryCommmand(std::shared_ptr<Command> toBinaryCommand);
     std::shared_ptr<Notification> getNotification();
@@ -45,6 +47,14 @@ private slots:
 
     void on_actionlight_triggered();
 
+    void on_actionjizhilvbo_triggered();
+
+    void on_actionzhongzhillvbo_triggered();
+
+    void on_actiongaosilvbo_triggered();
+
+    void on_actionshuangbianlvbo_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
@@ -57,6 +67,7 @@ private:
     std::shared_ptr<Command> saveFileCommand;
     std::shared_ptr<Command> toGrayCommand;
     std::shared_ptr<Command> toBinaryCommand;
+    std::shared_ptr<Command> averBlurCommand;
 };
 
 #endif // MAINWINDOW_H

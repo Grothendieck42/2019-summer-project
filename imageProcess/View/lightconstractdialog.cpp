@@ -32,11 +32,15 @@ void LightConstractDialog::on_buttonBox_rejected()
 void LightConstractDialog::on_contrastBoard_valueChanged(int arg1)
 {
     contrastSlider->setValue(arg1);
+    tmpLightContrastCommand->setParameter(lightContrast{.light = lightBoard->value(), .contrast = contrastBoard->value()});
+    tmpLightContrastCommand->exec();
 }
 
 void LightConstractDialog::on_lightBoard_valueChanged(int arg1)
 {
     lightSlider->setValue(arg1);
+    tmpLightContrastCommand->setParameter(lightContrast{.light = lightBoard->value(), .contrast = contrastBoard->value()});
+    tmpLightContrastCommand->exec();
 }
 
 void LightConstractDialog::on_contrastSlide_valueChanged(int value)
@@ -52,5 +56,10 @@ void LightConstractDialog::on_lightSlide_valueChanged(int value)
 void LightConstractDialog::setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand)
 {
     this->lightContrastCommand = lightContrastCommand;
+}
+
+void LightConstractDialog::setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand)
+{
+    this->tmpLightContrastCommand = tmpLightContrastCommand;
 }
 

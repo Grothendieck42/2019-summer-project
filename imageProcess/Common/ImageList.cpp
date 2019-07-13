@@ -9,11 +9,7 @@ ImageList::~ImageList()
 {
 
 }
-QImage ImageList::getQImage()
-{
-	assert(image_list.size() != 0);
-	return image_list[image_list.size()-1].getQImage();
-}
+
 Image ImageList::getImage()
 {
     assert(image_list.size() != 0);
@@ -26,4 +22,9 @@ void ImageList::addImage(const Image& image)
 void ImageList::deleteImage()
 {
 	image_list.pop_back();
+}
+
+int ImageList::size()
+{
+    return image_list.size();
 }

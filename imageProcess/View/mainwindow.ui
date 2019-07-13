@@ -56,7 +56,17 @@
     <property name="title">
      <string>调整</string>
     </property>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>模糊</string>
+     </property>
+     <addaction name="actionjizhilvbo"/>
+     <addaction name="actionzhongzhillvbo"/>
+     <addaction name="actiongaosilvbo"/>
+     <addaction name="actionshuangbianlvbo"/>
+    </widget>
     <addaction name="actionlight"/>
+    <addaction name="menu_5"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_3"/>
@@ -109,6 +119,26 @@
   <action name="actionlight">
    <property name="text">
     <string>调整亮度/对比度</string>
+   </property>
+  </action>
+  <action name="actionjizhilvbo">
+   <property name="text">
+    <string>均值滤波</string>
+   </property>
+  </action>
+  <action name="actionzhongzhillvbo">
+   <property name="text">
+    <string>中值滤波</string>
+   </property>
+  </action>
+  <action name="actiongaosilvbo">
+   <property name="text">
+    <string>高斯滤波</string>
+   </property>
+  </action>
+  <action name="actionshuangbianlvbo">
+   <property name="text">
+    <string>双边滤波</string>
    </property>
   </action>
  </widget>

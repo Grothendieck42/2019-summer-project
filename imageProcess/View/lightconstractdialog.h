@@ -18,6 +18,7 @@ public:
     explicit LightConstractDialog(QWidget *parent = nullptr);
     ~LightConstractDialog();
     void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
+    void setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand);
 
 private slots:
     void on_buttonBox_accepted();
@@ -39,6 +40,7 @@ private:
     QSlider* lightSlider;
     QSlider* contrastSlider;
     std::shared_ptr<Command> lightContrastCommand;
+    std::shared_ptr<Command> tmpLightContrastCommand;
     int old_light;
     int old_contrast;
 };

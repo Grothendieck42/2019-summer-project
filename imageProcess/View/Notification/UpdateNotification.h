@@ -9,4 +9,5 @@ public:
     UpdateNotification(MainWindow* view);
 	void notify();
 	~UpdateNotification();
+    void setParameter(std::any params);
 };

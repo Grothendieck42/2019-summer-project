@@ -12,11 +12,14 @@ private:
 public:
     Image();
     ~Image();
+    Image(const Image& im);
+    Image& operator=(const Image &im);
     void show();
     QImage getQImage();
     void openImage(const std::string &file_path);
     void saveImage(const std::string &file_path);
     void changeImageLightContrast(int light, int contrast);
+    void averBlur();
     void toGray();
     void toBinary(int& threshold);
 };

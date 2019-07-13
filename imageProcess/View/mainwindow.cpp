@@ -36,9 +36,19 @@ void MainWindow::setSaveFileCommand(std::shared_ptr<Command> saveFileCommand)
     this->saveFileCommand = saveFileCommand;
 }
 
+void MainWindow::setAverBlurCommand(std::shared_ptr<Command> averBlurCommand)
+{
+    this->averBlurCommand = averBlurCommand;
+}
+
 void MainWindow::setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand)
 {
     lightDialog.setLightContrastCommand(lightContrastCommand);
+}
+
+void MainWindow::setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand)
+{
+    lightDialog.setTmpLightContrastCommand(tmpLightContrastCommand);
 }
 
 void MainWindow::setToGrayCommmand(std::shared_ptr<Command> toGrayCommand)
@@ -104,4 +114,24 @@ void MainWindow::on_actionToBinary_triggered()
 void MainWindow::on_actionlight_triggered()
 {
         lightDialog.show();
+}
+
+void MainWindow::on_actionjizhilvbo_triggered()
+{
+    averBlurCommand->exec();
+}
+
+void MainWindow::on_actionzhongzhillvbo_triggered()
+{
+
+}
+
+void MainWindow::on_actiongaosilvbo_triggered()
+{
+
+}
+
+void MainWindow::on_actionshuangbianlvbo_triggered()
+{
+
 }

@@ -36,13 +36,16 @@ SOURCES += \
         Common/Command.cpp \
         ViewModel/Command/OpenFileCommand.cpp \
         ViewModel/Command/LightContrastCommand.cpp \
+        ViewModel/Command/AverBlurCommand.cpp \
         Common/myImage.cpp \
         Utility/utility.cpp \
         Common/ImageList.cpp \
         Common/Notification.cpp \
         View/Notification/UpdateNotification.cpp \
         ViewModel/Notification/UpdateDataNotification.cpp \
-        View/lightconstractdialog.cpp
+        View/lightconstractdialog.cpp \
+    ViewModel/Notification/UpdateTmpNotification.cpp \
+    ViewModel/Command/TmpLightContrastCommand.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -56,13 +59,16 @@ HEADERS += \
         Common/Command.h \
         ViewModel/Command/OpenFileCommand.h \
         ViewModel/Command/LightContrastCommand.h \
+        ViewModel/Command/AverBlurCommand.h \
         Utility/utility.h \
         Common/ImageList.h \
         Common/Notification.h \
         View/Notification/UpdateNotification.h \
         ViewModel/Notification/UpdateDataNotification.h \
     View/lightconstractdialog.h \
-        Common/Common.h
+        Common/Common.h \
+    ViewModel/Notification/UpdateTmpNotification.h \
+    ViewModel/Command/TmpLightContrastCommand.h
 FORMS += \
        View/mainwindow.ui \
     View/lightconstractdialog.ui

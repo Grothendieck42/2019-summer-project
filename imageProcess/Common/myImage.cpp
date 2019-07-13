@@ -12,6 +12,20 @@ Image::~Image()
 
 }
 
+Image::Image(const Image &im)
+{
+    image = im.image.clone();
+}
+
+Image& Image::operator=(const Image &im)
+{
+    if(this != &im)
+    {
+        image = im.image.clone();
+    }
+    return *this;
+}
+
 void Image::openImage(const std::string &file_path)
 {
     image = cv::imread(file_path);
@@ -37,6 +51,11 @@ void Image::changeImageLightContrast(int light, int contrast)
 	}
 }
 
+void Image::averBlur()
+{
+    cv::blur(image, image, cv::Size(11,11));
+}
+
 void Image::toGray(){
     cv::cvtColor(image,image,cv::COLOR_RGB2GRAY);
 }
@@ -54,5 +73,5 @@ QImage Image::getQImage()
 void Image::show()
 {
     cv::imshow("hh", image);
-    cv::waitKey(0);
+    cv::waitKey(1000);
 }

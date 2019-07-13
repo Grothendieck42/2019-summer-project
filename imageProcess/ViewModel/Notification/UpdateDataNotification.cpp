@@ -12,5 +12,10 @@ UpdateDataNotification::~UpdateDataNotification()
 
 void UpdateDataNotification::notify()
 {
-    viewModel->notify();
+    viewModel->convert();
+}
+
+void UpdateDataNotification::setParameter(std::any params)
+{
+
 }

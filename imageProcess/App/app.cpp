@@ -10,8 +10,10 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
     view->setSaveFileCommand(viewModel->getSaveFileCommand());
     view->setLightContrastCommand(viewModel->getLightContrastCommand());
+    view->setTmpLightContrastCommand(viewModel->getTmpLightContrastCommand());
     view->setToGrayCommmand(viewModel->getToGrayCommand());
     view->setToBinaryCommmand(viewModel->getToBinaryCommand());
+    view->setAverBlurCommand(viewModel->getAverBlurCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
 }

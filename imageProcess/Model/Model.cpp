@@ -1,4 +1,5 @@
 #include "Model.h"
+#include <QDebug>
 
 Model::Model() : imageList(std::make_shared<ImageList>())
 {
@@ -60,7 +61,28 @@ void Model::changeImageLightContrast(int light, int contrast)
 	notification->notify();
 }
 
+void Model::changeTmpImageLightContrast(int light, int contrast)
+{
+    Image image = imageList->getImage();
+    image.changeImageLightContrast(light, contrast);
+    tmpNotification->setParameter(image);
+    tmpNotification->notify();
+}
+
+void Model::averBlur()
+{
+    Image image = imageList->getImage();
+    image.averBlur();
+    imageList->addImage(image);
+    notification->notify();
+}
+
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
     this->notification = notification;
+}
+
+void Model::setUpdateTmpNotification(std::shared_ptr<Notification> notification)
+{
+    tmpNotification = notification;
 }
