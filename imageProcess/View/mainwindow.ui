@@ -73,9 +73,17 @@
     <addaction name="actionGaussNoise"/>
     <addaction name="actionSalt"/>
    </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>缩放</string>
+    </property>
+    <addaction name="actionEnlarge"/>
+    <addaction name="actionReduct"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="menu_3"/>
    <addaction name="menu_4"/>
+   <addaction name="menu_6"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -169,6 +177,16 @@
   <action name="actionImageSegmentation">
    <property name="text">
     <string>图像分割</string>
+   </property>
+  </action>
+  <action name="actionEnlarge">
+   <property name="text">
+    <string>放大</string>
+   </property>
+  </action>
+  <action name="actionReduct">
+   <property name="text">
+    <string>缩小</string>
    </property>
   </action>
  </widget>
