@@ -24,6 +24,15 @@ public:
     void bilaterBlur();
     void toGray();
     void toBinary(int& threshold);
+    void detectEdge(int& threshold);
+    void grayEqualizeHist();
+    void colorEqualizeHist();
+    void laplace();
+    void logEnhance();
+    void gammaCorrect(float& fGamma);
+    void addGaussNoise();
+    void addSaltNoise(int& n);
+    void imageSegmentation(int& threshold);
     std::shared_ptr<ImageList> getImageList();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void setUpdateTmpNotification(std::shared_ptr<Notification> notification);

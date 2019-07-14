@@ -25,6 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++17
 
 SOURCES += \
+        ViewModel/Command/AddGaussNoiseCommand.cpp \
+        ViewModel/Command/AddSaltNoiseCommand.cpp \
+        ViewModel/Command/ColorEqualizeHistCommand.cpp \
+        ViewModel/Command/DetectEdgeCommand.cpp \
+        ViewModel/Command/GammaCorrectCommand.cpp \
+        ViewModel/Command/GrayEqualizeHistCommand.cpp \
+        ViewModel/Command/ImageSegmentationCommand.cpp \
+        ViewModel/Command/LaplaceCommand.cpp \
+        ViewModel/Command/LogEnhanceCommand.cpp \
         ViewModel/Command/SaveFileCommand.cpp \
         ViewModel/Command/ToBinaryCommand.cpp \
         ViewModel/Command/ToGrayCommand.cpp \
@@ -54,6 +63,15 @@ HEADERS += \
         View/mainwindow.h \
         App/app.h \
         Common/myImage.h \
+    ViewModel/Command/AddGaussNoiseCommand.h \
+    ViewModel/Command/AddSaltNoiseCommand.h \
+    ViewModel/Command/ColorEqualizeHistCommand.h \
+    ViewModel/Command/DetectEdgeCommand.h \
+    ViewModel/Command/GammaCorrectCommand.h \
+    ViewModel/Command/GrayEqualizeHistCommand.h \
+    ViewModel/Command/ImageSegmentationCommand.h \
+    ViewModel/Command/LaplaceCommand.h \
+    ViewModel/Command/LogEnhanceCommand.h \
         ViewModel/Command/SaveFileCommand.h \
         ViewModel/Command/ToBibaryCommand.h \
         ViewModel/Command/ToGrayCommand.h \

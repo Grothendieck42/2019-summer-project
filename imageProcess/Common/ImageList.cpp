@@ -28,3 +28,7 @@ int ImageList::size()
 {
     return image_list.size();
 }
+
+void ImageList::clearList(){
+    std::vector<Image>().swap(image_list);
+}
