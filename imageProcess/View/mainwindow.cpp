@@ -41,6 +41,21 @@ void MainWindow::setAverBlurCommand(std::shared_ptr<Command> averBlurCommand)
     this->averBlurCommand = averBlurCommand;
 }
 
+void MainWindow::setMidBlurCommand(std::shared_ptr<Command> midBlurCommand)
+{
+    this->midBlurCommand = midBlurCommand;
+}
+
+void MainWindow::setGaussBlurCommand(std::shared_ptr<Command> gaussBlurCommand)
+{
+    this->gaussBlurCommand = gaussBlurCommand;
+}
+
+void MainWindow::setBilaterBlurCommand(std::shared_ptr<Command> bilaterBlurCommand)
+{
+    this->bilaterBlurCommand = bilaterBlurCommand;
+}
+
 void MainWindow::setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand)
 {
     lightDialog.setLightContrastCommand(lightContrastCommand);
@@ -123,15 +138,15 @@ void MainWindow::on_actionjizhilvbo_triggered()
 
 void MainWindow::on_actionzhongzhillvbo_triggered()
 {
-
+    midBlurCommand->exec();
 }
 
 void MainWindow::on_actiongaosilvbo_triggered()
 {
-
+    gaussBlurCommand->exec();
 }
 
 void MainWindow::on_actionshuangbianlvbo_triggered()
 {
-
+    bilaterBlurCommand->exec();
 }

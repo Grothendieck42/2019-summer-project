@@ -30,6 +30,9 @@ public:
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
     void setAverBlurCommand(std::shared_ptr<Command> averBlurCommand);
+    void setMidBlurCommand(std::shared_ptr<Command> midBlurCommand);
+    void setGaussBlurCommand(std::shared_ptr<Command> gaussBlurCommand);
+    void setBilaterBlurCommand(std::shared_ptr<Command> bilaterBlurCommand);
     void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
     void setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand);
     void setToGrayCommmand(std::shared_ptr<Command> toGrayCommand);
@@ -68,6 +71,9 @@ private:
     std::shared_ptr<Command> toGrayCommand;
     std::shared_ptr<Command> toBinaryCommand;
     std::shared_ptr<Command> averBlurCommand;
+    std::shared_ptr<Command> midBlurCommand;
+    std::shared_ptr<Command> gaussBlurCommand;
+    std::shared_ptr<Command> bilaterBlurCommand;
 };
 
 #endif // MAINWINDOW_H

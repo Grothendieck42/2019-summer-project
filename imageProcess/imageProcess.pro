@@ -45,7 +45,10 @@ SOURCES += \
         ViewModel/Notification/UpdateDataNotification.cpp \
         View/lightconstractdialog.cpp \
     ViewModel/Notification/UpdateTmpNotification.cpp \
-    ViewModel/Command/TmpLightContrastCommand.cpp
+    ViewModel/Command/TmpLightContrastCommand.cpp \
+    ViewModel/Command/MidBlurCommand.cpp \
+    ViewModel/Command/GaussBlurCommand.cpp \
+    ViewModel/Command/BilaterBlurCommand.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -68,7 +71,10 @@ HEADERS += \
     View/lightconstractdialog.h \
         Common/Common.h \
     ViewModel/Notification/UpdateTmpNotification.h \
-    ViewModel/Command/TmpLightContrastCommand.h
+    ViewModel/Command/TmpLightContrastCommand.h \
+    ViewModel/Command/MidBlurCommand.h \
+    ViewModel/Command/GaussBlurCommand.h \
+    ViewModel/Command/BilaterBlurCommand.h
 FORMS += \
        View/mainwindow.ui \
     View/lightconstractdialog.ui

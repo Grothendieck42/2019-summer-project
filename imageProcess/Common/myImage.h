@@ -20,6 +20,9 @@ public:
     void saveImage(const std::string &file_path);
     void changeImageLightContrast(int light, int contrast);
     void averBlur();
+    void midBlur();
+    void gaussBlur();
+    Image bilaterBlur();
     void toGray();
     void toBinary(int& threshold);
 };

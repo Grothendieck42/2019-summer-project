@@ -77,6 +77,29 @@ void Model::averBlur()
     notification->notify();
 }
 
+void Model::midBlur()
+{
+    Image image = imageList->getImage();
+    image.midBlur();
+    imageList->addImage(image);
+    notification->notify();
+}
+
+void Model::gaussBlur()
+{
+    Image image = imageList->getImage();
+    image.gaussBlur();
+    imageList->addImage(image);
+    notification->notify();
+}
+
+void Model::bilaterBlur()
+{
+    Image image = imageList->getImage();
+    imageList->addImage(image.bilaterBlur());
+    notification->notify();
+}
+
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
     this->notification = notification;

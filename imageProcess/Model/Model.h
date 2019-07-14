@@ -19,6 +19,9 @@ public:
     void changeImageLightContrast(int light, int contrast);
     void changeTmpImageLightContrast(int light, int contrast);
     void averBlur();
+    void midBlur();
+    void gaussBlur();
+    void bilaterBlur();
     void toGray();
     void toBinary(int& threshold);
     std::shared_ptr<ImageList> getImageList();

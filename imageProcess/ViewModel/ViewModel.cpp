@@ -9,6 +9,9 @@ ViewModel::ViewModel()
       toGrayCommand(std::make_shared<ToGrayCommand>(this)),
       toBinaryCommand(std::make_shared<ToBinaryCommand>(this)),
       averBlurCommand(std::make_shared<AverBlurCommand>(this)),
+      midBlurCommand(std::make_shared<MidBlurCommand>(this)),
+      gaussBlurCommand(std::make_shared<GaussBlurCommand>(this)),
+      bilaterBlurCommand(std::make_shared<BilaterBlurCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this)),
       updateTmpNotification(std::make_shared<UpdateTmpNotification>(this))
@@ -63,6 +66,21 @@ std::shared_ptr<Command> ViewModel::getAverBlurCommand()
   return averBlurCommand;
 }
 
+std::shared_ptr<Command> ViewModel::getMidBlurCommand()
+{
+  return midBlurCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getBilaterBlurCommand()
+{
+  return bilaterBlurCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getGaussBlurCommand()
+{
+  return gaussBlurCommand;
+}
+
 void ViewModel::openImage(const std::string &file_name)
 {
     model->openImage(file_name);
@@ -88,6 +106,22 @@ void ViewModel::averBlur()
 {
   model->averBlur();
 }
+
+void ViewModel::midBlur()
+{
+  model->midBlur();
+}
+
+void ViewModel::gaussBlur()
+{
+  model->gaussBlur();
+}
+
+void ViewModel::bilaterBlur()
+{
+  model->bilaterBlur();
+}
+
 
 void ViewModel::toGray()
 {
