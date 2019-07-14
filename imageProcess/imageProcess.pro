@@ -31,6 +31,8 @@ SOURCES += \
         ViewModel/Command/DetectEdgeCommand.cpp \
         ViewModel/Command/GammaCorrectCommand.cpp \
         ViewModel/Command/GrayEqualizeHistCommand.cpp \
+    ViewModel/Command/ImageEnlargeCommand.cpp \
+    ViewModel/Command/ImageReductCommand.cpp \
         ViewModel/Command/ImageSegmentationCommand.cpp \
         ViewModel/Command/LaplaceCommand.cpp \
         ViewModel/Command/LogEnhanceCommand.cpp \
@@ -45,13 +47,19 @@ SOURCES += \
         Common/Command.cpp \
         ViewModel/Command/OpenFileCommand.cpp \
         ViewModel/Command/LightContrastCommand.cpp \
+        ViewModel/Command/AverBlurCommand.cpp \
         Common/myImage.cpp \
         Utility/utility.cpp \
         Common/ImageList.cpp \
         Common/Notification.cpp \
         View/Notification/UpdateNotification.cpp \
         ViewModel/Notification/UpdateDataNotification.cpp \
-        View/lightconstractdialog.cpp
+        View/lightconstractdialog.cpp \
+    ViewModel/Notification/UpdateTmpNotification.cpp \
+    ViewModel/Command/TmpLightContrastCommand.cpp \
+    ViewModel/Command/MidBlurCommand.cpp \
+    ViewModel/Command/GaussBlurCommand.cpp \
+    ViewModel/Command/BilaterBlurCommand.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -63,6 +71,8 @@ HEADERS += \
     ViewModel/Command/DetectEdgeCommand.h \
     ViewModel/Command/GammaCorrectCommand.h \
     ViewModel/Command/GrayEqualizeHistCommand.h \
+    ViewModel/Command/ImageEnlargeCommand.h \
+    ViewModel/Command/ImageReductCommand.h \
     ViewModel/Command/ImageSegmentationCommand.h \
     ViewModel/Command/LaplaceCommand.h \
     ViewModel/Command/LogEnhanceCommand.h \
@@ -74,13 +84,19 @@ HEADERS += \
         Common/Command.h \
         ViewModel/Command/OpenFileCommand.h \
         ViewModel/Command/LightContrastCommand.h \
+        ViewModel/Command/AverBlurCommand.h \
         Utility/utility.h \
         Common/ImageList.h \
         Common/Notification.h \
         View/Notification/UpdateNotification.h \
         ViewModel/Notification/UpdateDataNotification.h \
     View/lightconstractdialog.h \
-        Common/Common.h
+        Common/Common.h \
+    ViewModel/Notification/UpdateTmpNotification.h \
+    ViewModel/Command/TmpLightContrastCommand.h \
+    ViewModel/Command/MidBlurCommand.h \
+    ViewModel/Command/GaussBlurCommand.h \
+    ViewModel/Command/BilaterBlurCommand.h
 FORMS += \
        View/mainwindow.ui \
     View/lightconstractdialog.ui

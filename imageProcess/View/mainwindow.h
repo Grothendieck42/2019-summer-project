@@ -29,7 +29,12 @@ public:
     ~MainWindow();
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
+    void setAverBlurCommand(std::shared_ptr<Command> averBlurCommand);
+    void setMidBlurCommand(std::shared_ptr<Command> midBlurCommand);
+    void setGaussBlurCommand(std::shared_ptr<Command> gaussBlurCommand);
+    void setBilaterBlurCommand(std::shared_ptr<Command> bilaterBlurCommand);
     void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
+    void setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand);
     void setToGrayCommand(std::shared_ptr<Command> toGrayCommand);
     void setToBinaryCommand(std::shared_ptr<Command> toBinaryCommand);
     void setDetectEdgeCommand(std::shared_ptr<Command> detectEdgeCommand);
@@ -41,6 +46,8 @@ public:
     void setAddGaussNoiseCommand(std::shared_ptr<Command> addGaussNoiseCommand);
     void setAddSaltNoiseCommand(std::shared_ptr<Command> addSaltNoiseCommand);
     void setImageSegmentationCommand(std::shared_ptr<Command> imageSegmentationCommand);
+    void setImageEnlargeCommand(std::shared_ptr<Command> imageEnlargeCommand);
+    void setImageReductCommand(std::shared_ptr<Command> imageReductCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -53,6 +60,14 @@ private slots:
     void on_actionToBinary_triggered();
 
     void on_actionlight_triggered();
+
+    void on_actionjizhilvbo_triggered();
+
+    void on_actionzhongzhillvbo_triggered();
+
+    void on_actiongaosilvbo_triggered();
+
+    void on_actionshuangbianlvbo_triggered();
 
     void on_actionDetectEdge_triggered();
 
@@ -72,6 +87,10 @@ private slots:
 
     void on_actionImageSegmentation_triggered();
 
+    void on_actionEnlarge_triggered();
+
+    void on_actionReduct_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
@@ -84,6 +103,10 @@ private:
     std::shared_ptr<Command> saveFileCommand;
     std::shared_ptr<Command> toGrayCommand;
     std::shared_ptr<Command> toBinaryCommand;
+    std::shared_ptr<Command> averBlurCommand;
+    std::shared_ptr<Command> midBlurCommand;
+    std::shared_ptr<Command> gaussBlurCommand;
+    std::shared_ptr<Command> bilaterBlurCommand;
     std::shared_ptr<Command> detectEdgeCommand;
     std::shared_ptr<Command> grayEqualizeHistCommand;
     std::shared_ptr<Command> colorEqualizeHistCommand;
@@ -93,6 +116,8 @@ private:
     std::shared_ptr<Command> addGaussNoiseCommand;
     std::shared_ptr<Command> addSaltNoiseCommand;
     std::shared_ptr<Command> imageSegmentationCommand;
+    std::shared_ptr<Command> imageEnlargeCommand;
+    std::shared_ptr<Command> imageReductCommand;
 };
 
 #endif // MAINWINDOW_H

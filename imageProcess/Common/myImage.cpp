@@ -12,6 +12,20 @@ Image::~Image()
 
 }
 
+Image::Image(const Image &im)
+{
+    image = im.image.clone();
+}
+
+Image& Image::operator=(const Image &im)
+{
+    if(this != &im)
+    {
+        image = im.image.clone();
+    }
+    return *this;
+}
+
 void Image::openImage(const std::string &file_path)
 {
     image = cv::imread(file_path);
@@ -35,6 +49,28 @@ void Image::changeImageLightContrast(int light, int contrast)
 			}
 		}
 	}
+}
+
+void Image::averBlur()
+{
+    cv::blur(image, image, cv::Size(5,5));
+}
+
+void Image::midBlur()
+{
+    cv::medianBlur(image, image, 5);
+}
+
+void Image::gaussBlur()
+{
+    cv::GaussianBlur(image, image, cv::Size(5, 5), 5, 5);
+}
+
+Image Image::bilaterBlur()
+{
+    Image new_image;
+    cv::bilateralFilter(image, new_image.image, 15, 150, 3);
+    return new_image;
 }
 
 void Image::toGray(){
@@ -186,7 +222,8 @@ void Image::addSaltNoise(int &n){
     }
 }
 
-void Image::imageSegmentation(int &threshold){
+void Image::imageSegmentation(int &threshold)
+{
     cv::Mat imageGray;
     cv::cvtColor(image,imageGray,cv::COLOR_RGB2GRAY);//灰度转换
     cv::GaussianBlur(imageGray,imageGray,cv::Size(5,5),2);   //高斯滤波
@@ -233,6 +270,16 @@ void Image::imageSegmentation(int &threshold){
     //cv::addWeighted(image,0.4,PerspectiveImage,0.6,0,image);
 }
 
+void Image::imageEnlarge()
+{
+    cv::resize(image,image,cv::Size(image.cols*1.1,image.rows*1.1),0,0,cv::INTER_CUBIC);
+}
+
+void Image::imageReduct()
+{
+    cv::resize(image,image,cv::Size(image.cols*0.9,image.rows*0.9),0,0,cv::INTER_AREA);
+}
+
 QImage Image::getQImage()
 {
     return MatToQImage(image);
@@ -241,5 +288,5 @@ QImage Image::getQImage()
 void Image::show()
 {
     cv::imshow("hh", image);
-    cv::waitKey(0);
+    cv::waitKey(1000);
 }

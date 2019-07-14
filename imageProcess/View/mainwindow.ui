@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>782</height>
+    <width>1054</width>
+    <height>848</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>940</width>
+     <width>1054</width>
      <height>26</height>
     </rect>
    </property>
@@ -60,6 +60,15 @@
     </property>
     <widget class="QMenu" name="menu_5">
      <property name="title">
+      <string>模糊</string>
+     </property>
+     <addaction name="actionjizhilvbo"/>
+     <addaction name="actionzhongzhillvbo"/>
+     <addaction name="actiongaosilvbo"/>
+     <addaction name="actionshuangbianlvbo"/>
+    </widget>
+    <widget class="QMenu" name="menu_6">
+     <property name="title">
       <string>图像增强</string>
      </property>
      <addaction name="actionLaplace"/>
@@ -67,13 +76,14 @@
      <addaction name="actionGamma"/>
     </widget>
     <addaction name="actionlight"/>
+    <addaction name="menu_5"/>
     <addaction name="actionGrayEqualizeHist"/>
     <addaction name="actionColorEqualizeHist"/>
-    <addaction name="menu_5"/>
+    <addaction name="menu_6"/>
     <addaction name="actionGaussNoise"/>
     <addaction name="actionSalt"/>
    </widget>
-   <widget class="QMenu" name="menu_6">
+   <widget class="QMenu" name="menu_7">
     <property name="title">
      <string>缩放</string>
     </property>
@@ -83,7 +93,7 @@
    <addaction name="menu"/>
    <addaction name="menu_3"/>
    <addaction name="menu_4"/>
-   <addaction name="menu_6"/>
+   <addaction name="menu_7"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -97,6 +107,9 @@
   <action name="actionopen">
    <property name="text">
     <string>打开</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionsave">
@@ -132,6 +145,26 @@
   <action name="actionlight">
    <property name="text">
     <string>调整亮度/对比度</string>
+   </property>
+  </action>
+  <action name="actionjizhilvbo">
+   <property name="text">
+    <string>均值滤波</string>
+   </property>
+  </action>
+  <action name="actionzhongzhillvbo">
+   <property name="text">
+    <string>中值滤波</string>
+   </property>
+  </action>
+  <action name="actiongaosilvbo">
+   <property name="text">
+    <string>高斯滤波</string>
+   </property>
+  </action>
+  <action name="actionshuangbianlvbo">
+   <property name="text">
+    <string>双边滤波</string>
    </property>
   </action>
   <action name="actionDetectEdge">
@@ -183,10 +216,16 @@
    <property name="text">
     <string>放大</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+=</string>
+   </property>
   </action>
   <action name="actionReduct">
    <property name="text">
     <string>缩小</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
    </property>
   </action>
  </widget>

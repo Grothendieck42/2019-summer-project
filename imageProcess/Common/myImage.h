@@ -12,11 +12,17 @@ private:
 public:
     Image();
     ~Image();
+    Image(const Image& im);
+    Image& operator=(const Image &im);
     void show();
     QImage getQImage();
     void openImage(const std::string &file_path);
     void saveImage(const std::string &file_path);
     void changeImageLightContrast(int light, int contrast);
+    void averBlur();
+    void midBlur();
+    void gaussBlur();
+    Image bilaterBlur();
     void toGray();
     void toBinary(int& threshold);
     void detectEdge(int& threshold);
@@ -29,4 +35,6 @@ public:
     void addGaussNoise();
     void addSaltNoise(int& n);
     void imageSegmentation(int& threshold);
+    void imageEnlarge();
+    void imageReduct();
 };

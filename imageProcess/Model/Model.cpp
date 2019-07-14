@@ -1,4 +1,5 @@
 #include "Model.h"
+#include <QDebug>
 
 Model::Model() : imageList(std::make_shared<ImageList>())
 {
@@ -69,6 +70,45 @@ void Model::changeImageLightContrast(int light, int contrast)
 	notification->notify();
 }
 
+void Model::changeTmpImageLightContrast(int light, int contrast)
+{
+    Image image = imageList->getImage();
+    image.changeImageLightContrast(light, contrast);
+    tmpNotification->setParameter(image);
+    tmpNotification->notify();
+}
+
+void Model::averBlur()
+{
+    Image image = imageList->getImage();
+    image.averBlur();
+    imageList->addImage(image);
+    notification->notify();
+}
+
+void Model::midBlur()
+{
+    Image image = imageList->getImage();
+    image.midBlur();
+    imageList->addImage(image);
+    notification->notify();
+}
+
+void Model::gaussBlur()
+{
+    Image image = imageList->getImage();
+    image.gaussBlur();
+    imageList->addImage(image);
+    notification->notify();
+}
+
+void Model::bilaterBlur()
+{
+    Image image = imageList->getImage();
+    imageList->addImage(image.bilaterBlur());
+    notification->notify();
+}
+
 void Model::grayEqualizeHist()
 {
     Image newImage=imageList->getImage();
@@ -127,7 +167,26 @@ void Model::imageSegmentation(int &threshold){
     notification->notify();
 }
 
+void Model::imageEnlarge(){
+    Image newImage=imageList->getImage();
+    newImage.imageEnlarge();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::imageReduct(){
+    Image newImage=imageList->getImage();
+    newImage.imageReduct();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
     this->notification = notification;
+}
+
+void Model::setUpdateTmpNotification(std::shared_ptr<Notification> notification)
+{
+    tmpNotification = notification;
 }
