@@ -94,11 +94,11 @@
     <property name="title">
      <string>Face</string>
     </property>
-    <addaction name="actionDetect_Faces"/>
-    <addaction name="actionTrain_Eigen_Models"/>
-    <addaction name="actionAnnotate_Faces"/>
-    <addaction name="actionBeautify_Faces"/>
-    <addaction name="actionGenerate_Headshots"/>
+    <addaction name="actionDetectFaces"/>
+    <addaction name="actionTrainEigenModel"/>
+    <addaction name="actionAnnotateFaces"/>
+    <addaction name="actionBeautifyFaces"/>
+    <addaction name="actionGenerateHeadshots"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_3"/>
@@ -239,27 +239,27 @@
     <string>Ctrl+-</string>
    </property>
   </action>
-  <action name="actionDetect_Faces">
+  <action name="actionDetectFaces">
    <property name="text">
     <string>Detect Faces</string>
    </property>
   </action>
-  <action name="actionTrain_Eigen_Models">
+  <action name="actionTrainEigenModel">
    <property name="text">
-    <string>Train Eigen Models</string>
+    <string>Train Eigen Model</string>
    </property>
   </action>
-  <action name="actionAnnotate_Faces">
+  <action name="actionAnnotateFaces">
    <property name="text">
     <string>Annotate Faces</string>
    </property>
   </action>
-  <action name="actionBeautify_Faces">
+  <action name="actionBeautifyFaces">
    <property name="text">
     <string>Beautify Faces</string>
    </property>
   </action>
-  <action name="actionGenerate_Headshots">
+  <action name="actionGenerateHeadshots">
    <property name="text">
     <string>Generate Headshots</string>
    </property>

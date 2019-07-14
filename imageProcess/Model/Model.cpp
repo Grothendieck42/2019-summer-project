@@ -181,6 +181,27 @@ void Model::imageReduct(){
     notification->notify();
 }
 
+void Model::trainModel(const std::string &dataPath){
+    std::cout<<"Train data in path: "+dataPath<<std::endl;
+
+}
+
+void Model::detectFaces(const std::string &modelPath){
+
+}
+
+void Model::annotateFaces(const std::string &modelPath){
+
+}
+
+void Model::beautifyFaces(){
+
+}
+
+void Model::generateHeadshots(const std::string &outputPath){
+
+}
+
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
     this->notification = notification;
@@ -190,3 +211,4 @@ void Model::setUpdateTmpNotification(std::shared_ptr<Notification> notification)
 {
     tmpNotification = notification;
 }
+

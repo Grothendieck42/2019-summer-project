@@ -35,6 +35,11 @@ public:
     void imageSegmentation(int& threshold);
     void imageEnlarge();
     void imageReduct();
+    void trainModel(const std::string &dataPath);
+    void detectFaces(const std::string &modelPath);
+    void annotateFaces(const std::string &modelPath);
+    void beautifyFaces();
+    void generateHeadshots(const std::string &outputPath);
     std::shared_ptr<ImageList> getImageList();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void setUpdateTmpNotification(std::shared_ptr<Notification> notification);

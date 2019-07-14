@@ -48,6 +48,11 @@ public:
     void setImageSegmentationCommand(std::shared_ptr<Command> imageSegmentationCommand);
     void setImageEnlargeCommand(std::shared_ptr<Command> imageEnlargeCommand);
     void setImageReductCommand(std::shared_ptr<Command> imageReductCommand);
+    void setTrainModelCommand(std::shared_ptr<Command> trainModelCommand);
+    void setDetectFacesCommand(std::shared_ptr<Command> detectFacesCommand);
+    void setAnnotateFacesCommand(std::shared_ptr<Command> annotateFacesCommand);
+    void setBeautifyFacesCommand(std::shared_ptr<Command> beautifyFacesCommand);
+    void setGenerateHeadshotsCommand(std::shared_ptr<Command> generateHeadshotsCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -91,6 +96,16 @@ private slots:
 
     void on_actionReduct_triggered();
 
+    void on_actionTrainEigenModel_triggered();
+
+    void on_actionDetectFaces_triggered();
+
+    void on_actionAnnotateFaces_triggered();
+
+    void on_actionBeautifyFaces_triggered();
+
+    void on_actionGenerateHeadshots_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
@@ -118,6 +133,11 @@ private:
     std::shared_ptr<Command> imageSegmentationCommand;
     std::shared_ptr<Command> imageEnlargeCommand;
     std::shared_ptr<Command> imageReductCommand;
+    std::shared_ptr<Command> trainEigenModelCommand;
+    std::shared_ptr<Command> detectFacesCommand;
+    std::shared_ptr<Command> annotateFacesCommand;
+    std::shared_ptr<Command> beautifyFacesCommand;
+    std::shared_ptr<Command> generateHeadshotsCommand;
 };
 
 #endif // MAINWINDOW_H

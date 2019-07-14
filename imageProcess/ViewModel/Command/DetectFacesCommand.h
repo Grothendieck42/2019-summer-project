@@ -6,15 +6,15 @@
 #include "../../Common/Command.h"
 
 class ViewModel;
-class DetectFaces: public Command
+class DetectFacesCommand: public Command
 {
 private:
     // Command负责发送指令给ViewModel
     // ViewModel类似于控制器Controller的作用
     ViewModel* viewModel;
 public:
-    DetectFaces(ViewModel* view_model);
-    ~DetectFaces();
+    DetectFacesCommand(ViewModel* view_model);
+    ~DetectFacesCommand();
     void setParameter(std::any params);
     void exec();
 };

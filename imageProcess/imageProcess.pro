@@ -61,7 +61,8 @@ SOURCES += \
         ViewModel/Command/TmpLightContrastCommand.cpp \
         ViewModel/Command/MidBlurCommand.cpp \
         ViewModel/Command/GaussBlurCommand.cpp \
-        ViewModel/Command/BilaterBlurCommand.cpp
+        ViewModel/Command/BilaterBlurCommand.cpp \
+    ViewModel/Command/TrainEigenModelCommand.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -103,7 +104,8 @@ HEADERS += \
     ViewModel/Command/TrainEigenModelCommand.h \
     ViewModel/Command/AnnotateFacesCommand.h \
     ViewModel/Command/BeautifyFacesCommand.h \
-    Common/Common.h
+    Common/Common.h \
+    ViewModel/Command/GenerateHeadshotsCommand.h
 
 FORMS += \
        View/mainwindow.ui \

@@ -25,7 +25,8 @@ ViewModel::ViewModel()
       imageReductCommand(std::make_shared<ImageReductCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this)),
-      updateTmpNotification(std::make_shared<UpdateTmpNotification>(this))
+      updateTmpNotification(std::make_shared<UpdateTmpNotification>(this)),
+      trainEigenModelCommand(std::make_shared<TrainEigenModelCommand>(this))
 {
 
 }
@@ -146,6 +147,26 @@ std::shared_ptr<Command> ViewModel::getImageReductCommand(){
     return imageReductCommand;
 }
 
+std::shared_ptr<Command> ViewModel::getTrainEigenModelCommand(){
+    return trainEigenModelCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getDetectFacesCommand(){
+    return detectFacesCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getAnnotateFacesCommand(){
+    return annotateFacesCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getBeautifyFacesCommand(){
+    return beautifyFacesCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getGenerateHeadshotsCommand(){
+    return generateHeadshotsCommand;
+}
+
 void ViewModel::openImage(const std::string &file_name)
 {
     model->openImage(file_name);
@@ -243,6 +264,26 @@ void ViewModel::imageEnlarge(){
 
 void ViewModel::imageReduct(){
     model->imageReduct();
+}
+
+void ViewModel::trainModel(const std::string &dataPath){
+    model->trainModel(dataPath);
+}
+
+void ViewModel::detectFaces(const std::string &modelPath){
+    model->detectFaces(modelPath);
+}
+
+void ViewModel::annotateFaces(const std::string &modelPath){
+    model->annotateFaces(modelPath);
+}
+
+void ViewModel::beautifyFaces(){
+    model->beautifyFaces();
+}
+
+void ViewModel::generateHeadshots(const std::string &outputPath){
+    model->generateHeadshots(outputPath);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

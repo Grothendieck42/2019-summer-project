@@ -6,15 +6,15 @@
 #include "../../Common/Command.h"
 
 class ViewModel;
-class AnnotateFaces: public Command
+class AnnotateFacesCommand: public Command
 {
 private:
     // Command负责发送指令给ViewModel
     // ViewModel类似于控制器Controller的作用
     ViewModel* viewModel;
 public:
-    AnnotateFaces(ViewModel* view_model);
-    ~AnnotateFaces();
+    AnnotateFacesCommand(ViewModel* view_model);
+    ~AnnotateFacesCommand();
     void setParameter(std::any params);
     void exec();
 };

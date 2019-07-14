@@ -23,6 +23,11 @@
 #include "Command/ImageSegmentationCommand.h"
 #include "Command/ImageEnlargeCommand.h"
 #include "Command/ImageReductCommand.h"
+#include "Command/TrainEigenModelCommand.h"
+#include "Command/DetectFacesCommand.h"
+#include "Command/AnnotateFacesCommand.h"
+#include "Command/BeautifyFacesCommand.h"
+#include "Command/GenerateHeadshotsCommand.h"
 
 #include "../Common/Notification.h"
 #include "Notification/UpdateDataNotification.h"
@@ -59,6 +64,12 @@ private:
     std::shared_ptr<Notification> notification;
     std::shared_ptr<UpdateDataNotification> updateNotification;
     std::shared_ptr<UpdateTmpNotification> updateTmpNotification;
+    std::shared_ptr<TrainEigenModelCommand> trainEigenModelCommand;
+    std::shared_ptr<DetectFacesCommand> detectFacesCommand;
+    std::shared_ptr<AnnotateFacesCommand> annotateFacesCommand;
+    std::shared_ptr<BeautifyFacesCommand> beautifyFacesCommand;
+    std::shared_ptr<GenerateHeadshotsCommand> generateHeadshotsCommand;
+
 public:
     ViewModel();
     ~ViewModel();
@@ -92,6 +103,12 @@ public:
     std::shared_ptr<Command> getImageSegmentationCommand();
     std::shared_ptr<Command> getImageEnlargeCommand();
     std::shared_ptr<Command> getImageReductCommand();
+    std::shared_ptr<Command> getTrainEigenModelCommand();
+    std::shared_ptr<Command> getDetectFacesCommand();
+    std::shared_ptr<Command> getAnnotateFacesCommand();
+    std::shared_ptr<Command> getBeautifyFacesCommand();
+    std::shared_ptr<Command> getGenerateHeadshotsCommand();
+
     void toGray();
     void toBinary(int& threshold);
     void detectEdge(int& threshold);
@@ -109,4 +126,9 @@ public:
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void convert();
     void notify();
+    void trainModel(const std::string &dataPath);
+    void detectFaces(const std::string &modelPath);
+    void annotateFaces(const std::string &modelPath);
+    void beautifyFaces();
+    void generateHeadshots(const std::string &outputPath);
 };

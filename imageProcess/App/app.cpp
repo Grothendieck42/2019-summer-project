@@ -28,6 +28,11 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setImageSegmentationCommand(viewModel->getImageSegmentationCommand());
     view->setImageEnlargeCommand(viewModel->getImageEnlargeCommand());
     view->setImageReductCommand(viewModel->getImageReductCommand());
+    view->setTrainModelCommand(viewModel->getTrainEigenModelCommand());
+    view->setDetectFacesCommand(viewModel->getDetectFacesCommand());
+    view->setAnnotateFacesCommand(viewModel->getAnnotateFacesCommand());
+    view->setBeautifyFacesCommand(viewModel->getBeautifyFacesCommand());
+    view->setGenerateHeadshotsCommand(viewModel->getGenerateHeadshotsCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
 }

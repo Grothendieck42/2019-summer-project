@@ -129,6 +129,29 @@ void MainWindow::setImageReductCommand(std::shared_ptr<Command> imageReductComma
     this->imageReductCommand=imageReductCommand;
 }
 
+void MainWindow::setTrainModelCommand(std::shared_ptr<Command> trainModelCommand){
+    this->trainEigenModelCommand=trainModelCommand;
+}
+
+void MainWindow::setDetectFacesCommand(std::shared_ptr<Command> detectFacesCommand)
+{
+    this->detectFacesCommand=detectFacesCommand;
+}
+
+void MainWindow::setAnnotateFacesCommand(std::shared_ptr<Command> annotateFacesCommand)
+{
+    this->annotateFacesCommand=annotateFacesCommand;
+}
+
+void MainWindow::setBeautifyFacesCommand(std::shared_ptr<Command> beautifyFacesCommand)
+{
+    this->beautifyFacesCommand=beautifyFacesCommand;
+}
+void MainWindow::setGenerateHeadshotsCommand(std::shared_ptr<Command> generateHeadshotsCommand)
+{
+    this->generateHeadshotsCommand=generateHeadshotsCommand;
+}
+
 void MainWindow::setQImage(std::shared_ptr<QImage> qImage)
 {
     this->qImage = qImage;
@@ -266,4 +289,36 @@ void MainWindow::on_actionEnlarge_triggered()
 void MainWindow::on_actionReduct_triggered()
 {
     imageReductCommand->exec();
+}
+
+void MainWindow::on_actionTrainEigenModel_triggered()
+{
+    QString datapath = QFileDialog::getExistingDirectory();
+    if(datapath.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        trainEigenModelCommand->setParameter(datapath.toStdString());
+        trainEigenModelCommand->exec();
+    }
+}
+
+
+void MainWindow::on_actionDetectFaces_triggered()
+{
+
+}
+
+void MainWindow::on_actionAnnotateFaces_triggered(){
+
+}
+
+void MainWindow::on_actionBeautifyFaces_triggered(){
+
+}
+
+void MainWindow::on_actionGenerateHeadshots_triggered(){
+
 }
