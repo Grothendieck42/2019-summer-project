@@ -2,15 +2,19 @@
 #include "../../Common/Command.h"
 
 class ViewModel;
-class ToGrayCommand: public Command
+class LoadEigenModelCommand: public Command
 {
 private:
     // Command负责发送指令给ViewModel
     // ViewModel类似于控制器Controller的作用
     ViewModel* viewModel;
 public:
-    ToGrayCommand(ViewModel* view_model);
-    ~ToGrayCommand();
+    LoadEigenModelCommand(ViewModel* view_model);
+    ~LoadEigenModelCommand();
     void setParameter(std::any params);
     bool exec();
 };
+
+
+
+

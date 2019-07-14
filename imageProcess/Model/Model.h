@@ -35,6 +35,13 @@ public:
     bool addGaussNoise();
     bool addSaltNoise(int& n);
     bool imageSegmentation(int& threshold);
+    bool imageEnlarge();
+    bool imageReduct();
+    bool trainModel(const std::string &dataPath);
+    bool detectFaces(const std::string &modelPath);
+    bool annotateFaces(const std::string &modelPath);
+    bool beautifyFaces();
+    bool generateHeadshots(const std::string &outputPath);
     std::shared_ptr<ImageList> getImageList();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void setUpdateTmpNotification(std::shared_ptr<Notification> notification);

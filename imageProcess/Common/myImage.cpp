@@ -226,7 +226,8 @@ void Image::addSaltNoise(int &n){
     }
 }
 
-void Image::imageSegmentation(int &threshold){
+void Image::imageSegmentation(int &threshold)
+{
     cv::Mat imageGray;
     cv::cvtColor(image,imageGray,cv::COLOR_RGB2GRAY);//灰度转换
     cv::GaussianBlur(imageGray,imageGray,cv::Size(5,5),2);   //高斯滤波
@@ -273,15 +274,19 @@ void Image::imageSegmentation(int &threshold){
     //cv::addWeighted(image,0.4,PerspectiveImage,0.6,0,image);
 }
 
+void Image::imageEnlarge()
+{
+    cv::resize(image,image,cv::Size(image.cols*1.1,image.rows*1.1),0,0,cv::INTER_CUBIC);
+}
+
+void Image::imageReduct()
+{
+    cv::resize(image,image,cv::Size(image.cols*0.9,image.rows*0.9),0,0,cv::INTER_AREA);
+}
+
 QImage Image::getQImage()
 {
     return MatToQImage(image);
-}
-
-void Image::show()
-{
-    cv::imshow("hh", image);
-    cv::waitKey(1000);
 }
 
 bool Image::empty()

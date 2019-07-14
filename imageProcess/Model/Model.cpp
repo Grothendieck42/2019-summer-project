@@ -76,6 +76,8 @@ bool Model::detectEdge(int &threshold)
     Image newImage=imageList->getImage();
     if(newImage.empty())
         return false;
+    if(!newImage.checkGray())
+        return false;
     newImage.detectEdge(threshold);
     imageList->addImage(newImage);
     notification->notify();
@@ -275,9 +277,56 @@ bool Model::imageSegmentation(int &threshold){
     Image newImage=imageList->getImage();
     if(newImage.empty())
         return false;
+    if(!newImage.checkColor())
+        return false;
     newImage.imageSegmentation(threshold);
     imageList->addImage(newImage);
     notification->notify();
+    return true;
+}
+
+bool Model::imageEnlarge(){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.imageEnlarge();
+    imageList->addImage(newImage);
+    notification->notify();
+    return true;
+}
+
+bool Model::imageReduct(){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.imageReduct();
+    imageList->addImage(newImage);
+    notification->notify();
+    return true;
+}
+
+bool Model::trainModel(const std::string &dataPath){
+    std::cout<<"Train data in path: "+dataPath<<std::endl;
+    return true;
+}
+
+bool Model::detectFaces(const std::string &modelPath){
+    return true;
+}
+
+bool Model::annotateFaces(const std::string &modelPath){
+    return true;
+}
+
+bool Model::beautifyFaces(){
+    return true;
+}
+
+bool Model::generateHeadshots(const std::string &outputPath){
     return true;
 }
 
@@ -290,3 +339,4 @@ void Model::setUpdateTmpNotification(std::shared_ptr<Notification> notification)
 {
     tmpNotification = notification;
 }
+

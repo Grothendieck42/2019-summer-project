@@ -1,8 +1,6 @@
 #include "LaplaceCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 LaplaceCommand::LaplaceCommand(ViewModel* view_model) : viewModel(view_model)
 {

@@ -1,8 +1,6 @@
 #include "GrayEqualizeHistCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 GrayEqualizeHistCommand::GrayEqualizeHistCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -21,5 +19,4 @@ bool GrayEqualizeHistCommand::exec()
 
 void GrayEqualizeHistCommand::setParameter(std::any params)
 {
-   //file_name = *std::any_cast<std::string>(&params);
 }

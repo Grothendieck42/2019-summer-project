@@ -23,8 +23,13 @@
 #include "Command/AddSaltNoiseCommand.h"
 #include "Command/ImageSegmentationCommand.h"
 #include "Command/DisplayNowCommand.h"
-
-
+#include "Command/ImageEnlargeCommand.h"
+#include "Command/ImageReductCommand.h"
+#include "Command/TrainEigenModelCommand.h"
+#include "Command/DetectFacesCommand.h"
+#include "Command/AnnotateFacesCommand.h"
+#include "Command/BeautifyFacesCommand.h"
+#include "Command/GenerateHeadshotsCommand.h"
 #include "../Common/Notification.h"
 #include "Notification/UpdateDataNotification.h"
 #include "Notification/UpdateTmpNotification.h"
@@ -56,10 +61,18 @@ private:
     std::shared_ptr<AddGaussNoiseCommand> addGaussNoiseCommand;
     std::shared_ptr<AddSaltNoiseCommand> addSaltNoiseCommand;
     std::shared_ptr<ImageSegmentationCommand> imageSegmentationCommand;
+    std::shared_ptr<ImageEnlargeCommand> imageEnlargeCommand;
+    std::shared_ptr<ImageReductCommand> imageReductCommand;
     std::shared_ptr<QImage> qImage;
     std::shared_ptr<Notification> notification;
     std::shared_ptr<UpdateDataNotification> updateNotification;
     std::shared_ptr<UpdateTmpNotification> updateTmpNotification;
+    std::shared_ptr<TrainEigenModelCommand> trainEigenModelCommand;
+    std::shared_ptr<DetectFacesCommand> detectFacesCommand;
+    std::shared_ptr<AnnotateFacesCommand> annotateFacesCommand;
+    std::shared_ptr<BeautifyFacesCommand> beautifyFacesCommand;
+    std::shared_ptr<GenerateHeadshotsCommand> generateHeadshotsCommand;
+
 public:
     ViewModel();
     ~ViewModel();
@@ -93,6 +106,13 @@ public:
     std::shared_ptr<Command> getAddGaussNoiseCommand();
     std::shared_ptr<Command> getAddSaltNoiseCommand();
     std::shared_ptr<Command> getImageSegmentationCommand();
+    std::shared_ptr<Command> getImageEnlargeCommand();
+    std::shared_ptr<Command> getImageReductCommand();
+    std::shared_ptr<Command> getTrainEigenModelCommand();
+    std::shared_ptr<Command> getDetectFacesCommand();
+    std::shared_ptr<Command> getAnnotateFacesCommand();
+    std::shared_ptr<Command> getBeautifyFacesCommand();
+    std::shared_ptr<Command> getGenerateHeadshotsCommand();
     bool display();
     bool undo();
     bool toGray();
@@ -106,8 +126,15 @@ public:
     bool addGaussNoise();
     bool addSaltNoise(int& n);
     bool imageSegmentation(int& threshold);
+    bool imageEnlarge();
+    bool imageReduct();
     std::shared_ptr<QImage> getQImage();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void convert();
     void notify();
+    bool trainModel(const std::string &dataPath);
+    bool detectFaces(const std::string &modelPath);
+    bool annotateFaces(const std::string &modelPath);
+    bool beautifyFaces();
+    bool generateHeadshots(const std::string &outputPath);
 };

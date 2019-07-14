@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>782</height>
+    <width>1054</width>
+    <height>848</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ImageProcess</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -25,7 +25,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>940</width>
+     <width>1054</width>
      <height>22</height>
     </rect>
    </property>
@@ -86,9 +86,35 @@
     <addaction name="actionGaussNoise"/>
     <addaction name="actionSalt"/>
    </widget>
+   <widget class="QMenu" name="menu_7">
+    <property name="title">
+     <string>缩放</string>
+    </property>
+    <addaction name="actionEnlarge"/>
+    <addaction name="actionReduct"/>
+   </widget>
+   <widget class="QMenu" name="menuFace">
+    <property name="title">
+     <string>Face</string>
+    </property>
+    <addaction name="actionDetectFaces"/>
+    <addaction name="actionTrainEigenModel"/>
+    <addaction name="actionAnnotateFaces"/>
+    <addaction name="actionBeautifyFaces"/>
+    <addaction name="actionGenerateHeadshots"/>
+   </widget>
+   <widget class="QMenu" name="menu_8">
+    <property name="title">
+     <string>编辑</string>
+    </property>
+    <addaction name="actionchexiao"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_8"/>
    <addaction name="menu_3"/>
    <addaction name="menu_4"/>
+   <addaction name="menu_7"/>
+   <addaction name="menuFace"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -102,6 +128,9 @@
   <action name="actionopen">
    <property name="text">
     <string>打开</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionsave">
@@ -211,6 +240,52 @@
   <action name="actionImageSegmentation">
    <property name="text">
     <string>图像分割</string>
+   </property>
+  </action>
+  <action name="actionEnlarge">
+   <property name="text">
+    <string>放大</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+=</string>
+   </property>
+  </action>
+  <action name="actionReduct">
+   <property name="text">
+    <string>缩小</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionDetectFaces">
+   <property name="text">
+    <string>Detect Faces</string>
+   </property>
+  </action>
+  <action name="actionTrainEigenModel">
+   <property name="text">
+    <string>Train Eigen Model</string>
+   </property>
+  </action>
+  <action name="actionAnnotateFaces">
+   <property name="text">
+    <string>Annotate Faces</string>
+   </property>
+  </action>
+  <action name="actionBeautifyFaces">
+   <property name="text">
+    <string>Beautify Faces</string>
+   </property>
+  </action>
+  <action name="actionGenerateHeadshots">
+   <property name="text">
+    <string>Generate Headshots</string>
+   </property>
+  </action>
+  <action name="actionchexiao">
+   <property name="text">
+    <string>撤销</string>
    </property>
   </action>
  </widget>

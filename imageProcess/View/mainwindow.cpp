@@ -15,8 +15,10 @@ MainWindow::MainWindow(QWidget *parent) :
     graphView = this->findChild<QGraphicsView*>("image1");
     tool_item = this->findChild<QMenu*>("menu_3");
     adjust_item = this->findChild<QMenu*>("menu_4");
+    enlarge_item = this->findChild<QMenu*>("menu_7");
     tool_item->setEnabled(false);
     adjust_item->setEnabled(false);
+    enlarge_item->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -137,6 +139,43 @@ void MainWindow::setImageSegmentationCommand(std::shared_ptr<Command> imageSegme
     this->imageSegmentationCommand=imageSegmentationCommand;
 }
 
+void MainWindow::setImageEnlargeCommand(std::shared_ptr<Command> imageEnlargeCommand){
+    this->imageEnlargeCommand=imageEnlargeCommand;
+}
+
+void MainWindow::setImageReductCommand(std::shared_ptr<Command> imageReductCommand){
+    this->imageReductCommand=imageReductCommand;
+}
+
+void MainWindow::setTrainModelCommand(std::shared_ptr<Command> trainModelCommand){
+    this->trainEigenModelCommand=trainModelCommand;
+}
+
+void MainWindow::setDetectFacesCommand(std::shared_ptr<Command> detectFacesCommand)
+{
+    this->detectFacesCommand=detectFacesCommand;
+}
+
+void MainWindow::setAnnotateFacesCommand(std::shared_ptr<Command> annotateFacesCommand)
+{
+    this->annotateFacesCommand=annotateFacesCommand;
+}
+
+void MainWindow::setBeautifyFacesCommand(std::shared_ptr<Command> beautifyFacesCommand)
+{
+    this->beautifyFacesCommand=beautifyFacesCommand;
+}
+
+void MainWindow::setGenerateHeadshotsCommand(std::shared_ptr<Command> generateHeadshotsCommand)
+{
+    this->generateHeadshotsCommand=generateHeadshotsCommand;
+}
+
+void MainWindow::setUndoCommand(std::shared_ptr<Command> undoCommand)
+{
+    this->undoCommand = undoCommand;
+}
+
 void MainWindow::setQImage(std::shared_ptr<QImage> qImage)
 {
     this->qImage = qImage;
@@ -157,11 +196,13 @@ void MainWindow::on_actionopen_triggered()
         {
             tool_item->setEnabled(true);
             adjust_item->setEnabled(true);
+            enlarge_item->setEnabled(true);
         }
         else
         {
             tool_item->setEnabled(false);
             adjust_item->setEnabled(false);
+            enlarge_item->setEnabled(false);
             error("文件打开失败!");
         }
     }
@@ -323,5 +364,61 @@ void MainWindow::on_actionshuangbianlvbo_triggered()
     if(!bilaterBlurCommand->exec())
     {
         error("双边滤波失败!");
+    }
+}
+
+void MainWindow::on_actionEnlarge_triggered()
+{
+    if(!imageEnlargeCommand->exec())
+    {
+        error("图像放大失败!");
+    }
+}
+
+void MainWindow::on_actionReduct_triggered()
+{
+    if(!imageReductCommand->exec())
+    {
+        error("图像缩小失败!");
+    }
+}
+
+void MainWindow::on_actionTrainEigenModel_triggered()
+{
+    QString datapath = QFileDialog::getExistingDirectory();
+    if(datapath.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        trainEigenModelCommand->setParameter(datapath.toStdString());
+        trainEigenModelCommand->exec();
+    }
+}
+
+
+void MainWindow::on_actionDetectFaces_triggered()
+{
+
+}
+
+void MainWindow::on_actionAnnotateFaces_triggered(){
+
+}
+
+void MainWindow::on_actionBeautifyFaces_triggered(){
+
+}
+
+void MainWindow::on_actionGenerateHeadshots_triggered(){
+
+}
+
+void MainWindow::on_actionchexiao_triggered()
+{
+    if(!undoCommand->exec())
+    {
+        error("撤销失败!");
     }
 }

@@ -14,7 +14,6 @@ public:
     ~Image();
     Image(const Image& im);
     Image& operator=(const Image &im);
-    void show();
     bool empty();
     QImage getQImage();
     void openImage(const std::string &file_path);
@@ -38,4 +37,6 @@ public:
     void imageSegmentation(int& threshold);
     bool checkGray();
     bool checkColor();
+    void imageEnlarge();
+    void imageReduct();
 };

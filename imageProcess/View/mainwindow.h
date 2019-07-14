@@ -49,6 +49,14 @@ public:
     void setAddGaussNoiseCommand(std::shared_ptr<Command> addGaussNoiseCommand);
     void setAddSaltNoiseCommand(std::shared_ptr<Command> addSaltNoiseCommand);
     void setImageSegmentationCommand(std::shared_ptr<Command> imageSegmentationCommand);
+    void setImageEnlargeCommand(std::shared_ptr<Command> imageEnlargeCommand);
+    void setImageReductCommand(std::shared_ptr<Command> imageReductCommand);
+    void setTrainModelCommand(std::shared_ptr<Command> trainModelCommand);
+    void setDetectFacesCommand(std::shared_ptr<Command> detectFacesCommand);
+    void setAnnotateFacesCommand(std::shared_ptr<Command> annotateFacesCommand);
+    void setBeautifyFacesCommand(std::shared_ptr<Command> beautifyFacesCommand);
+    void setGenerateHeadshotsCommand(std::shared_ptr<Command> generateHeadshotsCommand);
+    void setUndoCommand(std::shared_ptr<Command> undoCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -61,7 +69,6 @@ private slots:
     void on_actionToBinary_triggered();
 
     void on_actionlight_triggered();
-
 
     void on_actionjizhilvbo_triggered();
 
@@ -89,6 +96,21 @@ private slots:
 
     void on_actionImageSegmentation_triggered();
 
+    void on_actionEnlarge_triggered();
+
+    void on_actionReduct_triggered();
+
+    void on_actionTrainEigenModel_triggered();
+
+    void on_actionDetectFaces_triggered();
+
+    void on_actionAnnotateFaces_triggered();
+
+    void on_actionBeautifyFaces_triggered();
+
+    void on_actionGenerateHeadshots_triggered();
+
+    void on_actionchexiao_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -97,6 +119,7 @@ private:
     QGraphicsScene *scene;
     QMenu *tool_item;
     QMenu *adjust_item;
+    QMenu *enlarge_item;
     LightConstractDialog lightDialog;
 
     std::shared_ptr<UpdateNotification> updateNotification;
@@ -117,6 +140,14 @@ private:
     std::shared_ptr<Command> addGaussNoiseCommand;
     std::shared_ptr<Command> addSaltNoiseCommand;
     std::shared_ptr<Command> imageSegmentationCommand;
+    std::shared_ptr<Command> imageEnlargeCommand;
+    std::shared_ptr<Command> imageReductCommand;
+    std::shared_ptr<Command> trainEigenModelCommand;
+    std::shared_ptr<Command> detectFacesCommand;
+    std::shared_ptr<Command> annotateFacesCommand;
+    std::shared_ptr<Command> beautifyFacesCommand;
+    std::shared_ptr<Command> generateHeadshotsCommand;
+    std::shared_ptr<Command> undoCommand;
 };
 
 #endif // MAINWINDOW_H

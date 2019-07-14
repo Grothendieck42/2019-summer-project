@@ -2,7 +2,6 @@
 #include "../ViewModel.h"
 #include <any>
 #include <string>
-#include <QDebug>
 
 ToGrayCommand::ToGrayCommand(ViewModel* view_model) : viewModel(view_model)
 {

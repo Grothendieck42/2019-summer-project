@@ -23,9 +23,12 @@ ViewModel::ViewModel()
       addGaussNoiseCommand(std::make_shared<AddGaussNoiseCommand>(this)),
       addSaltNoiseCommand(std::make_shared<AddSaltNoiseCommand>(this)),
       imageSegmentationCommand(std::make_shared<ImageSegmentationCommand>(this)),
+      imageEnlargeCommand(std::make_shared<ImageEnlargeCommand>(this)),
+      imageReductCommand(std::make_shared<ImageReductCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this)),
-      updateTmpNotification(std::make_shared<UpdateTmpNotification>(this))
+      updateTmpNotification(std::make_shared<UpdateTmpNotification>(this)),
+      trainEigenModelCommand(std::make_shared<TrainEigenModelCommand>(this))
 {
 
 }
@@ -158,6 +161,34 @@ bool ViewModel::display()
     return model->display();
 }
 
+std::shared_ptr<Command> ViewModel::getImageEnlargeCommand(){
+    return imageEnlargeCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getImageReductCommand(){
+    return imageReductCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getTrainEigenModelCommand(){
+    return trainEigenModelCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getDetectFacesCommand(){
+    return detectFacesCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getAnnotateFacesCommand(){
+    return annotateFacesCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getBeautifyFacesCommand(){
+    return beautifyFacesCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getGenerateHeadshotsCommand(){
+    return generateHeadshotsCommand;
+}
+
 bool ViewModel::openImage(const std::string &file_name)
 {
     return model->openImage(file_name);
@@ -247,6 +278,34 @@ bool ViewModel::addSaltNoise(int &n){
 
 bool ViewModel::imageSegmentation(int &threshold){
     return model->imageSegmentation(threshold);
+}
+
+bool ViewModel::imageEnlarge(){
+    return model->imageEnlarge();
+}
+
+bool ViewModel::imageReduct(){
+    return model->imageReduct();
+}
+
+bool ViewModel::trainModel(const std::string &dataPath){
+    return model->trainModel(dataPath);
+}
+
+bool ViewModel::detectFaces(const std::string &modelPath){
+    return model->detectFaces(modelPath);
+}
+
+bool ViewModel::annotateFaces(const std::string &modelPath){
+    return model->annotateFaces(modelPath);
+}
+
+bool ViewModel::beautifyFaces(){
+    return model->beautifyFaces();
+}
+
+bool ViewModel::generateHeadshots(const std::string &outputPath){
+    return model->generateHeadshots(outputPath);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

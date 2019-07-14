@@ -1,8 +1,6 @@
 #include "ImageSegmentationCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 ImageSegmentationCommand::ImageSegmentationCommand(ViewModel* view_model) : viewModel(view_model)
 {

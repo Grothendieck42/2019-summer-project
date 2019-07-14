@@ -2,15 +2,16 @@
 #include "../../Common/Command.h"
 
 class ViewModel;
-class ToGrayCommand: public Command
+class DetectFacesCommand: public Command
 {
 private:
     // Command负责发送指令给ViewModel
     // ViewModel类似于控制器Controller的作用
     ViewModel* viewModel;
 public:
-    ToGrayCommand(ViewModel* view_model);
-    ~ToGrayCommand();
+    DetectFacesCommand(ViewModel* view_model);
+    ~DetectFacesCommand();
     void setParameter(std::any params);
     bool exec();
 };
+

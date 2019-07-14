@@ -24,19 +24,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++17
 
+QMAKE_CXXFLAGS = $$QMAKE_CFLAGS -std=c++17
+
 SOURCES += \
-        ViewModel/Command/AddGaussNoiseCommand.cpp \
-        ViewModel/Command/AddSaltNoiseCommand.cpp \
-        ViewModel/Command/ColorEqualizeHistCommand.cpp \
-        ViewModel/Command/DetectEdgeCommand.cpp \
-        ViewModel/Command/GammaCorrectCommand.cpp \
-        ViewModel/Command/GrayEqualizeHistCommand.cpp \
-        ViewModel/Command/ImageSegmentationCommand.cpp \
-        ViewModel/Command/LaplaceCommand.cpp \
-        ViewModel/Command/LogEnhanceCommand.cpp \
-        ViewModel/Command/SaveFileCommand.cpp \
-        ViewModel/Command/ToBinaryCommand.cpp \
-        ViewModel/Command/ToGrayCommand.cpp \
         main.cpp \
         View/mainwindow.cpp \
         App/app.cpp \
@@ -45,6 +35,20 @@ SOURCES += \
         Common/Command.cpp \
         ViewModel/Command/OpenFileCommand.cpp \
         ViewModel/Command/LightContrastCommand.cpp \
+        ViewModel/Command/AddGaussNoiseCommand.cpp \
+        ViewModel/Command/AddSaltNoiseCommand.cpp \
+        ViewModel/Command/ColorEqualizeHistCommand.cpp \
+        ViewModel/Command/DetectEdgeCommand.cpp \
+        ViewModel/Command/GammaCorrectCommand.cpp \
+        ViewModel/Command/GrayEqualizeHistCommand.cpp \
+        ViewModel/Command/ImageEnlargeCommand.cpp \
+        ViewModel/Command/ImageReductCommand.cpp \
+        ViewModel/Command/ImageSegmentationCommand.cpp \
+        ViewModel/Command/LaplaceCommand.cpp \
+        ViewModel/Command/LogEnhanceCommand.cpp \
+        ViewModel/Command/savefilecommand.cpp \
+        ViewModel/Command/ToBinaryCommand.cpp \
+        ViewModel/Command/tograycommand.cpp \
         ViewModel/Command/AverBlurCommand.cpp \
         Common/myImage.cpp \
         Utility/utility.cpp \
@@ -53,53 +57,67 @@ SOURCES += \
         View/Notification/UpdateNotification.cpp \
         ViewModel/Notification/UpdateDataNotification.cpp \
         View/lightconstractdialog.cpp \
-    ViewModel/Notification/UpdateTmpNotification.cpp \
-    ViewModel/Command/TmpLightContrastCommand.cpp \
-    ViewModel/Command/MidBlurCommand.cpp \
-    ViewModel/Command/GaussBlurCommand.cpp \
-    ViewModel/Command/BilaterBlurCommand.cpp \
-    ViewModel/Command/DisplayNowCommand.cpp \
-    ViewModel/Command/UndoCommand.cpp
+        ViewModel/Notification/UpdateTmpNotification.cpp \
+        ViewModel/Command/TmpLightContrastCommand.cpp \
+        ViewModel/Command/MidBlurCommand.cpp \
+        ViewModel/Command/GaussBlurCommand.cpp \
+        ViewModel/Command/BilaterBlurCommand.cpp \
+        ViewModel/Command/DisplayNowCommand.cpp \
+        ViewModel/Command/UndoCommand.cpp \
+        ViewModel/Command/TrainEigenModelCommand.cpp \
+    View/dialog.cpp
+
 
 HEADERS += \
         View/mainwindow.h \
         App/app.h \
-        Common/myImage.h \
-    ViewModel/Command/AddGaussNoiseCommand.h \
-    ViewModel/Command/AddSaltNoiseCommand.h \
-    ViewModel/Command/ColorEqualizeHistCommand.h \
-    ViewModel/Command/DetectEdgeCommand.h \
-    ViewModel/Command/GammaCorrectCommand.h \
-    ViewModel/Command/GrayEqualizeHistCommand.h \
-    ViewModel/Command/ImageSegmentationCommand.h \
-    ViewModel/Command/LaplaceCommand.h \
-    ViewModel/Command/LogEnhanceCommand.h \
-        ViewModel/Command/SaveFileCommand.h \
-        ViewModel/Command/ToBibaryCommand.h \
-        ViewModel/Command/ToGrayCommand.h \
         ViewModel/ViewModel.h \
         Model/Model.h \
         Common/Command.h \
         ViewModel/Command/OpenFileCommand.h \
         ViewModel/Command/LightContrastCommand.h \
+        ViewModel/Command/AddGaussNoiseCommand.h \
+        ViewModel/Command/AddSaltNoiseCommand.h \
+        ViewModel/Command/ColorEqualizeHistCommand.h \
+        ViewModel/Command/DetectEdgeCommand.h \
+        ViewModel/Command/GammaCorrectCommand.h \
+        ViewModel/Command/GrayEqualizeHistCommand.h \
+        ViewModel/Command/ImageEnlargeCommand.h \
+        ViewModel/Command/ImageReductCommand.h \
+        ViewModel/Command/ImageSegmentationCommand.h \
+        ViewModel/Command/LaplaceCommand.h \
+        ViewModel/Command/LogEnhanceCommand.h \
+        ViewModel/Command/SaveFileCommand.h \
+        ViewModel/Command/ToBinaryCommand.h \
+        ViewModel/Command/ToGrayCommand.h \
         ViewModel/Command/AverBlurCommand.h \
+        Common/myImage.h \
         Utility/utility.h \
         Common/ImageList.h \
         Common/Notification.h \
         View/Notification/UpdateNotification.h \
         ViewModel/Notification/UpdateDataNotification.h \
-    View/lightconstractdialog.h \
+        ViewModel/Command/DisplayNowCommand.h \
+        ViewModel/Command/UndoCommand.h \
+        View/lightconstractdialog.h \
+        ViewModel/Notification/UpdateTmpNotification.h \
+        ViewModel/Command/TmpLightContrastCommand.h \
+        ViewModel/Command/MidBlurCommand.h \
+        ViewModel/Command/GaussBlurCommand.h \
+        ViewModel/Command/BilaterBlurCommand.h \
+        ViewModel/Command/DetectFacesCommand.h \
+        ViewModel/Command/LoadEigenModeCommand.h \
+        ViewModel/Command/TrainEigenModelCommand.h \
+        ViewModel/Command/AnnotateFacesCommand.h \
+        ViewModel/Command/BeautifyFacesCommand.h \
         Common/Common.h \
-    ViewModel/Notification/UpdateTmpNotification.h \
-    ViewModel/Command/TmpLightContrastCommand.h \
-    ViewModel/Command/MidBlurCommand.h \
-    ViewModel/Command/GaussBlurCommand.h \
-    ViewModel/Command/BilaterBlurCommand.h \
-    ViewModel/Command/DisplayNowCommand.h \
-    ViewModel/Command/UndoCommand.h
+        ViewModel/Command/GenerateHeadshotsCommand.h \
+    View/dialog.h
+
 FORMS += \
        View/mainwindow.ui \
-    View/lightconstractdialog.ui
+       View/lightconstractdialog.ui \
+    View/dialog.ui
 
 INCLUDEPATH += /usr/local/opt/opencv/include/opencv4
 LIBS += -L/usr/local/opt/opencv/lib \
