@@ -13,5 +13,5 @@ public:
     LogEnhanceCommand(ViewModel* view_model);
     ~LogEnhanceCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

@@ -13,9 +13,9 @@ AverBlurCommand::~AverBlurCommand()
     // nothing
 }
 
-void AverBlurCommand::exec()
+bool AverBlurCommand::exec()
 {
-    viewModel->averBlur();
+    return viewModel->averBlur();
 }
 
 void AverBlurCommand::setParameter(std::any params)

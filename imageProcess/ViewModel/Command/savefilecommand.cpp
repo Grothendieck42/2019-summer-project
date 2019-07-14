@@ -14,9 +14,9 @@ SaveFileCommand::~SaveFileCommand()
     // nothing
 }
 
-void SaveFileCommand::exec()
+bool SaveFileCommand::exec()
 {
-    viewModel->saveImage(file_name);
+    return viewModel->saveImage(file_name);
 }
 
 void SaveFileCommand::setParameter(std::any params)

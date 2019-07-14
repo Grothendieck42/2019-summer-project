@@ -15,6 +15,7 @@ public:
     Image(const Image& im);
     Image& operator=(const Image &im);
     void show();
+    bool empty();
     QImage getQImage();
     void openImage(const std::string &file_path);
     void saveImage(const std::string &file_path);
@@ -35,4 +36,6 @@ public:
     void addGaussNoise();
     void addSaltNoise(int& n);
     void imageSegmentation(int& threshold);
+    bool checkGray();
+    bool checkColor();
 };

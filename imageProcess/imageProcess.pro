@@ -57,7 +57,9 @@ SOURCES += \
     ViewModel/Command/TmpLightContrastCommand.cpp \
     ViewModel/Command/MidBlurCommand.cpp \
     ViewModel/Command/GaussBlurCommand.cpp \
-    ViewModel/Command/BilaterBlurCommand.cpp
+    ViewModel/Command/BilaterBlurCommand.cpp \
+    ViewModel/Command/DisplayNowCommand.cpp \
+    ViewModel/Command/UndoCommand.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -92,7 +94,9 @@ HEADERS += \
     ViewModel/Command/TmpLightContrastCommand.h \
     ViewModel/Command/MidBlurCommand.h \
     ViewModel/Command/GaussBlurCommand.h \
-    ViewModel/Command/BilaterBlurCommand.h
+    ViewModel/Command/BilaterBlurCommand.h \
+    ViewModel/Command/DisplayNowCommand.h \
+    ViewModel/Command/UndoCommand.h
 FORMS += \
        View/mainwindow.ui \
     View/lightconstractdialog.ui

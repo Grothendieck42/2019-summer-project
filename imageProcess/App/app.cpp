@@ -8,6 +8,7 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setQImage(viewModel->getQImage());
     // view绑定命令
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
+    view->setDisplayNowCommand(viewModel->getDisplayNowCommand());
     view->setSaveFileCommand(viewModel->getSaveFileCommand());
     view->setLightContrastCommand(viewModel->getLightContrastCommand());
     view->setTmpLightContrastCommand(viewModel->getTmpLightContrastCommand());

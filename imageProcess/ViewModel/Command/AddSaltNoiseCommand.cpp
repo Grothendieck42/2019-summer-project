@@ -14,9 +14,9 @@ AddSaltNoiseCommand::~AddSaltNoiseCommand()
     // nothing
 }
 
-void AddSaltNoiseCommand::exec()
+bool AddSaltNoiseCommand::exec()
 {
-    viewModel->addSaltNoise(n);
+    return viewModel->addSaltNoise(n);
 }
 
 void AddSaltNoiseCommand::setParameter(std::any params)

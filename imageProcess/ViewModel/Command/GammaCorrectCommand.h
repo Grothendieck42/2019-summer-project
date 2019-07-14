@@ -14,5 +14,5 @@ public:
     GammaCorrectCommand(ViewModel* view_model);
     ~GammaCorrectCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

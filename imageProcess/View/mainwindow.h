@@ -5,6 +5,7 @@
 #include <QGraphicsView>
 #include <QFileDialog>
 #include <QString>
+#include <QMenu>
 #include <QPixmap>
 #include <QGraphicsScene>
 #include <memory>
@@ -25,8 +26,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void update();
+    void error(const QString &content);
     void setQImage(std::shared_ptr<QImage> qImage);
     ~MainWindow();
+    void setDisplayNowCommand(std::shared_ptr<Command> displayNowCommand);
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
     void setAverBlurCommand(std::shared_ptr<Command> averBlurCommand);
@@ -92,8 +95,10 @@ private:
     std::shared_ptr<QImage> qImage;
     QGraphicsView* graphView;
     QGraphicsScene *scene;
-
+    QMenu *tool_item;
+    QMenu *adjust_item;
     LightConstractDialog lightDialog;
+
     std::shared_ptr<UpdateNotification> updateNotification;
     std::shared_ptr<Command> openFileCommand;
     std::shared_ptr<Command> saveFileCommand;

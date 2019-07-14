@@ -14,9 +14,9 @@ ImageSegmentationCommand::~ImageSegmentationCommand()
     // nothing
 }
 
-void ImageSegmentationCommand::exec()
+bool ImageSegmentationCommand::exec()
 {
-    viewModel->imageSegmentation(threshold);
+    return viewModel->imageSegmentation(threshold);
 }
 
 void ImageSegmentationCommand::setParameter(std::any params)

@@ -13,9 +13,9 @@ TmpLightContrastCommand::~TmpLightContrastCommand()
 
 }
 
-void TmpLightContrastCommand::exec()
+bool TmpLightContrastCommand::exec()
 {
-    viewModel->changeTmpImageLightContrast(light, contrast);
+    return viewModel->changeTmpImageLightContrast(light, contrast);
 }
 
 void TmpLightContrastCommand::setParameter(std::any params)

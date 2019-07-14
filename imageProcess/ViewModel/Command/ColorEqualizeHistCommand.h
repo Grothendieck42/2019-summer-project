@@ -13,5 +13,5 @@ public:
     ColorEqualizeHistCommand(ViewModel* view_model);
     ~ColorEqualizeHistCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

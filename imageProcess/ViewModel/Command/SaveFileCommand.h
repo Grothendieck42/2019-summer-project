@@ -14,5 +14,5 @@ public:
     SaveFileCommand(ViewModel* view_model);
     ~SaveFileCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

@@ -14,9 +14,9 @@ LaplaceCommand::~LaplaceCommand()
     // nothing
 }
 
-void LaplaceCommand::exec()
+bool LaplaceCommand::exec()
 {
-    viewModel->laplace();
+    return viewModel->laplace();
 }
 
 void LaplaceCommand::setParameter(std::any params)

@@ -13,5 +13,5 @@ public:
     AddGaussNoiseCommand(ViewModel* view_model);
     ~AddGaussNoiseCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

@@ -14,5 +14,5 @@ public:
     AddSaltNoiseCommand(ViewModel* view_model);
     ~AddSaltNoiseCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

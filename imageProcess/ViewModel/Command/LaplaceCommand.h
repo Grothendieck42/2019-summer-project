@@ -13,5 +13,5 @@ public:
     LaplaceCommand(ViewModel* view_model);
     ~LaplaceCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

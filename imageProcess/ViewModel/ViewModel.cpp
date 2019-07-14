@@ -2,7 +2,9 @@
 #include "../Model/Model.h"
 
 ViewModel::ViewModel() 
-    : openFileCommand(std::make_shared<OpenFileCommand>(this)),
+    : undoCommand(std::make_shared<UndoCommand>(this)),
+      displayNowCommand(std::make_shared<DisplayNowCommand>(this)),
+      openFileCommand(std::make_shared<OpenFileCommand>(this)),
       saveFileCommand(std::make_shared<SaveFileCommand>(this)),
       lightContrastCommand(std::make_shared<LightContrastCommand>(this)),
       tmpLightContrastCommand(std::make_shared<TmpLightContrastCommand>(this)),
@@ -38,6 +40,16 @@ void ViewModel::setModel(std::shared_ptr<Model> model_ptr)
     model = model_ptr;
     model->setUpdateNotification(updateNotification);
     model->setUpdateTmpNotification(updateTmpNotification);
+}
+
+std::shared_ptr<Command> ViewModel::getDisplayNowCommand()
+{
+    return displayNowCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getUndoCommand()
+{
+    return undoCommand;
 }
 
 std::shared_ptr<Command> ViewModel::getOpenFileCommand()
@@ -136,95 +148,105 @@ std::shared_ptr<Command> ViewModel::getImageSegmentationCommand()
     return imageSegmentationCommand;
 }
 
-void ViewModel::openImage(const std::string &file_name)
+bool ViewModel::undo()
 {
-    model->openImage(file_name);
+    return model->undo();
 }
 
-void ViewModel::saveImage(const std::string &file_name)
+bool ViewModel::display()
 {
-    model->saveImage(file_name);
+    return model->display();
 }
 
-
-void ViewModel::changeImageLightContrast(int light, int contrast)
+bool ViewModel::openImage(const std::string &file_name)
 {
-    model->changeImageLightContrast(light, contrast);
+    return model->openImage(file_name);
 }
 
-void ViewModel::changeTmpImageLightContrast(int light, int contrast)
+bool ViewModel::saveImage(const std::string &file_name)
 {
-    model->changeTmpImageLightContrast(light, contrast);
+    return model->saveImage(file_name);
 }
 
-void ViewModel::averBlur()
+
+bool ViewModel::changeImageLightContrast(int light, int contrast)
 {
-  model->averBlur();
+    return model->changeImageLightContrast(light, contrast);
 }
 
-void ViewModel::midBlur()
+bool ViewModel::changeTmpImageLightContrast(int light, int contrast)
 {
-  model->midBlur();
+    return model->changeTmpImageLightContrast(light, contrast);
 }
 
-void ViewModel::gaussBlur()
+bool ViewModel::averBlur()
 {
-  model->gaussBlur();
+    return model->averBlur();
 }
 
-void ViewModel::bilaterBlur()
+bool ViewModel::midBlur()
 {
-  model->bilaterBlur();
+    return model->midBlur();
 }
 
-
-void ViewModel::toGray()
+bool ViewModel::gaussBlur()
 {
-    model->toGray();
+    return model->gaussBlur();
 }
 
-void ViewModel::toBinary(int& threshold)
+bool ViewModel::bilaterBlur()
 {
-    model->toBinary(threshold);
+    return model->bilaterBlur();
 }
 
-void ViewModel::detectEdge(int &threshold)
+
+bool ViewModel::toGray()
 {
-    model->detectEdge(threshold);
+    return model->toGray();
 }
 
-void ViewModel::grayEqualizeHist()
+bool ViewModel::toBinary(int& threshold)
 {
-    model->grayEqualizeHist();
+    return model->toBinary(threshold);
 }
 
-void ViewModel::colorEqualizeHist()
+bool ViewModel::detectEdge(int &threshold)
 {
-    model->colorEqualizeHist();
+    return model->detectEdge(threshold);
 }
 
-void ViewModel::laplace(){
-    model->laplace();
+bool ViewModel::grayEqualizeHist()
+{
+    return model->grayEqualizeHist();
 }
 
-void ViewModel::logEnhance(){
-    model->logEnhance();
+bool ViewModel::colorEqualizeHist()
+{
+    return model->colorEqualizeHist();
 }
 
-void ViewModel::gammaCorrect(float &fGamma){
-    model->gammaCorrect(fGamma);
+bool ViewModel::laplace(){
+    return model->laplace();
 }
 
-void ViewModel::addGaussNoise(){
-    model->addGaussNoise();
+bool ViewModel::logEnhance(){
+    return model->logEnhance();
 }
 
-void ViewModel::addSaltNoise(int &n){
-    model->addSaltNoise(n);
+bool ViewModel::gammaCorrect(float &fGamma){
+    return model->gammaCorrect(fGamma);
 }
 
-void ViewModel::imageSegmentation(int &threshold){
-    model->imageSegmentation(threshold);
+bool ViewModel::addGaussNoise(){
+    return model->addGaussNoise();
+}
+
+bool ViewModel::addSaltNoise(int &n){
+    return model->addSaltNoise(n);
+}
+
+bool ViewModel::imageSegmentation(int &threshold){
+    return model->imageSegmentation(threshold);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

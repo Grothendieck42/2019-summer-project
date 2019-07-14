@@ -14,9 +14,9 @@ LogEnhanceCommand::~LogEnhanceCommand()
     // nothing
 }
 
-void LogEnhanceCommand::exec()
+bool LogEnhanceCommand::exec()
 {
-    viewModel->logEnhance();
+    return viewModel->logEnhance();
 }
 
 void LogEnhanceCommand::setParameter(std::any params)

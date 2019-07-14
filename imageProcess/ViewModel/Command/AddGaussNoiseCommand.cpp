@@ -14,9 +14,9 @@ AddGaussNoiseCommand::~AddGaussNoiseCommand()
     // nothing
 }
 
-void AddGaussNoiseCommand::exec()
+bool AddGaussNoiseCommand::exec()
 {
-    viewModel->addGaussNoise();
+    return viewModel->addGaussNoise();
 }
 
 void AddGaussNoiseCommand::setParameter(std::any params)

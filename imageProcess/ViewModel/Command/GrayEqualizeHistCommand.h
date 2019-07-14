@@ -13,5 +13,5 @@ public:
     GrayEqualizeHistCommand(ViewModel* view_model);
     ~GrayEqualizeHistCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

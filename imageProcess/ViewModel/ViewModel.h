@@ -17,10 +17,12 @@
 #include "Command/ColorEqualizeHistCommand.h"
 #include "Command/LaplaceCommand.h"
 #include "Command/LogEnhanceCommand.h"
+#include "Command/UndoCommand.h"
 #include "Command/GammaCorrectCommand.h"
 #include "Command/AddGaussNoiseCommand.h"
 #include "Command/AddSaltNoiseCommand.h"
 #include "Command/ImageSegmentationCommand.h"
+#include "Command/DisplayNowCommand.h"
 
 
 #include "../Common/Notification.h"
@@ -33,6 +35,8 @@ class ViewModel
 {
 private:
     std::shared_ptr<Model> model;
+    std::shared_ptr<UndoCommand> undoCommand;
+    std::shared_ptr<DisplayNowCommand> displayNowCommand;
     std::shared_ptr<OpenFileCommand> openFileCommand;
     std::shared_ptr<SaveFileCommand> saveFileCommand;
     std::shared_ptr<LightContrastCommand> lightContrastCommand;
@@ -64,14 +68,16 @@ public:
     std::shared_ptr<Command> getSaveFileCommand();
     std::shared_ptr<Command> getLightContrastCommand();
     std::shared_ptr<Command> getTmpLightContrastCommand();
-    void openImage(const std::string &file_name);
-    void saveImage(const std::string &file_name);
-    void averBlur();
-    void midBlur();
-    void gaussBlur();
-    void bilaterBlur();
-    void changeTmpImageLightContrast(int light, int contrast);
-    void changeImageLightContrast(int light, int contrast);
+    bool openImage(const std::string &file_name);
+    bool saveImage(const std::string &file_name);
+    bool averBlur();
+    bool midBlur();
+    bool gaussBlur();
+    bool bilaterBlur();
+    bool changeTmpImageLightContrast(int light, int contrast);
+    bool changeImageLightContrast(int light, int contrast);
+    std::shared_ptr<Command> getUndoCommand();
+    std::shared_ptr<Command> getDisplayNowCommand();
     std::shared_ptr<Command> getAverBlurCommand();
     std::shared_ptr<Command> getMidBlurCommand();
     std::shared_ptr<Command> getGaussBlurCommand();
@@ -87,17 +93,19 @@ public:
     std::shared_ptr<Command> getAddGaussNoiseCommand();
     std::shared_ptr<Command> getAddSaltNoiseCommand();
     std::shared_ptr<Command> getImageSegmentationCommand();
-    void toGray();
-    void toBinary(int& threshold);
-    void detectEdge(int& threshold);
-    void grayEqualizeHist();
-    void colorEqualizeHist();
-    void laplace();
-    void logEnhance();
-    void gammaCorrect(float& fGamma);
-    void addGaussNoise();
-    void addSaltNoise(int& n);
-    void imageSegmentation(int& threshold);
+    bool display();
+    bool undo();
+    bool toGray();
+    bool toBinary(int& threshold);
+    bool detectEdge(int& threshold);
+    bool grayEqualizeHist();
+    bool colorEqualizeHist();
+    bool laplace();
+    bool logEnhance();
+    bool gammaCorrect(float& fGamma);
+    bool addGaussNoise();
+    bool addSaltNoise(int& n);
+    bool imageSegmentation(int& threshold);
     std::shared_ptr<QImage> getQImage();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void convert();

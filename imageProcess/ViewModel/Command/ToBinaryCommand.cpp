@@ -14,9 +14,9 @@ ToBinaryCommand::~ToBinaryCommand()
     // nothing
 }
 
-void ToBinaryCommand::exec()
+bool ToBinaryCommand::exec()
 {
-    viewModel->toBinary(threshold);
+    return viewModel->toBinary(threshold);
 }
 
 void ToBinaryCommand::setParameter(std::any params)

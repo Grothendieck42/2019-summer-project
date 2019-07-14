@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>940</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -46,6 +46,9 @@
     <addaction name="menu_2"/>
    </widget>
    <widget class="QMenu" name="menu_3">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="title">
      <string>工具</string>
     </property>
@@ -68,7 +71,7 @@
      <addaction name="actionshuangbianlvbo"/>
     </widget>
     <widget class="QMenu" name="menu_6">
-    <property name="title">
+     <property name="title">
       <string>图像增强</string>
      </property>
      <addaction name="actionLaplace"/>
@@ -122,6 +125,9 @@
    </property>
   </action>
   <action name="actionToGray">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>转化为灰度图</string>
    </property>
@@ -132,6 +138,9 @@
    </property>
   </action>
   <action name="actionlight">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>调整亮度/对比度</string>
    </property>
@@ -154,14 +163,17 @@
   <action name="actionshuangbianlvbo">
    <property name="text">
     <string>双边滤波</string>
-    </property>
-    </action>
+   </property>
+  </action>
   <action name="actionDetectEdge">
    <property name="text">
     <string>边缘检测</string>
    </property>
   </action>
   <action name="actionGrayEqualizeHist">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>灰度直方图均衡化</string>
    </property>
@@ -201,7 +213,7 @@
     <string>图像分割</string>
    </property>
   </action>
-  </widget>
+ </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>

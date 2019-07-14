@@ -14,9 +14,9 @@ ToGrayCommand::~ToGrayCommand()
     // nothing
 }
 
-void ToGrayCommand::exec()
+bool ToGrayCommand::exec()
 {
-    viewModel->toGray();
+    return viewModel->toGray();
 }
 
 void ToGrayCommand::setParameter(std::any params)

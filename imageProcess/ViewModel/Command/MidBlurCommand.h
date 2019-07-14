@@ -12,5 +12,5 @@ public:
     MidBlurCommand(ViewModel* view_model);
     ~MidBlurCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

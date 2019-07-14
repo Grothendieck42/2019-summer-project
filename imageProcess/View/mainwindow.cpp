@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 #include "Notification/UpdateNotification.h"
 #include <QDebug>
 
@@ -9,8 +10,13 @@ MainWindow::MainWindow(QWidget *parent) :
     updateNotification(std::make_shared<UpdateNotification>(this))
 {
     ui->setupUi(this);
+
     scene = new QGraphicsScene;//图像显示
     graphView = this->findChild<QGraphicsView*>("image1");
+    tool_item = this->findChild<QMenu*>("menu_3");
+    adjust_item = this->findChild<QMenu*>("menu_4");
+    tool_item->setEnabled(false);
+    adjust_item->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -25,6 +31,16 @@ void MainWindow::update()
     scene->addPixmap(QPixmap::fromImage(*qImage));//.scaled(graphView->size(),Qt::KeepAspectRatio)
     graphView->setScene(scene);
     graphView->show();
+}
+
+void MainWindow::error(const QString &content)
+{
+    QMessageBox::critical(this, "错误", content, QMessageBox::Yes);
+}
+
+void MainWindow::setDisplayNowCommand(std::shared_ptr<Command> displayNowCommand)
+{
+    lightDialog.setDisplayNowCommand(displayNowCommand);
 }
 
 void MainWindow::setOpenFileCommand(std::shared_ptr<Command> openFileCommand)
@@ -131,12 +147,23 @@ void MainWindow::on_actionopen_triggered()
     QString fileName = QFileDialog::getOpenFileName(this);
     if(fileName.isEmpty())
     {
+        error("文件名不能为空");
         return;
     }
     else
     {
         openFileCommand->setParameter(fileName.toStdString());
-        openFileCommand->exec();
+        if(openFileCommand->exec())
+        {
+            tool_item->setEnabled(true);
+            adjust_item->setEnabled(true);
+        }
+        else
+        {
+            tool_item->setEnabled(false);
+            adjust_item->setEnabled(false);
+            error("文件打开失败!");
+        }
     }
 }
 
@@ -150,25 +177,35 @@ void MainWindow::on_actionsave_triggered()
     QString fileName = QFileDialog::getSaveFileName(this);
     if(fileName.isEmpty())
     {
+        error("文件名不能为空");
         return;
     }
     else
     {
         saveFileCommand->setParameter(fileName.toStdString());
-        saveFileCommand->exec();
+        if(!saveFileCommand->exec())
+        {
+            error("文件保存失败!");
+        }
     }
 }
 
 void MainWindow::on_actionToGray_triggered()
 {
-    toGrayCommand->exec();
+    if(!toGrayCommand->exec())
+    {
+        error("图像灰度化失败!");
+    }
 }
 
 void MainWindow::on_actionToBinary_triggered()
 {
     int threshold=100;
     toBinaryCommand->setParameter(threshold);
-    toBinaryCommand->exec();
+    if(!toBinaryCommand->exec())
+    {
+        error("图像二值化失败!");
+    }
 }
 
 void MainWindow::on_actionlight_triggered()
@@ -180,27 +217,42 @@ void MainWindow::on_actionDetectEdge_triggered()
 {
     int threshold=30;
     detectEdgeCommand->setParameter(threshold);
-    detectEdgeCommand->exec();
+    if(!detectEdgeCommand->exec())
+    {
+        error("边缘检测失败!");
+    }
 }
 
 void MainWindow::on_actionGrayEqualizeHist_triggered()
 {
-    grayEqualizeHistCommand->exec();
+   if(!grayEqualizeHistCommand->exec())
+   {
+       error("图像灰度直方图均衡化失败!");
+   }
 }
 
 void MainWindow::on_actionColorEqualizeHist_triggered()
 {
-    colorEqualizeHistCommand->exec();
+    if(!colorEqualizeHistCommand->exec())
+    {
+        error("图像彩色直方图均衡化失败!");
+    }
 }
 
 void MainWindow::on_actionLaplace_triggered()
 {
-    laplaceCommand->exec();
+    if(!laplaceCommand->exec())
+    {
+        error("图像拉普拉斯锐化失败!");
+    }
 }
 
 void MainWindow::on_actionLogEnhance_triggered()
 {
-    logEnhanceCommand->exec();
+    if(!logEnhanceCommand->exec())
+    {
+        error("图像对数变换失败!");
+    }
 }
 
 
@@ -208,44 +260,68 @@ void MainWindow::on_actionGamma_triggered()
 {
     float fGamma=0.4f;
     gammaCorrectCommand->setParameter(fGamma);
-    gammaCorrectCommand->exec();
+    if(!gammaCorrectCommand->exec())
+    {
+        error("图像伽马校正失败!");
+    }
 }
 
 void MainWindow::on_actionGaussNoise_triggered()
 {
-    addGaussNoiseCommand->exec();
+    if(!addGaussNoiseCommand->exec())
+    {
+        error("图像添加高斯噪声失败!");
+    }
 }
 
 void MainWindow::on_actionSalt_triggered()
 {
     int n=5000;
     addSaltNoiseCommand->setParameter(n);
-    addSaltNoiseCommand->exec();
+    if(!addSaltNoiseCommand->exec())
+    {
+        error("图像添加椒盐噪声失败!");
+    }
 }
 
 void MainWindow::on_actionImageSegmentation_triggered()
 {
     int threshold=50;
     imageSegmentationCommand->setParameter(threshold);
-    imageSegmentationCommand->exec();
+    if(!imageSegmentationCommand->exec())
+    {
+        error("图像分割失败!");
+    }
 }
 
 void MainWindow::on_actionjizhilvbo_triggered()
 {
-    averBlurCommand->exec();
+    if(!averBlurCommand->exec())
+    {
+        error("均值滤波失败!");
+    }
 }
 
 void MainWindow::on_actionzhongzhillvbo_triggered()
 {
-    midBlurCommand->exec();
+   if(!midBlurCommand->exec())
+   {
+       error("中值滤波失败!");
+   }
 }
 
 void MainWindow::on_actiongaosilvbo_triggered()
 {
-    gaussBlurCommand->exec();
+    if(!gaussBlurCommand->exec())
+    {
+        error("高斯滤波失败!");
+    }
 }
 
 void MainWindow::on_actionshuangbianlvbo_triggered()
 {
-    bilaterBlurCommand->exec();
+    if(!bilaterBlurCommand->exec())
+    {
+        error("双边滤波失败!");
+    }
 }

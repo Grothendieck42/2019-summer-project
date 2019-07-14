@@ -14,9 +14,9 @@ DetectEdgeCommand::~DetectEdgeCommand()
     // nothing
 }
 
-void DetectEdgeCommand::exec()
+bool DetectEdgeCommand::exec()
 {
-    viewModel->detectEdge(threshold);
+   return viewModel->detectEdge(threshold);
 }
 
 void DetectEdgeCommand::setParameter(std::any params)

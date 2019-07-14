@@ -14,9 +14,9 @@ GrayEqualizeHistCommand::~GrayEqualizeHistCommand()
     // nothing
 }
 
-void GrayEqualizeHistCommand::exec()
+bool GrayEqualizeHistCommand::exec()
 {
-    viewModel->grayEqualizeHist();
+    return viewModel->grayEqualizeHist();
 }
 
 void GrayEqualizeHistCommand::setParameter(std::any params)
