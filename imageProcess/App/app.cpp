@@ -9,6 +9,25 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     // view绑定命令
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
     view->setSaveFileCommand(viewModel->getSaveFileCommand());
+    view->setLightContrastCommand(viewModel->getLightContrastCommand());
+    view->setTmpLightContrastCommand(viewModel->getTmpLightContrastCommand());
+    view->setAverBlurCommand(viewModel->getAverBlurCommand());
+    view->setMidBlurCommand(viewModel->getMidBlurCommand());
+    view->setGaussBlurCommand(viewModel->getGaussBlurCommand());
+    view->setBilaterBlurCommand(viewModel->getBilaterBlurCommand());
+    view->setToGrayCommand(viewModel->getToGrayCommand());
+    view->setToBinaryCommand(viewModel->getToBinaryCommand());
+    view->setDetectEdgeCommand(viewModel->getDetectEdgeCommand());
+    view->setGrayEqualizeHistCommand(viewModel->getGrayEqualizeHistCommand());
+    view->setColorEqualizeHistCommand(viewModel->getColorEqualizeHistCommand());
+    view->setLaplaceCommand(viewModel->getLaplaceCommand());
+    view->setLogEnhanceCommand(viewModel->getLogEnhanceCommand());
+    view->setGammaCorrectCommand(viewModel->getGammaCorrectCommand());
+    view->setAddGaussNoiseCommand(viewModel->getAddGaussNoiseCommand());
+    view->setAddSaltNoiseCommand(viewModel->getAddSaltNoiseCommand());
+    view->setImageSegmentationCommand(viewModel->getImageSegmentationCommand());
+    view->setImageEnlargeCommand(viewModel->getImageEnlargeCommand());
+    view->setImageReductCommand(viewModel->getImageReductCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
 }

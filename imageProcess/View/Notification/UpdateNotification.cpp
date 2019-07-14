@@ -12,3 +12,8 @@ UpdateNotification::~UpdateNotification()
 {
 
 }
+
+void UpdateNotification::setParameter(std::any params)
+{
+
+}

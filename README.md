@@ -10,6 +10,10 @@ summer course project
 * Content: Grouping
 
 
+### Update Line
+* 2019/07/12 - upload default facelib, face detection classifiers and face notation utililties.
+
+
 
 ### Reference
 
