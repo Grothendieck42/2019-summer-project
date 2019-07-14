@@ -182,8 +182,42 @@ void Model::imageReduct(){
 }
 
 void Model::trainModel(const std::string &dataPath){
-    std::cout<<"Train data in path: "+dataPath<<std::endl;
+//    std::cout<<"Train data in path: "+dataPath<<std::endl;
+//    QProgressDialog *m_pConnectProBar = new QProgressDialog();
+//    m_pConnectProBar->setRange(0,100);
+//    m_pConnectProBar->setOrientation(Qt::Horizontal);
+//    m_pConnectProBar->setValue(10);
+//    m_pConnectProBar->setVisible(true);
+//    m_pConnectProBar->setWindowTitle("Please Wait");
+//    m_pConnectProBar->setLabelText("Starting...");
 
+    string list_name = dataPath+"/list";
+    ifstream info_list(list_name);
+    char buf[100];
+    while (!info_list.eof() && type_number<maxnum)
+    {
+        memset(buf, 0, 100);
+        info_list.getline(buf, 100);
+        const std::string file = train_dir + "/" + string(buf);
+        cout << file << endl;
+        cv::Mat img,gray;
+        vector<Rect> faces;
+        img = cv::imread(file);
+        Image *image = new Image();
+        image->openImage(file);
+        cout << image->getMat().size() << endl;
+        if (!img.empty()) {
+            cout << file << endl;
+            addphoto();
+            cvtColor(img, gray, CV_BGR2GRAY);
+            equalizeHist(gray, gray);
+            resize(gray, gray, Size(model_width, model_height));
+            addrow(gray);
+
+        }
+    }
+    train_eigen_face(dataPath, NULL);
+//    m_pConnectProBar->setVisible(false);
 }
 
 void Model::detectFaces(const std::string &modelPath){

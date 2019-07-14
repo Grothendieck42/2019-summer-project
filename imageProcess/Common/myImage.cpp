@@ -28,7 +28,9 @@ Image& Image::operator=(const Image &im)
 
 void Image::openImage(const std::string &file_path)
 {
+    std::cout<<file_path<<std::endl;
     image = cv::imread(file_path);
+    std::cout<<image.size()<<std::endl;
 }
 
 void Image::saveImage(const std::string &file_path)
@@ -289,4 +291,8 @@ void Image::show()
 {
     cv::imshow("hh", image);
     cv::waitKey(1000);
+}
+
+cv::Mat Image::getMat(){
+    return image;
 }

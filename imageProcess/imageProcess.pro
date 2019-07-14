@@ -62,7 +62,8 @@ SOURCES += \
         ViewModel/Command/MidBlurCommand.cpp \
         ViewModel/Command/GaussBlurCommand.cpp \
         ViewModel/Command/BilaterBlurCommand.cpp \
-    ViewModel/Command/TrainEigenModelCommand.cpp
+    ViewModel/Command/TrainEigenModelCommand.cpp \
+    Utility/facelib.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -105,7 +106,8 @@ HEADERS += \
     ViewModel/Command/AnnotateFacesCommand.h \
     ViewModel/Command/BeautifyFacesCommand.h \
     Common/Common.h \
-    ViewModel/Command/GenerateHeadshotsCommand.h
+    ViewModel/Command/GenerateHeadshotsCommand.h \
+    Utility/facelib.h
 
 FORMS += \
        View/mainwindow.ui \
