@@ -25,6 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++17
 
 SOURCES += \
+        ViewModel/Command/AddGaussNoiseCommand.cpp \
+        ViewModel/Command/AddSaltNoiseCommand.cpp \
+        ViewModel/Command/ColorEqualizeHistCommand.cpp \
+        ViewModel/Command/DetectEdgeCommand.cpp \
+        ViewModel/Command/GammaCorrectCommand.cpp \
+        ViewModel/Command/GrayEqualizeHistCommand.cpp \
+        ViewModel/Command/ImageSegmentationCommand.cpp \
+        ViewModel/Command/LaplaceCommand.cpp \
+        ViewModel/Command/LogEnhanceCommand.cpp \
         ViewModel/Command/SaveFileCommand.cpp \
         ViewModel/Command/ToBinaryCommand.cpp \
         ViewModel/Command/ToGrayCommand.cpp \
@@ -48,6 +57,15 @@ HEADERS += \
         View/mainwindow.h \
         App/app.h \
         Common/myImage.h \
+    ViewModel/Command/AddGaussNoiseCommand.h \
+    ViewModel/Command/AddSaltNoiseCommand.h \
+    ViewModel/Command/ColorEqualizeHistCommand.h \
+    ViewModel/Command/DetectEdgeCommand.h \
+    ViewModel/Command/GammaCorrectCommand.h \
+    ViewModel/Command/GrayEqualizeHistCommand.h \
+    ViewModel/Command/ImageSegmentationCommand.h \
+    ViewModel/Command/LaplaceCommand.h \
+    ViewModel/Command/LogEnhanceCommand.h \
         ViewModel/Command/SaveFileCommand.h \
         ViewModel/Command/ToBibaryCommand.h \
         ViewModel/Command/ToGrayCommand.h \
@@ -67,50 +85,18 @@ FORMS += \
        View/mainwindow.ui \
     View/lightconstractdialog.ui
 
-INCLUDEPATH += /usr/local/opt/opencv/include/opencv4
-LIBS += -L/usr/local/opt/opencv/lib \
-     -lopencv_core \
-     -lopencv_face \
-     -lopencv_dnn \
-     -lopencv_ccalib \
-     -lopencv_datasets \
-     -lopencv_fuzzy \
-     -lopencv_img_hash \
-     -lopencv_ml \
-     -lopencv_optflow \
-     -lopencv_photo \
-     -lopencv_plot \
-     -lopencv_reg \
-     -lopencv_saliency \
-     -lopencv_shape \
-     -lopencv_stitching \
-     -lopencv_surface_matching \
-     -lopencv_text \
-     -lopencv_tracking \
-     -lopencv_videoio \
-     -lopencv_xfeatures2d \
-     -lopencv_ximgproc \
-     -lopencv_xobjdetect \
-     -lopencv_xphoto \
-     -lopencv_imgproc \
-     -lopencv_features2d\
-     -lopencv_highgui\
-     -lopencv_imgcodecs\
-     -lopencv_aruco \
-     -lopencv_bgsegm \
-     -lopencv_bioinspired \
-     -lopencv_calib3d \
-     -lopencv_dpm \
-     -lopencv_flann \
-     -lopencv_imgcodecs \
-     -lopencv_imgproc \
-     -lopencv_line_descriptor \
-     -lopencv_objdetect \
-     -lopencv_phase_unwrapping \
-     -lopencv_rgbd \
-     -lopencv_stereo \
-     -lopencv_structured_light \
-     -lopencv_superres \
-     -lopencv_video \
-     -lopencv_videostab \
-     -v
+INCLUDEPATH +=E:\opencv\build\include
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_core410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_highgui410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_imgcodecs410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_imgproc410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_features2d410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_calib3d410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_dnn410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_ml410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_photo410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_stitching410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_videoio410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_flann410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_objdetect410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_video410.dll.a

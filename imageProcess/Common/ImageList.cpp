@@ -27,3 +27,7 @@ void ImageList::deleteImage()
 {
 	image_list.pop_back();
 }
+
+void ImageList::clearList(){
+    std::vector<Image>().swap(image_list);
+}

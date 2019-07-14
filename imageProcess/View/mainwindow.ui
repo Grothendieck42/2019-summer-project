@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>940</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -51,12 +51,27 @@
     </property>
     <addaction name="actionToGray"/>
     <addaction name="actionToBinary"/>
+    <addaction name="actionDetectEdge"/>
+    <addaction name="actionImageSegmentation"/>
    </widget>
    <widget class="QMenu" name="menu_4">
     <property name="title">
      <string>调整</string>
     </property>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>图像增强</string>
+     </property>
+     <addaction name="actionLaplace"/>
+     <addaction name="actionLogEnhance"/>
+     <addaction name="actionGamma"/>
+    </widget>
     <addaction name="actionlight"/>
+    <addaction name="actionGrayEqualizeHist"/>
+    <addaction name="actionColorEqualizeHist"/>
+    <addaction name="menu_5"/>
+    <addaction name="actionGaussNoise"/>
+    <addaction name="actionSalt"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_3"/>
@@ -109,6 +124,51 @@
   <action name="actionlight">
    <property name="text">
     <string>调整亮度/对比度</string>
+   </property>
+  </action>
+  <action name="actionDetectEdge">
+   <property name="text">
+    <string>边缘检测</string>
+   </property>
+  </action>
+  <action name="actionGrayEqualizeHist">
+   <property name="text">
+    <string>灰度直方图均衡化</string>
+   </property>
+  </action>
+  <action name="actionColorEqualizeHist">
+   <property name="text">
+    <string>彩色直方图均衡化</string>
+   </property>
+  </action>
+  <action name="actionLaplace">
+   <property name="text">
+    <string>拉普拉斯图像锐化</string>
+   </property>
+  </action>
+  <action name="actionLogEnhance">
+   <property name="text">
+    <string>对数变换</string>
+   </property>
+  </action>
+  <action name="actionGamma">
+   <property name="text">
+    <string>伽马校正</string>
+   </property>
+  </action>
+  <action name="actionGaussNoise">
+   <property name="text">
+    <string>高斯噪声</string>
+   </property>
+  </action>
+  <action name="actionSalt">
+   <property name="text">
+    <string>椒盐噪声</string>
+   </property>
+  </action>
+  <action name="actionImageSegmentation">
+   <property name="text">
+    <string>图像分割</string>
    </property>
   </action>
  </widget>

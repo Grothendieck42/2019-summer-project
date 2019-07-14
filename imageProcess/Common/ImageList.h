@@ -15,4 +15,5 @@ public:
     Image getImage();
     void addImage(const Image& image);
 	void deleteImage();
+    void clearList();
 };

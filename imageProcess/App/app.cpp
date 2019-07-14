@@ -10,8 +10,17 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
     view->setSaveFileCommand(viewModel->getSaveFileCommand());
     view->setLightContrastCommand(viewModel->getLightContrastCommand());
-    view->setToGrayCommmand(viewModel->getToGrayCommand());
-    view->setToBinaryCommmand(viewModel->getToBinaryCommand());
+    view->setToGrayCommand(viewModel->getToGrayCommand());
+    view->setToBinaryCommand(viewModel->getToBinaryCommand());
+    view->setDetectEdgeCommand(viewModel->getDetectEdgeCommand());
+    view->setGrayEqualizeHistCommand(viewModel->getGrayEqualizeHistCommand());
+    view->setColorEqualizeHistCommand(viewModel->getColorEqualizeHistCommand());
+    view->setLaplaceCommand(viewModel->getLaplaceCommand());
+    view->setLogEnhanceCommand(viewModel->getLogEnhanceCommand());
+    view->setGammaCorrectCommand(viewModel->getGammaCorrectCommand());
+    view->setAddGaussNoiseCommand(viewModel->getAddGaussNoiseCommand());
+    view->setAddSaltNoiseCommand(viewModel->getAddSaltNoiseCommand());
+    view->setImageSegmentationCommand(viewModel->getImageSegmentationCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
 }

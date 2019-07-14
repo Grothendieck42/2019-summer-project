@@ -30,8 +30,17 @@ public:
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
     void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
-    void setToGrayCommmand(std::shared_ptr<Command> toGrayCommand);
-    void setToBinaryCommmand(std::shared_ptr<Command> toBinaryCommand);
+    void setToGrayCommand(std::shared_ptr<Command> toGrayCommand);
+    void setToBinaryCommand(std::shared_ptr<Command> toBinaryCommand);
+    void setDetectEdgeCommand(std::shared_ptr<Command> detectEdgeCommand);
+    void setGrayEqualizeHistCommand(std::shared_ptr<Command> grayEqualizeHistCommand);
+    void setColorEqualizeHistCommand(std::shared_ptr<Command> colorEqualizeHistCommand);
+    void setLaplaceCommand(std::shared_ptr<Command> laplaceCommand);
+    void setLogEnhanceCommand(std::shared_ptr<Command> logEnhanceCommand);
+    void setGammaCorrectCommand(std::shared_ptr<Command> gammaCorrectCommand);
+    void setAddGaussNoiseCommand(std::shared_ptr<Command> addGaussNoiseCommand);
+    void setAddSaltNoiseCommand(std::shared_ptr<Command> addSaltNoiseCommand);
+    void setImageSegmentationCommand(std::shared_ptr<Command> imageSegmentationCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -45,6 +54,24 @@ private slots:
 
     void on_actionlight_triggered();
 
+    void on_actionDetectEdge_triggered();
+
+    void on_actionGrayEqualizeHist_triggered();
+
+    void on_actionColorEqualizeHist_triggered();
+
+    void on_actionLaplace_triggered();
+
+    void on_actionLogEnhance_triggered();
+
+    void on_actionGamma_triggered();
+
+    void on_actionGaussNoise_triggered();
+
+    void on_actionSalt_triggered();
+
+    void on_actionImageSegmentation_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
@@ -57,6 +84,15 @@ private:
     std::shared_ptr<Command> saveFileCommand;
     std::shared_ptr<Command> toGrayCommand;
     std::shared_ptr<Command> toBinaryCommand;
+    std::shared_ptr<Command> detectEdgeCommand;
+    std::shared_ptr<Command> grayEqualizeHistCommand;
+    std::shared_ptr<Command> colorEqualizeHistCommand;
+    std::shared_ptr<Command> laplaceCommand;
+    std::shared_ptr<Command> logEnhanceCommand;
+    std::shared_ptr<Command> gammaCorrectCommand;
+    std::shared_ptr<Command> addGaussNoiseCommand;
+    std::shared_ptr<Command> addSaltNoiseCommand;
+    std::shared_ptr<Command> imageSegmentationCommand;
 };
 
 #endif // MAINWINDOW_H

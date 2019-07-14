@@ -7,6 +7,15 @@ ViewModel::ViewModel()
       lightContrastCommand(std::make_shared<LightContrastCommand>(this)),
       toGrayCommand(std::make_shared<ToGrayCommand>(this)),
       toBinaryCommand(std::make_shared<ToBinaryCommand>(this)),
+      detectEdgeCommand(std::make_shared<DetectEdgeCommand>(this)),
+      grayEqualizeHistCommand(std::make_shared<GrayEqualizeHistCommand>(this)),
+      colorEqualizeHistCommand(std::make_shared<ColorEqualizeHistCommand>(this)),
+      laplaceCommand(std::make_shared<LaplaceCommand>(this)),
+      logEnhanceCommand(std::make_shared<LogEnhanceCommand>(this)),
+      gammaCorrectCommand(std::make_shared<GammaCorrectCommand>(this)),
+      addGaussNoiseCommand(std::make_shared<AddGaussNoiseCommand>(this)),
+      addSaltNoiseCommand(std::make_shared<AddSaltNoiseCommand>(this)),
+      imageSegmentationCommand(std::make_shared<ImageSegmentationCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this))
 {
@@ -49,6 +58,51 @@ std::shared_ptr<Command> ViewModel::getToBinaryCommand()
     return toBinaryCommand;
 }
 
+std::shared_ptr<Command> ViewModel::getDetectEdgeCommand()
+{
+    return detectEdgeCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getGrayEqualizeHistCommand()
+{
+    return grayEqualizeHistCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getColorEqualizeHistCommand()
+{
+    return colorEqualizeHistCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getLaplaceCommand()
+{
+    return laplaceCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getLogEnhanceCommand()
+{
+    return logEnhanceCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getGammaCorrectCommand()
+{
+    return gammaCorrectCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getAddGaussNoiseCommand()
+{
+    return addGaussNoiseCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getAddSaltNoiseCommand()
+{
+    return addSaltNoiseCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getImageSegmentationCommand()
+{
+    return imageSegmentationCommand;
+}
+
 void ViewModel::openImage(const std::string &file_name)
 {
     model->openImage(file_name);
@@ -73,6 +127,45 @@ void ViewModel::toGray()
 void ViewModel::toBinary(int& threshold)
 {
     model->toBinary(threshold);
+}
+
+void ViewModel::detectEdge(int &threshold)
+{
+    model->detectEdge(threshold);
+}
+
+void ViewModel::grayEqualizeHist()
+{
+    model->grayEqualizeHist();
+}
+
+void ViewModel::colorEqualizeHist()
+{
+    model->colorEqualizeHist();
+}
+
+void ViewModel::laplace(){
+    model->laplace();
+}
+
+void ViewModel::logEnhance(){
+    model->logEnhance();
+}
+
+void ViewModel::gammaCorrect(float &fGamma){
+    model->gammaCorrect(fGamma);
+}
+
+void ViewModel::addGaussNoise(){
+    model->addGaussNoise();
+}
+
+void ViewModel::addSaltNoise(int &n){
+    model->addSaltNoise(n);
+}
+
+void ViewModel::imageSegmentation(int &threshold){
+    model->imageSegmentation(threshold);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

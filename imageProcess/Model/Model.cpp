@@ -20,6 +20,7 @@ Model::~Model()
 
 void Model::openImage(const std::string &file_name)
 {
+    imageList->clearList();
     Image image;
     image.openImage(file_name);
     imageList->addImage(image);
@@ -47,6 +48,14 @@ void Model::toBinary(int &threshold)
     notification->notify();
 }
 
+void Model::detectEdge(int &threshold)
+{
+    Image newImage=imageList->getImage();
+    newImage.detectEdge(threshold);
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
 std::shared_ptr<ImageList> Model::getImageList()
 {
     return imageList;
@@ -58,6 +67,64 @@ void Model::changeImageLightContrast(int light, int contrast)
     image.changeImageLightContrast(light, contrast);
 	imageList->addImage(image);
 	notification->notify();
+}
+
+void Model::grayEqualizeHist()
+{
+    Image newImage=imageList->getImage();
+    newImage.grayEqualizeHist();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::colorEqualizeHist()
+{
+    Image newImage=imageList->getImage();
+    newImage.colorEqualizeHist();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::laplace(){
+    Image newImage=imageList->getImage();
+    newImage.laplace();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::logEnhance(){
+    Image newImage=imageList->getImage();
+    newImage.logEnhance();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::gammaCorrect(float &fGamma){
+    Image newImage=imageList->getImage();
+    newImage.gammaCorrect(fGamma);
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::addGaussNoise(){
+    Image newImage=imageList->getImage();
+    newImage.addGaussNoise();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::addSaltNoise(int &n){
+    Image newImage=imageList->getImage();
+    newImage.addSaltNoise(n);
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::imageSegmentation(int &threshold){
+    Image newImage=imageList->getImage();
+    newImage.imageSegmentation(threshold);
+    imageList->addImage(newImage);
+    notification->notify();
 }
 
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)

@@ -19,4 +19,14 @@ public:
     void changeImageLightContrast(int light, int contrast);
     void toGray();
     void toBinary(int& threshold);
+    void detectEdge(int& threshold);
+    void grayEqualizeHist();
+    void colorEqualizeHist();
+    void laplace();
+    void logEnhance();
+    void gammaCorrect(float& fGamma);
+    double generateGaussianNoise(double mu, double sigma);
+    void addGaussNoise();
+    void addSaltNoise(int& n);
+    void imageSegmentation(int& threshold);
 };
