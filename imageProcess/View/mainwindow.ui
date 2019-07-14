@@ -67,8 +67,8 @@
      <addaction name="actiongaosilvbo"/>
      <addaction name="actionshuangbianlvbo"/>
     </widget>
-    <addaction name="actionlight"/>
-    <widget class="QMenu" name="menu_6"/>
+    <widget class="QMenu" name="menu_6">
+    <property name="title">
       <string>图像增强</string>
      </property>
      <addaction name="actionLaplace"/>
@@ -76,9 +76,10 @@
      <addaction name="actionGamma"/>
     </widget>
     <addaction name="actionlight"/>
+    <addaction name="menu_5"/>
     <addaction name="actionGrayEqualizeHist"/>
     <addaction name="actionColorEqualizeHist"/>
-    <addaction name="menu_5"/>
+    <addaction name="menu_6"/>
     <addaction name="actionGaussNoise"/>
     <addaction name="actionSalt"/>
    </widget>
@@ -153,6 +154,8 @@
   <action name="actionshuangbianlvbo">
    <property name="text">
     <string>双边滤波</string>
+    </property>
+    </action>
   <action name="actionDetectEdge">
    <property name="text">
     <string>边缘检测</string>
@@ -198,7 +201,7 @@
     <string>图像分割</string>
    </property>
   </action>
- </widget>
+  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>

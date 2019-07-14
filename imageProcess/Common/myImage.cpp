@@ -53,17 +53,17 @@ void Image::changeImageLightContrast(int light, int contrast)
 
 void Image::averBlur()
 {
-    cv::blur(image, image, cv::Size(3,3));
+    cv::blur(image, image, cv::Size(5,5));
 }
 
 void Image::midBlur()
 {
-    cv::medianBlur(image, image, 3);
+    cv::medianBlur(image, image, 5);
 }
 
 void Image::gaussBlur()
 {
-    cv::GaussianBlur(image, image, cv::Size(3, 3), 3, 3);
+    cv::GaussianBlur(image, image, cv::Size(5, 5), 5, 5);
 }
 
 Image Image::bilaterBlur()
