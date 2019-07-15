@@ -354,6 +354,15 @@ bool Model::annotateFaces(const std::string &modelPath){
 }
 
 bool Model::beautifyFaces(){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.setMat(beautify_faces(newImage.getMat()));
+    imageList->addImage(newImage);
+    notification->notify();
+    return true;
     return true;
 }
 

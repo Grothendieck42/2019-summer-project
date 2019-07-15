@@ -68,7 +68,8 @@ SOURCES += \
         ViewModel/Command/AnnotateFacesCommand.cpp \
         Utility/facelib.cpp \
         View/dialog.cpp \
-        ViewModel/Command/DetectFacesCommand.cpp
+        ViewModel/Command/DetectFacesCommand.cpp \
+    ViewModel/Command/BeautifyFacesCommand.cpp
 
 
 HEADERS += \

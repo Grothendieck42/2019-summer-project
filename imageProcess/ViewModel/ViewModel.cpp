@@ -30,7 +30,8 @@ ViewModel::ViewModel()
       updateTmpNotification(std::make_shared<UpdateTmpNotification>(this)),
       trainEigenModelCommand(std::make_shared<TrainEigenModelCommand>(this)),
       detectFacesCommand(std::make_shared<DetectFacesCommand>(this)),
-      annotateFacesCommand(std::make_shared<AnnotateFacesCommand>(this))
+      annotateFacesCommand(std::make_shared<AnnotateFacesCommand>(this)),
+      beautifyFacesCommand(std::make_shared<BeautifyFacesCommand>(this))
 
 {
 

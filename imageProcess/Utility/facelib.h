@@ -63,5 +63,8 @@ Mat annotate_faces(string modelPath, cv::Mat sample);
 
 Mat detecte_faces(string classifierPath, cv::Mat sample);
 
+Mat beautify_faces(cv::Mat sample);
+
+
 
 #endif // FACELIB_H

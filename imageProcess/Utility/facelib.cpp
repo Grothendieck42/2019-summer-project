@@ -458,3 +458,53 @@ Mat detecte_faces(string classifierPath, cv::Mat sample){
     }
     return sample;
 }
+
+Mat beautify(Mat image){
+    Mat dst;
+    int value1 = 3, value2 = 1;
+    int dx = value1 * 5;
+    double fc = value1*12.5;
+    int p = 50;
+    Mat temp1, temp2, temp3, temp4;
+    bilateralFilter(image, temp1, dx, fc, fc);
+    temp2 = (temp1 - image + 128);
+    GaussianBlur(temp2, temp3, Size(2 * value2 - 1, 2 * value2 - 1), 0, 0);
+    temp4 = image + 2 * temp3 - 255;
+    dst = (image*(100 - p) + temp4*p) / 100;
+    dst.copyTo(image);
+    return image;
+}
+
+
+Mat beautify_faces(cv::Mat sample){
+
+    cv::Mat s_face, gray_face;
+    s_face = sample;
+    std::cout<<s_face.size()<<std::endl;
+    if (s_face.type() == CV_8UC1)
+    {
+        gray_face = s_face;
+    }
+    else if (s_face.type() == CV_8UC3)
+    {
+        gray_face = s_face;
+
+    }
+    vector<Rect> faces;
+    CascadeClassifier cascade(cascader);
+    cascade.detectMultiScale(gray_face, faces);
+    if (faces.size() == 0) {
+        resize(gray_face, gray_face, Size(model_width, model_height));
+    }
+    else if(faces.size()>=1) {
+        for (vector<Rect>::const_iterator r = faces.begin(); r != faces.end(); ++ r){
+            CascadeClassifier eyecascade(eyecascader);
+            Mat roiroi = gray_face(*r);
+            roiroi = beautify(roiroi);
+            Mat rr = gray_face(*r);
+            Mat rrr = roiroi.clone();
+            rrr.copyTo(rr);
+        }
+    }
+    return gray_face;
+}

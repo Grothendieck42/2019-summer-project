@@ -426,6 +426,7 @@ void MainWindow::on_actionAnnotateFaces_triggered(){
 }
 
 void MainWindow::on_actionBeautifyFaces_triggered(){
+    beautifyFacesCommand->exec();
 
 }
 
