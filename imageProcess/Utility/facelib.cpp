@@ -325,7 +325,7 @@ bool train_eigen_face(string dataPath, QProgressDialog* progressDialog){
         if (!img.empty()) {
             cout << name << endl;
             addphoto();
-            cvtColor(img, gray, CV_BGR2GRAY);
+            cvtColor(img, gray, COLOR_BGR2GRAY);
             equalizeHist(gray, gray);
             resize(gray, gray, Size(model_width, model_height));
             addrow(gray);
@@ -391,11 +391,7 @@ Mat annotate_faces(string modelPath, cv::Mat sample){
         char buf[32];
         memset(buf, 0, 32);
         sprintf(buf, "%d", flag);
-        IplImage *ipl_img = new IplImage(sample);
-        CvFont font;
-        cvInitFont(&font,CV_FONT_HERSHEY_COMPLEX,0.5,0.5,0,2,8);
-        cvPutText(ipl_img, buf, Point((int)x,(int)yy), &font, cvScalar(255,0,0,1));
-        sample = cvarrToMat(ipl_img);
+        putText(sample, string(buf), Point(int(x),int(yy)), FONT_HERSHEY_PLAIN, 0.5, Scalar(255,0,0,1));
     }
     else if(faces.size()>=1) {
         Mat roi;
@@ -408,11 +404,7 @@ Mat annotate_faces(string modelPath, cv::Mat sample){
             char buf[32];
             memset(buf, 0, 32);
             sprintf(buf, "%d", flag);
-            IplImage *ipl_img = new IplImage(sample);
-            CvFont font;
-            cvInitFont(&font,CV_FONT_HERSHEY_COMPLEX,0.5,0.5,0,2,8);
-            cvPutText(ipl_img, buf, Point(r->x,r->y), &font, cvScalar(255,0,0,1));
-            sample = cvarrToMat(ipl_img);
+            putText(sample, string(buf), Point(r->x,r->y), FONT_HERSHEY_PLAIN, 0.5, Scalar(255,0,0,1));
         }
     }
     return sample;
@@ -437,11 +429,7 @@ Mat detecte_faces(string classifierPath, cv::Mat sample){
     cascade.detectMultiScale(gray_face, faces);
     if (faces.size() == 0) {
         resize(gray_face, gray_face, Size(model_width, model_height));
-        char buf[32];
-        memset(buf, 0, 32);
-        IplImage *ipl_img = new IplImage(sample);
-        cvRectangle(ipl_img, Point(0,0), Point(model_width, model_height),cvScalar(0,255,0));
-        sample = cvarrToMat(ipl_img);
+        rectangle(sample, Point(0,0), Point(model_width, model_height),Scalar(0,255,0));
     }
     else if(faces.size()>=1) {
         Mat roi;
@@ -451,9 +439,7 @@ Mat detecte_faces(string classifierPath, cv::Mat sample){
             resize(roi, roi, Size(model_width, model_height));
             char buf[32];
             memset(buf, 0, 32);
-            IplImage *ipl_img = new IplImage(sample);
-            cvRectangle(ipl_img, Point(r->x, r->y), Point(r->x+r->width, r->y + r->height),cvScalar(0,255,0));
-            sample = cvarrToMat(ipl_img);
+            rectangle(sample, Point(r->x, r->y), Point(r->x+r->width, r->y + r->height),Scalar(0,255,0));
         }
     }
     return sample;
