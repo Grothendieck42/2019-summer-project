@@ -385,7 +385,7 @@ void MainWindow::on_actionReduct_triggered()
 
 void MainWindow::on_actionTrainEigenModel_triggered()
 {
-    QString datapath = QFileDialog::getExistingDirectory();
+    QString datapath = QFileDialog::getExistingDirectory(this);
     if(datapath.isEmpty())
     {
         return;
@@ -431,7 +431,16 @@ void MainWindow::on_actionBeautifyFaces_triggered(){
 }
 
 void MainWindow::on_actionGenerateHeadshots_triggered(){
-
+    QString outputdir = QFileDialog::getExistingDirectory(this);
+    if(outputdir.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        generateHeadshotsCommand->setParameter(outputdir.toStdString());
+        generateHeadshotsCommand->exec();
+    }
 }
 
 void MainWindow::on_actionchexiao_triggered()

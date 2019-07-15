@@ -69,7 +69,8 @@ SOURCES += \
         Utility/facelib.cpp \
         View/dialog.cpp \
         ViewModel/Command/DetectFacesCommand.cpp \
-    ViewModel/Command/BeautifyFacesCommand.cpp
+    ViewModel/Command/BeautifyFacesCommand.cpp \
+    ViewModel/Command/GenerateHeadshotsCommand.cpp
 
 
 HEADERS += \

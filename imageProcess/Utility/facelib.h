@@ -65,6 +65,8 @@ Mat detecte_faces(string classifierPath, cv::Mat sample);
 
 Mat beautify_faces(cv::Mat sample);
 
+bool generate_headshots(string outputdir,cv::Mat sample);
+
 
 
 #endif // FACELIB_H

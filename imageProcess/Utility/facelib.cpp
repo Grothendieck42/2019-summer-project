@@ -494,7 +494,7 @@ Mat beautify_faces(cv::Mat sample){
     CascadeClassifier cascade(cascader);
     cascade.detectMultiScale(gray_face, faces);
     if (faces.size() == 0) {
-        resize(gray_face, gray_face, Size(model_width, model_height));
+        //cannot find faces
     }
     else if(faces.size()>=1) {
         for (vector<Rect>::const_iterator r = faces.begin(); r != faces.end(); ++ r){
@@ -507,4 +507,44 @@ Mat beautify_faces(cv::Mat sample){
         }
     }
     return gray_face;
+}
+
+
+bool generate_headshots(string outputdir,cv::Mat sample){
+    int count = -1;
+    cv::Mat s_face, gray_face;
+    s_face = sample;
+    std::cout<<s_face.size()<<std::endl;
+    if (s_face.type() == CV_8UC1)
+    {
+        gray_face = s_face;
+    }
+    else if (s_face.type() == CV_8UC3)
+    {
+        gray_face = s_face;
+
+    }
+    vector<Rect> faces;
+    CascadeClassifier cascade(cascader);
+    cascade.detectMultiScale(gray_face, faces);
+    if (faces.size() == 0) {
+        //cannot find faces
+        return false;
+    }
+    else if(faces.size()>=1) {
+        for (vector<Rect>::const_iterator r = faces.begin(); r != faces.end(); ++ r){
+            count ++;
+            CascadeClassifier eyecascade(eyecascader);
+            Mat roiroi = gray_face(*r);
+            roiroi = beautify(roiroi);
+            Mat rr = gray_face(*r);
+            Mat rrr = roiroi.clone();
+//            rrr.copyTo(rr);
+            char buf[15];
+            sprintf(buf,"%03d",count);
+            string filename = outputdir + "/Headshot_"+ buf + ".jpeg";
+            imwrite(filename, roiroi);
+        }
+    }
+    return true;
 }

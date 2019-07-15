@@ -363,10 +363,15 @@ bool Model::beautifyFaces(){
     imageList->addImage(newImage);
     notification->notify();
     return true;
-    return true;
 }
 
 bool Model::generateHeadshots(const std::string &outputPath){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    generate_headshots(outputPath, newImage.getMat());
     return true;
 }
 
