@@ -306,7 +306,19 @@ int build_model(const string model_name) {
     return 0;
 }
 
+void progressGoo(int old, int value, QProgressDialog* ptr){
+    for(int i=old;i<value;i++)
+    {
+      for(int j=0;j<40000;j++);
+      ptr->setValue(i);
+      QApplication::processEvents();
+      if(ptr->wasCanceled())
+        break;
+    }
+}
+
 bool train_eigen_face(string dataPath, QProgressDialog* progressDialog){
+
     train_dir = dataPath;
     CascadeClassifier cascade(cascader);
     type_matrix = Mat( Size(model_size, maxnum), CV_32F);
@@ -317,8 +329,12 @@ bool train_eigen_face(string dataPath, QProgressDialog* progressDialog){
         cerr << "cannot open the file" << endl;
         return false;
     }
+    progressGoo(10, 20, progressDialog);
+    QString *a = new QString("loading data from dataPath...");
+    progressDialog->setLabelText(*a);
     while (!info_list.eof() && type_number<maxnum)
     {
+        progressGoo(20, 30, progressDialog);
         memset(buf, 0, 100);
         info_list.getline(buf, 100);
         buf[strlen(buf)-1]=0;
@@ -338,17 +354,24 @@ bool train_eigen_face(string dataPath, QProgressDialog* progressDialog){
 
         }
     }
+    progressDialog->setLabelText("generating cov mat...");
+    progressGoo(30, 35, progressDialog);
+
     get_cov_mat();
     string modeldata = dataPath + "/"+model;
 
+    progressDialog->setLabelText("building model...");
+    progressGoo(35, 50, progressDialog);
     build_model(modeldata);
-
+    progressDialog->setLabelText("cleaning memory...");
+    progressGoo(50, 90, progressDialog);
     Mat* empty = new Mat();
     avg = *empty;
     vec = *empty;
     vec1 = *empty;
     dat = *empty;
     type_matrix = *empty;
-
+    progressDialog->setLabelText("finishing ...");
+    progressGoo(90, 100, progressDialog);
     return true;
 }

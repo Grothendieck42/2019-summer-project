@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <QProgressDialog>
+#include <QApplication>
 #include <string.h>
 #include "../Common/myImage.h"
 using namespace std;
@@ -19,7 +20,7 @@ static string cascader = face_home + "/classifier/haarcascade_frontalface_alt2.x
 static string model = "model";
 static string eyecascader = face_home + "/classifier/haarcascade_eye.xml";
 static int type_number = 0;
-static int maxnum = 20;
+static int maxnum = 50;
 static int model_width = 128;
 static int model_height = 128;
 static int model_size = model_width * model_height;
