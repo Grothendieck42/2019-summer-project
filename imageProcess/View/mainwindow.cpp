@@ -16,9 +16,17 @@ MainWindow::MainWindow(QWidget *parent) :
     tool_item = this->findChild<QMenu*>("menu_3");
     adjust_item = this->findChild<QMenu*>("menu_4");
     enlarge_item = this->findChild<QMenu*>("menu_7");
+    actionDetectFaces = this->findChild<QAction*>("actionDetectFaces");
+    actionAnnotateFaces = this->findChild<QAction*>("actionAnnotateFaces");
+    actionBeautifyFaces = this->findChild<QAction*>("actionBeautifyFaces");
+    actionGenerateHeadshots = this->findChild<QAction*>("actionGenerateHeadshots");
     tool_item->setEnabled(false);
     adjust_item->setEnabled(false);
     enlarge_item->setEnabled(false);
+    actionDetectFaces->setEnabled(false);
+    actionAnnotateFaces->setEnabled(false);
+    actionBeautifyFaces->setEnabled(false);
+    actionGenerateHeadshots->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -197,12 +205,20 @@ void MainWindow::on_actionopen_triggered()
             tool_item->setEnabled(true);
             adjust_item->setEnabled(true);
             enlarge_item->setEnabled(true);
+            actionDetectFaces->setEnabled(true);
+            actionAnnotateFaces->setEnabled(true);
+            actionBeautifyFaces->setEnabled(true);
+            actionGenerateHeadshots->setEnabled(true);
         }
         else
         {
             tool_item->setEnabled(false);
             adjust_item->setEnabled(false);
             enlarge_item->setEnabled(false);
+            actionDetectFaces->setEnabled(false);
+            actionAnnotateFaces->setEnabled(false);
+            actionBeautifyFaces->setEnabled(false);
+            actionGenerateHeadshots->setEnabled(false);
             error("文件打开失败!");
         }
     }

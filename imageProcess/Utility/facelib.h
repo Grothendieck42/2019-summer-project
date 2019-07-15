@@ -14,7 +14,7 @@
 using namespace std;
 using namespace cv;
 
-static string face_home = "facenote";
+static string face_home = "./facenote";
 static string train_dir = face_home + "/FaceLib-default";
 static string cascader = face_home + "/classifier/haarcascade_frontalface_alt2.xml";
 static string model = "model";

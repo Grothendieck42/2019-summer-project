@@ -95,7 +95,7 @@
    </widget>
    <widget class="QMenu" name="menuFace">
     <property name="title">
-     <string>Face</string>
+     <string>高级功能</string>
     </property>
     <addaction name="actionDetectFaces"/>
     <addaction name="actionTrainEigenModel"/>
@@ -260,27 +260,27 @@
   </action>
   <action name="actionDetectFaces">
    <property name="text">
-    <string>Detect Faces</string>
+    <string>人脸检测</string>
    </property>
   </action>
   <action name="actionTrainEigenModel">
    <property name="text">
-    <string>Train Eigen Model</string>
+    <string>模型训练</string>
    </property>
   </action>
   <action name="actionAnnotateFaces">
    <property name="text">
-    <string>Annotate Faces</string>
+    <string>人脸标记</string>
    </property>
   </action>
   <action name="actionBeautifyFaces">
    <property name="text">
-    <string>Beautify Faces</string>
+    <string>人脸美化</string>
    </property>
   </action>
   <action name="actionGenerateHeadshots">
    <property name="text">
-    <string>Generate Headshots</string>
+    <string>生成大头照</string>
    </property>
   </action>
   <action name="actionchexiao">

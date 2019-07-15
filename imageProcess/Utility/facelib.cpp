@@ -94,7 +94,7 @@ Mat showpicture(int i) {
     string filename = train_dir + buf;
     Mat similar,gray;
     similar=imread(filename);
-    cvtColor(similar, gray, CV_BGR2GRAY);
+    cvtColor(similar, gray, COLOR_BGR2GRAY);
     //equalizeHist(gray, gray);
     resize(gray, gray, Size(model_width, model_height));
     return gray;

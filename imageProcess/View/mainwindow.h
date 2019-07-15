@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QString>
 #include <QMenu>
+#include <QAction>
 #include <QPixmap>
 #include <QGraphicsScene>
 #include <memory>
@@ -120,6 +121,10 @@ private:
     QMenu *tool_item;
     QMenu *adjust_item;
     QMenu *enlarge_item;
+    QAction *actionDetectFaces;
+    QAction *actionAnnotateFaces;
+    QAction *actionBeautifyFaces;
+    QAction *actionGenerateHeadshots;
     LightConstractDialog lightDialog;
 
     std::shared_ptr<UpdateNotification> updateNotification;
