@@ -385,7 +385,7 @@ void MainWindow::on_actionReduct_triggered()
 
 void MainWindow::on_actionTrainEigenModel_triggered()
 {
-    QString datapath = QFileDialog::getExistingDirectory();
+    QString datapath = QFileDialog::getExistingDirectory(this);
     if(datapath.isEmpty())
     {
         return;
@@ -400,19 +400,47 @@ void MainWindow::on_actionTrainEigenModel_triggered()
 
 void MainWindow::on_actionDetectFaces_triggered()
 {
-
+    QString classifierPath = QFileDialog::getOpenFileName(this);
+    if(classifierPath.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        detectFacesCommand->setParameter(classifierPath.toStdString());
+        detectFacesCommand->exec();
+    }
 }
 
 void MainWindow::on_actionAnnotateFaces_triggered(){
-
+    QString modelPath = QFileDialog::getOpenFileName(this);
+    if(modelPath.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        annotateFacesCommand->setParameter(modelPath.toStdString());
+        annotateFacesCommand->exec();
+    }
 }
 
 void MainWindow::on_actionBeautifyFaces_triggered(){
+    beautifyFacesCommand->exec();
 
 }
 
 void MainWindow::on_actionGenerateHeadshots_triggered(){
-
+    QString outputdir = QFileDialog::getExistingDirectory(this);
+    if(outputdir.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        generateHeadshotsCommand->setParameter(outputdir.toStdString());
+        generateHeadshotsCommand->exec();
+    }
 }
 
 void MainWindow::on_actionchexiao_triggered()

@@ -3,7 +3,9 @@
 #include "../Common/myImage.h"
 #include "../Common/ImageList.h"
 #include "../Common/Notification.h"
+#include "../Utility/utility.h"
 #include <string>
+#include <QProgressDialog>
 
 class Model
 {

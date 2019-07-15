@@ -28,7 +28,9 @@ Image& Image::operator=(const Image &im)
 
 void Image::openImage(const std::string &file_path)
 {
+    std::cout<<file_path<<std::endl;
     image = cv::imread(file_path);
+    std::cout<<image.size()<<std::endl;
 }
 
 void Image::saveImage(const std::string &file_path)
@@ -308,4 +310,12 @@ bool Image::checkColor()
         return true;
     else
         return false;
+}
+
+cv::Mat Image::getMat(){
+    return image;
+}
+
+void Image::setMat(cv::Mat im){
+    image = im;
 }

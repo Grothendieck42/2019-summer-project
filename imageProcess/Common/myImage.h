@@ -16,6 +16,8 @@ public:
     Image& operator=(const Image &im);
     bool empty();
     QImage getQImage();
+    cv::Mat getMat();
+    void setMat(cv::Mat im);
     void openImage(const std::string &file_path);
     void saveImage(const std::string &file_path);
     void changeImageLightContrast(int light, int contrast);

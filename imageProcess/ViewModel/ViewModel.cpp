@@ -28,7 +28,12 @@ ViewModel::ViewModel()
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this)),
       updateTmpNotification(std::make_shared<UpdateTmpNotification>(this)),
-      trainEigenModelCommand(std::make_shared<TrainEigenModelCommand>(this))
+      trainEigenModelCommand(std::make_shared<TrainEigenModelCommand>(this)),
+      detectFacesCommand(std::make_shared<DetectFacesCommand>(this)),
+      annotateFacesCommand(std::make_shared<AnnotateFacesCommand>(this)),
+      beautifyFacesCommand(std::make_shared<BeautifyFacesCommand>(this)),
+      generateHeadshotsCommand(std::make_shared<GenerateHeadshotsCommand>(this))
+
 {
 
 }

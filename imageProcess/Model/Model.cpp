@@ -309,24 +309,69 @@ bool Model::imageReduct(){
     return true;
 }
 
+
 bool Model::trainModel(const std::string &dataPath){
     std::cout<<"Train data in path: "+dataPath<<std::endl;
+    QProgressDialog *m_pConnectProBar = new QProgressDialog();
+    m_pConnectProBar->setRange(0,100);
+    m_pConnectProBar->setOrientation(Qt::Horizontal);
+    m_pConnectProBar->setValue(0);
+    m_pConnectProBar->setVisible(true);
+    m_pConnectProBar->setModal(true);
+    m_pConnectProBar->setWindowTitle("Please Wait");
+    m_pConnectProBar->setLabelText("Starting...");
+    m_pConnectProBar->setCancelButtonText("cancel");
+    progressGo(0, 10, m_pConnectProBar);
+    train_eigen_face(dataPath, m_pConnectProBar);
+    m_pConnectProBar->setVisible(false);
     return true;
 }
 
-bool Model::detectFaces(const std::string &modelPath){
+bool Model::detectFaces(const std::string &classfierPath){
+    std::cout<<"Model data in path: "+classfierPath<<std::endl;
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.setMat(detecte_faces(classfierPath, newImage.getMat()));
+    imageList->addImage(newImage);
+    notification->notify();
     return true;
 }
 
 bool Model::annotateFaces(const std::string &modelPath){
+    std::cout<<"Model data in path: "+modelPath<<std::endl;
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.setMat(annotate_faces(modelPath, newImage.getMat()));
+    imageList->addImage(newImage);
+    notification->notify();
     return true;
 }
 
 bool Model::beautifyFaces(){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.setMat(beautify_faces(newImage.getMat()));
+    imageList->addImage(newImage);
+    notification->notify();
     return true;
 }
 
 bool Model::generateHeadshots(const std::string &outputPath){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    generate_headshots(outputPath, newImage.getMat());
     return true;
 }
 
