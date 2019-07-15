@@ -400,7 +400,16 @@ void MainWindow::on_actionTrainEigenModel_triggered()
 
 void MainWindow::on_actionDetectFaces_triggered()
 {
-
+    QString classifierPath = QFileDialog::getOpenFileName(this);
+    if(classifierPath.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        detectFacesCommand->setParameter(classifierPath.toStdString());
+        detectFacesCommand->exec();
+    }
 }
 
 void MainWindow::on_actionAnnotateFaces_triggered(){
@@ -411,10 +420,7 @@ void MainWindow::on_actionAnnotateFaces_triggered(){
     }
     else
     {
-//        std::cout<<modelPath.toStdString()<<std::endl;
-//        annotateFacesCommand->say();
         annotateFacesCommand->setParameter(modelPath.toStdString());
-//        std::cout<<"!!"<<std::endl;
         annotateFacesCommand->exec();
     }
 }

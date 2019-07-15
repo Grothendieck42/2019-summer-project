@@ -327,7 +327,16 @@ bool Model::trainModel(const std::string &dataPath){
     return true;
 }
 
-bool Model::detectFaces(const std::string &modelPath){
+bool Model::detectFaces(const std::string &classfierPath){
+    std::cout<<"Model data in path: "+classfierPath<<std::endl;
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.setMat(detecte_faces(classfierPath, newImage.getMat()));
+    imageList->addImage(newImage);
+    notification->notify();
     return true;
 }
 

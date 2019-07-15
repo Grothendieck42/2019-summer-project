@@ -61,5 +61,7 @@ bool train_eigen_face(string dataPath, QProgressDialog* progressDialog);
 
 Mat annotate_faces(string modelPath, cv::Mat sample);
 
+Mat detecte_faces(string classifierPath, cv::Mat sample);
+
 
 #endif // FACELIB_H

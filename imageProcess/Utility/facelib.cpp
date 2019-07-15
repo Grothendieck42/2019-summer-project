@@ -388,47 +388,73 @@ Mat annotate_faces(string modelPath, cv::Mat sample){
         model_reader();
         resize(gray_face, gray_face, Size(model_width, model_height));
         flag = find_face(gray_face);
+        char buf[32];
+        memset(buf, 0, 32);
+        sprintf(buf, "%d", flag);
+        IplImage *ipl_img = new IplImage(sample);
+        CvFont font;
+        cvInitFont(&font,CV_FONT_HERSHEY_COMPLEX,0.5,0.5,0,2,8);
+        cvPutText(ipl_img, buf, Point((int)x,(int)yy), &font, cvScalar(255,0,0,1));
+        sample = cvarrToMat(ipl_img);
     }
     else if(faces.size()>=1) {
         Mat roi;
         model_reader();
-        vector<Rect>::const_iterator r = faces.begin();
-        CascadeClassifier eyecascade(eyecascader);
-        vector<Rect> eyes;
-        roi = Mat(gray_face, *r);
-        eyecascade.detectMultiScale(roi, eyes, 1.1);
-        if (eyes.size() !=0 ) {
-            double ratio = 3.5;
-            cout << "find eyes" << endl;
-            vector<Rect>::const_iterator e = eyes.begin();
-            double a = e[0].y;
-            double b = r[0].height - a;
-            if (b >= ratio * a) {
-                x = r[0].x;
-                y = min((double)gray_face.size().height, r[0].y - (ratio*a - b));
-                h = min(y, gray_face.size().height - y + 4 * a);
-                yy = y+h;
-                roi = Mat(gray_face, Rect(r[0].x, y, r[0].width, h));
-            }
-            else {
-                x = r[0].x;
-                y = r[0].y + (ratio*a - b);
-                h = min(y, gray_face.size().height - y + 4 * a);
-                yy = y+h;
-                roi = Mat(gray_face, Rect(r[0].x, y, r[0].width, h));
-            }
+        for (vector<Rect>::const_iterator r = faces.begin(); r != faces.end(); ++ r){
+            CascadeClassifier eyecascade(eyecascader);
+            roi = Mat(gray_face, *r);
+            resize(roi, roi, Size(model_width, model_height));
+            flag = find_face(roi);
+            char buf[32];
+            memset(buf, 0, 32);
+            sprintf(buf, "%d", flag);
+            IplImage *ipl_img = new IplImage(sample);
+            CvFont font;
+            cvInitFont(&font,CV_FONT_HERSHEY_COMPLEX,0.5,0.5,0,2,8);
+            cvPutText(ipl_img, buf, Point(r->x,r->y), &font, cvScalar(255,0,0,1));
+            sample = cvarrToMat(ipl_img);
         }
-        roi = Mat(gray_face, *r);
-        resize(roi, roi, Size(model_width, model_height));
-        flag = find_face(roi);
     }
-    char buf[32];
-    memset(buf, 0, 32);
-    sprintf(buf, "%d", flag);
-    IplImage *ipl_img = new IplImage(sample);
-    CvFont font;
-    cvInitFont(&font,CV_FONT_HERSHEY_COMPLEX,0.5,0.5,0,2,8);
-    cvPutText(ipl_img, buf, Point((int)x,(int)yy), &font, cvScalar(255,0,0,1));
-    cv::Mat m = cvarrToMat(ipl_img);
-    return m;
+    return sample;
+}
+
+Mat detecte_faces(string classifierPath, cv::Mat sample){
+
+    cv::Mat s_face, gray_face;
+    s_face = sample;
+    std::cout<<s_face.size()<<std::endl;
+    if (s_face.type() == CV_8UC1)
+    {
+        gray_face = s_face;
+    }
+    else if (s_face.type() == CV_8UC3)
+    {
+        gray_face = s_face;
+
+    }
+    vector<Rect> faces;
+    CascadeClassifier cascade(classifierPath);
+    cascade.detectMultiScale(gray_face, faces);
+    if (faces.size() == 0) {
+        resize(gray_face, gray_face, Size(model_width, model_height));
+        char buf[32];
+        memset(buf, 0, 32);
+        IplImage *ipl_img = new IplImage(sample);
+        cvRectangle(ipl_img, Point(0,0), Point(model_width, model_height),cvScalar(0,255,0));
+        sample = cvarrToMat(ipl_img);
+    }
+    else if(faces.size()>=1) {
+        Mat roi;
+        for (vector<Rect>::const_iterator r = faces.begin(); r != faces.end(); ++ r){
+            CascadeClassifier eyecascade(eyecascader);
+            roi = Mat(gray_face, *r);
+            resize(roi, roi, Size(model_width, model_height));
+            char buf[32];
+            memset(buf, 0, 32);
+            IplImage *ipl_img = new IplImage(sample);
+            cvRectangle(ipl_img, Point(r->x, r->y), Point(r->x+r->width, r->y + r->height),cvScalar(0,255,0));
+            sample = cvarrToMat(ipl_img);
+        }
+    }
+    return sample;
 }

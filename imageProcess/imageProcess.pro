@@ -67,7 +67,8 @@ SOURCES += \
         ViewModel/Command/TrainEigenModelCommand.cpp \
         ViewModel/Command/AnnotateFacesCommand.cpp \
         Utility/facelib.cpp \
-        View/dialog.cpp
+        View/dialog.cpp \
+        ViewModel/Command/DetectFacesCommand.cpp
 
 
 HEADERS += \
