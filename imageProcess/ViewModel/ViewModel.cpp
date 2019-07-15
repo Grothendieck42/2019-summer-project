@@ -23,6 +23,8 @@ ViewModel::ViewModel()
       imageSegmentationCommand(std::make_shared<ImageSegmentationCommand>(this)),
       imageEnlargeCommand(std::make_shared<ImageEnlargeCommand>(this)),
       imageReductCommand(std::make_shared<ImageReductCommand>(this)),
+      imageGuidedCommand(std::make_shared<ImageGuidedCommand>(this)),
+      imageDefogCommand(std::make_shared<ImageDefogCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this)),
       updateTmpNotification(std::make_shared<UpdateTmpNotification>(this))
@@ -146,6 +148,14 @@ std::shared_ptr<Command> ViewModel::getImageReductCommand(){
     return imageReductCommand;
 }
 
+std::shared_ptr<Command> ViewModel::getImageGuidedCommand(){
+    return imageGuidedCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getImageDefogCommand(){
+    return imageDefogCommand;
+}
+
 void ViewModel::openImage(const std::string &file_name)
 {
     model->openImage(file_name);
@@ -243,6 +253,14 @@ void ViewModel::imageEnlarge(){
 
 void ViewModel::imageReduct(){
     model->imageReduct();
+}
+
+void ViewModel::imageGuided(float &eps){
+    model->imageGuided(eps);
+}
+
+void ViewModel::imageDefog(){
+    model->imageDefog();
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

@@ -31,7 +31,9 @@ SOURCES += \
         ViewModel/Command/DetectEdgeCommand.cpp \
         ViewModel/Command/GammaCorrectCommand.cpp \
         ViewModel/Command/GrayEqualizeHistCommand.cpp \
+    ViewModel/Command/ImageDefogCommand.cpp \
     ViewModel/Command/ImageEnlargeCommand.cpp \
+    ViewModel/Command/ImageGuidedCommand.cpp \
     ViewModel/Command/ImageReductCommand.cpp \
         ViewModel/Command/ImageSegmentationCommand.cpp \
         ViewModel/Command/LaplaceCommand.cpp \
@@ -71,7 +73,9 @@ HEADERS += \
     ViewModel/Command/DetectEdgeCommand.h \
     ViewModel/Command/GammaCorrectCommand.h \
     ViewModel/Command/GrayEqualizeHistCommand.h \
+    ViewModel/Command/ImageDefogCommand.h \
     ViewModel/Command/ImageEnlargeCommand.h \
+    ViewModel/Command/ImageGuidedCommand.h \
     ViewModel/Command/ImageReductCommand.h \
     ViewModel/Command/ImageSegmentationCommand.h \
     ViewModel/Command/LaplaceCommand.h \
@@ -116,3 +120,4 @@ LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_videoio410.dll.a
 LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_flann410.dll.a
 LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_objdetect410.dll.a
 LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_video410.dll.a
+LIBS +=E:\opencv\minGW_build\install\x86\mingw\lib\libopencv_ximgproc410.dll.a

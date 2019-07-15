@@ -28,6 +28,8 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setImageSegmentationCommand(viewModel->getImageSegmentationCommand());
     view->setImageEnlargeCommand(viewModel->getImageEnlargeCommand());
     view->setImageReductCommand(viewModel->getImageReductCommand());
+    view->setImageGuidedCommand(viewModel->getImageGuidedCommand());
+    view->setImageDefogCommand(viewModel->getImageDefogCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
 }

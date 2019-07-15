@@ -48,6 +48,8 @@ public:
     void setImageSegmentationCommand(std::shared_ptr<Command> imageSegmentationCommand);
     void setImageEnlargeCommand(std::shared_ptr<Command> imageEnlargeCommand);
     void setImageReductCommand(std::shared_ptr<Command> imageReductCommand);
+    void setImageGuidedCommand(std::shared_ptr<Command> imageGuidedCommand);
+    void setImageDefogCommand(std::shared_ptr<Command> imageDefogCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -91,6 +93,10 @@ private slots:
 
     void on_actionReduct_triggered();
 
+    void on_actionGuidedFilter_triggered();
+
+    void on_actionDefog_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
@@ -118,6 +124,8 @@ private:
     std::shared_ptr<Command> imageSegmentationCommand;
     std::shared_ptr<Command> imageEnlargeCommand;
     std::shared_ptr<Command> imageReductCommand;
+    std::shared_ptr<Command> imageGuidedCommand;
+    std::shared_ptr<Command> imageDefogCommand;
 };
 
 #endif // MAINWINDOW_H

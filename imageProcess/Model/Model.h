@@ -35,6 +35,8 @@ public:
     void imageSegmentation(int& threshold);
     void imageEnlarge();
     void imageReduct();
+    void imageGuided(float& eps);
+    void imageDefog();
     std::shared_ptr<ImageList> getImageList();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void setUpdateTmpNotification(std::shared_ptr<Notification> notification);

@@ -3,12 +3,17 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/ximgproc/edge_filter.hpp>
 #include <QImage>
 
 class Image
 {
 private:
     cv::Mat image;
+
+    void minFilter(const cv::Mat src,cv::Mat &dst,int ksize);
+    cv::Mat myGuidedFilter(cv::Mat g, cv::Mat p, int ksize);
+    cv::Mat grayStretch(cv::Mat src,double lowcut,double highcut);
 public:
     Image();
     ~Image();
@@ -37,4 +42,7 @@ public:
     void imageSegmentation(int& threshold);
     void imageEnlarge();
     void imageReduct();
+    void imageGuided(float& eps);
+    Image guidedFilter(Image I,Image p,int r,float& eps);
+    void imageDefog();
 };

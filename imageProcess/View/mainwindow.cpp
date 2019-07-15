@@ -129,6 +129,14 @@ void MainWindow::setImageReductCommand(std::shared_ptr<Command> imageReductComma
     this->imageReductCommand=imageReductCommand;
 }
 
+void MainWindow::setImageGuidedCommand(std::shared_ptr<Command> imageGuidedCommand){
+    this->imageGuidedCommand=imageGuidedCommand;
+}
+
+void MainWindow::setImageDefogCommand(std::shared_ptr<Command> imageDefogCommand){
+    this->imageDefogCommand=imageDefogCommand;
+}
+
 void MainWindow::setQImage(std::shared_ptr<QImage> qImage)
 {
     this->qImage = qImage;
@@ -266,4 +274,17 @@ void MainWindow::on_actionEnlarge_triggered()
 void MainWindow::on_actionReduct_triggered()
 {
     imageReductCommand->exec();
+}
+
+
+void MainWindow::on_actionGuidedFilter_triggered()
+{
+    float eps=0.02f*255*255;
+    imageGuidedCommand->setParameter(eps);
+    imageGuidedCommand->exec();
+}
+
+void MainWindow::on_actionDefog_triggered()
+{
+    imageDefogCommand->exec();
 }

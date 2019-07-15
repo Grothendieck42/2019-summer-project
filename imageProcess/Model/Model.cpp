@@ -181,6 +181,20 @@ void Model::imageReduct(){
     notification->notify();
 }
 
+void Model::imageGuided(float& eps){
+    Image newImage=imageList->getImage();
+    newImage.imageGuided(eps);
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
+void Model::imageDefog(){
+    Image newImage=imageList->getImage();
+    newImage.imageDefog();
+    imageList->addImage(newImage);
+    notification->notify();
+}
+
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
     this->notification = notification;

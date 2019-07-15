@@ -51,7 +51,7 @@
     </property>
     <widget class="QMenu" name="menu_5">
      <property name="title">
-      <string>模糊</string>
+      <string>滤波</string>
      </property>
      <addaction name="actionjizhilvbo"/>
      <addaction name="actionzhongzhillvbo"/>

@@ -23,6 +23,8 @@
 #include "Command/ImageSegmentationCommand.h"
 #include "Command/ImageEnlargeCommand.h"
 #include "Command/ImageReductCommand.h"
+#include "Command/ImageGuidedCommand.h"
+#include "Command/ImageDefogCommand.h"
 
 #include "../Common/Notification.h"
 #include "Notification/UpdateDataNotification.h"
@@ -55,6 +57,8 @@ private:
     std::shared_ptr<ImageSegmentationCommand> imageSegmentationCommand;
     std::shared_ptr<ImageEnlargeCommand> imageEnlargeCommand;
     std::shared_ptr<ImageReductCommand> imageReductCommand;
+    std::shared_ptr<ImageGuidedCommand> imageGuidedCommand;
+    std::shared_ptr<ImageDefogCommand> imageDefogCommand;
     std::shared_ptr<QImage> qImage;
     std::shared_ptr<Notification> notification;
     std::shared_ptr<UpdateDataNotification> updateNotification;
@@ -92,6 +96,8 @@ public:
     std::shared_ptr<Command> getImageSegmentationCommand();
     std::shared_ptr<Command> getImageEnlargeCommand();
     std::shared_ptr<Command> getImageReductCommand();
+    std::shared_ptr<Command> getImageGuidedCommand();
+    std::shared_ptr<Command> getImageDefogCommand();
     void toGray();
     void toBinary(int& threshold);
     void detectEdge(int& threshold);
@@ -105,6 +111,8 @@ public:
     void imageSegmentation(int& threshold);
     void imageEnlarge();
     void imageReduct();
+    void imageGuided(float& eps);
+    void imageDefog();
     std::shared_ptr<QImage> getQImage();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void convert();
