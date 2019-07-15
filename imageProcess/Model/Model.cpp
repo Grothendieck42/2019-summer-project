@@ -375,6 +375,30 @@ bool Model::generateHeadshots(const std::string &outputPath){
     return true;
 }
 
+bool Model::imageGuided(float& eps){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.imageGuided(eps);
+    imageList->addImage(newImage);
+    notification->notify();
+    return true;
+}
+
+bool Model::imageDefog(){
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.imageDefog();
+    imageList->addImage(newImage);
+    notification->notify();
+    return true;
+}
+
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)
 {
     this->notification = notification;

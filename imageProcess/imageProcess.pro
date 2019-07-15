@@ -41,8 +41,10 @@ SOURCES += \
         ViewModel/Command/DetectEdgeCommand.cpp \
         ViewModel/Command/GammaCorrectCommand.cpp \
         ViewModel/Command/GrayEqualizeHistCommand.cpp \
-        ViewModel/Command/ImageEnlargeCommand.cpp \
-        ViewModel/Command/ImageReductCommand.cpp \
+    ViewModel/Command/ImageDefogCommand.cpp \
+    ViewModel/Command/ImageEnlargeCommand.cpp \
+    ViewModel/Command/ImageGuidedCommand.cpp \
+    ViewModel/Command/ImageReductCommand.cpp \
         ViewModel/Command/ImageSegmentationCommand.cpp \
         ViewModel/Command/LaplaceCommand.cpp \
         ViewModel/Command/LogEnhanceCommand.cpp \
@@ -76,6 +78,16 @@ SOURCES += \
 HEADERS += \
         View/mainwindow.h \
         App/app.h \
+        Common/myImage.h \
+    ViewModel/Command/AddGaussNoiseCommand.h \
+    ViewModel/Command/AddSaltNoiseCommand.h \
+    ViewModel/Command/ColorEqualizeHistCommand.h \
+    ViewModel/Command/DetectEdgeCommand.h \
+    ViewModel/Command/GammaCorrectCommand.h \
+    ViewModel/Command/GrayEqualizeHistCommand.h \
+    ViewModel/Command/ImageDefogCommand.h \
+    ViewModel/Command/ImageEnlargeCommand.h \
+    ViewModel/Command/ImageGuidedCommand.h \
         ViewModel/ViewModel.h \
         Model/Model.h \
         Common/Command.h \
@@ -87,7 +99,6 @@ HEADERS += \
         ViewModel/Command/DetectEdgeCommand.h \
         ViewModel/Command/GammaCorrectCommand.h \
         ViewModel/Command/GrayEqualizeHistCommand.h \
-        ViewModel/Command/ImageEnlargeCommand.h \
         ViewModel/Command/ImageReductCommand.h \
         ViewModel/Command/ImageSegmentationCommand.h \
         ViewModel/Command/LaplaceCommand.h \

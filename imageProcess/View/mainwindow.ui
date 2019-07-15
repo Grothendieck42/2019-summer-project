@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>ImageProcess</string>
+   <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -33,22 +33,10 @@
     <property name="title">
      <string>文件</string>
     </property>
-    <widget class="QMenu" name="menu_2">
-     <property name="title">
-      <string>另存为</string>
-     </property>
-     <addaction name="action_bmp"/>
-     <addaction name="action_png"/>
-     <addaction name="action_jpg"/>
-    </widget>
     <addaction name="actionopen"/>
     <addaction name="actionsave"/>
-    <addaction name="menu_2"/>
    </widget>
    <widget class="QMenu" name="menu_3">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
     <property name="title">
      <string>工具</string>
     </property>
@@ -63,7 +51,7 @@
     </property>
     <widget class="QMenu" name="menu_5">
      <property name="title">
-      <string>模糊</string>
+      <string>滤波</string>
      </property>
      <addaction name="actionjizhilvbo"/>
      <addaction name="actionzhongzhillvbo"/>
@@ -85,6 +73,8 @@
     <addaction name="menu_6"/>
     <addaction name="actionGaussNoise"/>
     <addaction name="actionSalt"/>
+    <addaction name="actionGuidedFilter"/>
+    <addaction name="actionDefog"/>
    </widget>
    <widget class="QMenu" name="menu_7">
     <property name="title">
@@ -137,26 +127,11 @@
    <property name="text">
     <string>保存</string>
    </property>
-  </action>
-  <action name="action_bmp">
-   <property name="text">
-    <string>.bmp</string>
-   </property>
-  </action>
-  <action name="action_png">
-   <property name="text">
-    <string>.png</string>
-   </property>
-  </action>
-  <action name="action_jpg">
-   <property name="text">
-    <string>.jpeg</string>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionToGray">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>转化为灰度图</string>
    </property>
@@ -167,9 +142,6 @@
    </property>
   </action>
   <action name="actionlight">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>调整亮度/对比度</string>
    </property>
@@ -200,9 +172,6 @@
    </property>
   </action>
   <action name="actionGrayEqualizeHist">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="text">
     <string>灰度直方图均衡化</string>
    </property>
@@ -263,6 +232,14 @@
     <string>人脸检测</string>
    </property>
   </action>
+  <action name="actionchexiao">
+   <property name="text">
+    <string>撤销</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
   <action name="actionTrainEigenModel">
    <property name="text">
     <string>模型训练</string>
@@ -283,9 +260,14 @@
     <string>生成大头照</string>
    </property>
   </action>
-  <action name="actionchexiao">
+  <action name="actionGuidedFilter">
    <property name="text">
-    <string>撤销</string>
+    <string>导向滤波</string>
+   </property>
+  </action>
+  <action name="actionDefog">
+   <property name="text">
+    <string>图像去雾</string>
    </property>
   </action>
  </widget>

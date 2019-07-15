@@ -16,6 +16,8 @@ private:
 public:
     Model();
     ~Model();
+    bool imageGuided(float& eps);
+    bool imageDefog();
     bool openImage(const std::string &file_name);
     bool saveImage(const std::string &file_name);
     bool changeImageLightContrast(int light, int contrast);

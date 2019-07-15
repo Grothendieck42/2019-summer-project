@@ -25,6 +25,8 @@ ViewModel::ViewModel()
       imageSegmentationCommand(std::make_shared<ImageSegmentationCommand>(this)),
       imageEnlargeCommand(std::make_shared<ImageEnlargeCommand>(this)),
       imageReductCommand(std::make_shared<ImageReductCommand>(this)),
+      imageGuidedCommand(std::make_shared<ImageGuidedCommand>(this)),
+      imageDefogCommand(std::make_shared<ImageDefogCommand>(this)),
       qImage(std::make_shared<QImage>()),
       updateNotification(std::make_shared<UpdateDataNotification>(this)),
       updateTmpNotification(std::make_shared<UpdateTmpNotification>(this)),
@@ -174,6 +176,15 @@ std::shared_ptr<Command> ViewModel::getImageReductCommand(){
     return imageReductCommand;
 }
 
+
+std::shared_ptr<Command> ViewModel::getImageGuidedCommand(){
+    return imageGuidedCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getImageDefogCommand(){
+    return imageDefogCommand;
+}
+
 std::shared_ptr<Command> ViewModel::getTrainEigenModelCommand(){
     return trainEigenModelCommand;
 }
@@ -311,6 +322,14 @@ bool ViewModel::beautifyFaces(){
 
 bool ViewModel::generateHeadshots(const std::string &outputPath){
     return model->generateHeadshots(outputPath);
+}
+
+bool ViewModel::imageGuided(float &eps){
+    return model->imageGuided(eps);
+}
+
+bool ViewModel::imageDefog(){
+    return model->imageDefog();
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

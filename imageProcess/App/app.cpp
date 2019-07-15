@@ -29,6 +29,8 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setImageSegmentationCommand(viewModel->getImageSegmentationCommand());
     view->setImageEnlargeCommand(viewModel->getImageEnlargeCommand());
     view->setImageReductCommand(viewModel->getImageReductCommand());
+    view->setImageGuidedCommand(viewModel->getImageGuidedCommand());
+    view->setImageDefogCommand(viewModel->getImageDefogCommand());
     view->setTrainModelCommand(viewModel->getTrainEigenModelCommand());
     view->setDetectFacesCommand(viewModel->getDetectFacesCommand());
     view->setAnnotateFacesCommand(viewModel->getAnnotateFacesCommand());

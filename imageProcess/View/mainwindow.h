@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 #include <QGraphicsView>
@@ -52,6 +51,8 @@ public:
     void setImageSegmentationCommand(std::shared_ptr<Command> imageSegmentationCommand);
     void setImageEnlargeCommand(std::shared_ptr<Command> imageEnlargeCommand);
     void setImageReductCommand(std::shared_ptr<Command> imageReductCommand);
+    void setImageGuidedCommand(std::shared_ptr<Command> imageGuidedCommand);
+    void setImageDefogCommand(std::shared_ptr<Command> imageDefogCommand);
     void setTrainModelCommand(std::shared_ptr<Command> trainModelCommand);
     void setDetectFacesCommand(std::shared_ptr<Command> detectFacesCommand);
     void setAnnotateFacesCommand(std::shared_ptr<Command> annotateFacesCommand);
@@ -101,6 +102,10 @@ private slots:
 
     void on_actionReduct_triggered();
 
+    void on_actionGuidedFilter_triggered();
+
+    void on_actionDefog_triggered();
+
     void on_actionTrainEigenModel_triggered();
 
     void on_actionDetectFaces_triggered();
@@ -147,6 +152,8 @@ private:
     std::shared_ptr<Command> imageSegmentationCommand;
     std::shared_ptr<Command> imageEnlargeCommand;
     std::shared_ptr<Command> imageReductCommand;
+    std::shared_ptr<Command> imageGuidedCommand;
+    std::shared_ptr<Command> imageDefogCommand;
     std::shared_ptr<Command> trainEigenModelCommand;
     std::shared_ptr<Command> detectFacesCommand;
     std::shared_ptr<Command> annotateFacesCommand;
@@ -155,4 +162,4 @@ private:
     std::shared_ptr<Command> undoCommand;
 };
 
-#endif // MAINWINDOW_H
+

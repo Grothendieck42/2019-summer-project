@@ -155,6 +155,14 @@ void MainWindow::setImageReductCommand(std::shared_ptr<Command> imageReductComma
     this->imageReductCommand=imageReductCommand;
 }
 
+void MainWindow::setImageGuidedCommand(std::shared_ptr<Command> imageGuidedCommand){
+    this->imageGuidedCommand=imageGuidedCommand;
+}
+
+void MainWindow::setImageDefogCommand(std::shared_ptr<Command> imageDefogCommand){
+    this->imageDefogCommand=imageDefogCommand;
+}
+
 void MainWindow::setTrainModelCommand(std::shared_ptr<Command> trainModelCommand){
     this->trainEigenModelCommand=trainModelCommand;
 }
@@ -194,7 +202,6 @@ void MainWindow::on_actionopen_triggered()
     QString fileName = QFileDialog::getOpenFileName(this);
     if(fileName.isEmpty())
     {
-        error("文件名不能为空");
         return;
     }
     else
@@ -234,7 +241,6 @@ void MainWindow::on_actionsave_triggered()
     QString fileName = QFileDialog::getSaveFileName(this);
     if(fileName.isEmpty())
     {
-        error("文件名不能为空");
         return;
     }
     else
@@ -464,5 +470,22 @@ void MainWindow::on_actionchexiao_triggered()
     if(!undoCommand->exec())
     {
         error("撤销失败!");
+    }
+}
+
+
+void MainWindow::on_actionGuidedFilter_triggered()
+{
+    float eps=0.02f*255*255;
+    imageGuidedCommand->setParameter(eps);
+    if(!imageGuidedCommand->exec()){
+        error("引导滤波失败！");
+    }
+}
+
+void MainWindow::on_actionDefog_triggered()
+{
+    if(!imageDefogCommand->exec()){
+        error("去雾操作失败！");
     }
 }
