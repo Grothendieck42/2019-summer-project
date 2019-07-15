@@ -42,6 +42,4 @@ private:
     std::shared_ptr<Command> lightContrastCommand;
     std::shared_ptr<Command> tmpLightContrastCommand;
     std::shared_ptr<Command> displayNowCommand;
-    int old_light;
-    int old_contrast;
 };

@@ -6,6 +6,7 @@
 #include <QString>
 #include <QSlider>
 #include <QSpinBox>
+#include "../Common/Command.h"
 
 namespace Ui {
 class Dialog;
@@ -18,6 +19,9 @@ class Dialog : public QDialog
 public:
     explicit Dialog(const QString &title, const QString &name, int min = 1, int max = 100, QWidget *parent = nullptr);
     ~Dialog();
+    void setCommand(std::shared_ptr<Command> command);
+    void setTmpCommand(std::shared_ptr<Command> tmpCommand);
+    void setDisplayNowCommand(std::shared_ptr<Command> displayNowCommand);
 
 private slots:
     void on_buttonBox_accepted();
@@ -33,6 +37,9 @@ private:
     QLabel *label;
     QSlider *slider;
     QSpinBox *board;
+    std::shared_ptr<Command> command;
+    std::shared_ptr<Command> tmpCommand;
+    std::shared_ptr<Command> displayNowCommand;
 };
 
 #endif // DIALOG_H

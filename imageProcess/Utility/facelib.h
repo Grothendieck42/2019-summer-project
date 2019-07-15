@@ -5,7 +5,6 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/objdetect.hpp>
-#include <opencv/cv.h>
 #include <fstream>
 #include <iostream>
 #include <QProgressDialog>
@@ -15,7 +14,7 @@
 using namespace std;
 using namespace cv;
 
-static string face_home = "/home/ren/Documents/summer/2019-summer-project/imageProcess/Utility/facenote";
+static string face_home = "facenote";
 static string train_dir = face_home + "/FaceLib-default";
 static string cascader = face_home + "/classifier/haarcascade_frontalface_alt2.xml";
 static string model = "model";
