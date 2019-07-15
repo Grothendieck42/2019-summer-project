@@ -5,6 +5,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/objdetect.hpp>
+#include <opencv/cv.h>
 #include <fstream>
 #include <iostream>
 #include <QProgressDialog>
@@ -38,6 +39,12 @@ int addphoto();
 
 int addrow(Mat img);
 
+int find_face(Mat img);
+
+Mat toline(Mat img);
+
+Mat showpicture(int i);
+
 Mat create_average();
 
 Mat trans_back(Mat line);
@@ -52,12 +59,7 @@ double distance(Mat a, Mat  b);
 
 bool train_eigen_face(string dataPath, QProgressDialog* progressDialog);
 
-Mat toline(Mat img);
-
-Mat showpicture(int i);
-
-Mat build_face(Mat img);
-
+Mat annotate_faces(string modelPath, cv::Mat sample);
 
 
 #endif // FACELIB_H

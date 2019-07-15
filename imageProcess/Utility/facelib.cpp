@@ -100,7 +100,7 @@ Mat showpicture(int i) {
     return gray;
 }
 
-Mat build_face(Mat img) {
+int find_face(Mat img) {
     Mat img_l(toline(img));
     img_l = img_l - avg;
     Mat vec_t,df;
@@ -122,33 +122,11 @@ Mat build_face(Mat img) {
         }
     }
 
-    Mat sim=Mat(showpicture(index));
-
-    img_l = df * vec + avg;
-
-
-    normalize(img_l, img_l, 0, 255, NORM_MINMAX);
-
-    Mat img_o(Size(model_width, model_height), CV_8UC1);
-    for (int r = 0; r < model_height; r++) {
-        for (int c = 0; c < model_width; c++) {
-            int index = r * model_width + c;
-            img_o.at<uchar>(r, c) = img_l.at<float>(0, index);
-        }
-
-    }
-
-    vector<Mat> array;
-    array.push_back(img);
-    array.push_back(sim);
-    array.push_back(img_o);
-
-    Mat tog_img;
-    hconcat(array, tog_img);
-    namedWindow("result", 1);
-    imshow("result", tog_img);
-    return tog_img;
+//    Mat sim=Mat(showpicture(index));
+    cout << index << endl;
+    return index;
 }
+
 int addphoto() {
     type_number++;
     return 0;
@@ -371,7 +349,86 @@ bool train_eigen_face(string dataPath, QProgressDialog* progressDialog){
     vec1 = *empty;
     dat = *empty;
     type_matrix = *empty;
-    progressDialog->setLabelText("finishing ...");
+    progressDialog->setLabelText("fsinishing ...");
     progressGoo(90, 100, progressDialog);
     return true;
+}
+
+Mat annotate_faces(string modelPath, cv::Mat sample){
+    int flag = -1;
+    double y = 10;
+    double yy = 15;
+    double h = 10;
+    double x = 15;
+    model = modelPath;
+    cv::Mat s_face, gray_face;
+    s_face = sample;
+    std::cout<<s_face.size()<<std::endl;
+    if (s_face.type() == CV_8UC1)
+    {
+
+        gray_face = s_face;
+
+    }
+
+    else if (s_face.type() == CV_8UC3)
+
+    {
+
+        gray_face = s_face;
+
+
+    }
+//    equalizeHist(gray_face, gray_face);
+
+    vector<Rect> faces;
+    CascadeClassifier cascade(cascader);
+    cascade.detectMultiScale(gray_face, faces);
+    if (faces.size() == 0) {
+        model_reader();
+        resize(gray_face, gray_face, Size(model_width, model_height));
+        flag = find_face(gray_face);
+    }
+    else if(faces.size()>=1) {
+        Mat roi;
+        model_reader();
+        vector<Rect>::const_iterator r = faces.begin();
+        CascadeClassifier eyecascade(eyecascader);
+        vector<Rect> eyes;
+        roi = Mat(gray_face, *r);
+        eyecascade.detectMultiScale(roi, eyes, 1.1);
+        if (eyes.size() !=0 ) {
+            double ratio = 3.5;
+            cout << "find eyes" << endl;
+            vector<Rect>::const_iterator e = eyes.begin();
+            double a = e[0].y;
+            double b = r[0].height - a;
+            if (b >= ratio * a) {
+                x = r[0].x;
+                y = min((double)gray_face.size().height, r[0].y - (ratio*a - b));
+                h = min(y, gray_face.size().height - y + 4 * a);
+                yy = y+h;
+                roi = Mat(gray_face, Rect(r[0].x, y, r[0].width, h));
+            }
+            else {
+                x = r[0].x;
+                y = r[0].y + (ratio*a - b);
+                h = min(y, gray_face.size().height - y + 4 * a);
+                yy = y+h;
+                roi = Mat(gray_face, Rect(r[0].x, y, r[0].width, h));
+            }
+        }
+        roi = Mat(gray_face, *r);
+        resize(roi, roi, Size(model_width, model_height));
+        flag = find_face(roi);
+    }
+    char buf[32];
+    memset(buf, 0, 32);
+    sprintf(buf, "%d", flag);
+    IplImage *ipl_img = new IplImage(sample);
+    CvFont font;
+    cvInitFont(&font,CV_FONT_HERSHEY_COMPLEX,0.5,0.5,0,2,8);
+    cvPutText(ipl_img, buf, Point((int)x,(int)yy), &font, cvScalar(255,0,0,1));
+    cv::Mat m = cvarrToMat(ipl_img);
+    return m;
 }

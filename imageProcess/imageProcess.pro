@@ -65,8 +65,10 @@ SOURCES += \
         ViewModel/Command/DisplayNowCommand.cpp \
         ViewModel/Command/UndoCommand.cpp \
         ViewModel/Command/TrainEigenModelCommand.cpp \
+        ViewModel/Command/AnnotateFacesCommand.cpp \
         Utility/facelib.cpp \
         View/dialog.cpp
+
 
 HEADERS += \
         View/mainwindow.h \
@@ -110,7 +112,6 @@ HEADERS += \
         ViewModel/Command/TrainEigenModelCommand.h \
         ViewModel/Command/AnnotateFacesCommand.h \
         ViewModel/Command/BeautifyFacesCommand.h \
-        Common/Common.h \
         ViewModel/Command/GenerateHeadshotsCommand.h \
         Utility/facelib.h \
         View/dialog.h

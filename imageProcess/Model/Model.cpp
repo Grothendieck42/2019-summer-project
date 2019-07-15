@@ -332,6 +332,15 @@ bool Model::detectFaces(const std::string &modelPath){
 }
 
 bool Model::annotateFaces(const std::string &modelPath){
+    std::cout<<"Model data in path: "+modelPath<<std::endl;
+    if(imageList->empty())
+        return false;
+    Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    newImage.setMat(annotate_faces(modelPath, newImage.getMat()));
+    imageList->addImage(newImage);
+    notification->notify();
     return true;
 }
 

@@ -404,7 +404,19 @@ void MainWindow::on_actionDetectFaces_triggered()
 }
 
 void MainWindow::on_actionAnnotateFaces_triggered(){
-
+    QString modelPath = QFileDialog::getOpenFileName(this);
+    if(modelPath.isEmpty())
+    {
+        return;
+    }
+    else
+    {
+//        std::cout<<modelPath.toStdString()<<std::endl;
+//        annotateFacesCommand->say();
+        annotateFacesCommand->setParameter(modelPath.toStdString());
+//        std::cout<<"!!"<<std::endl;
+        annotateFacesCommand->exec();
+    }
 }
 
 void MainWindow::on_actionBeautifyFaces_triggered(){

@@ -315,3 +315,7 @@ bool Image::checkColor()
 cv::Mat Image::getMat(){
     return image;
 }
+
+void Image::setMat(cv::Mat im){
+    image = im;
+}
