@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -13,5 +12,5 @@ public:
     ImageDefogCommand(ViewModel* view_model);
     ~ImageDefogCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

@@ -2,7 +2,6 @@
 #include "../ViewModel.h"
 #include <any>
 #include <string>
-#include <QDebug>
 
 ToBinaryCommand::ToBinaryCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,9 +13,9 @@ ToBinaryCommand::~ToBinaryCommand()
     // nothing
 }
 
-void ToBinaryCommand::exec()
+bool ToBinaryCommand::exec()
 {
-    viewModel->toBinary(threshold);
+    return viewModel->toBinary(threshold);
 }
 
 void ToBinaryCommand::setParameter(std::any params)

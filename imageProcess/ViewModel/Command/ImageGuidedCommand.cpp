@@ -14,9 +14,9 @@ ImageGuidedCommand::~ImageGuidedCommand()
     // nothing
 }
 
-void ImageGuidedCommand::exec()
+bool ImageGuidedCommand::exec()
 {
-    viewModel->imageGuided(eps);
+    return viewModel->imageGuided(eps);
 }
 
 void ImageGuidedCommand::setParameter(std::any params)

@@ -3,7 +3,9 @@
 #include "../Common/myImage.h"
 #include "../Common/ImageList.h"
 #include "../Common/Notification.h"
+#include "../Utility/utility.h"
 #include <string>
+#include <QProgressDialog>
 
 class Model
 {
@@ -14,29 +16,36 @@ private:
 public:
     Model();
     ~Model();
-    void openImage(const std::string &file_name);
-    void saveImage(const std::string &file_name);
-    void changeImageLightContrast(int light, int contrast);
-    void changeTmpImageLightContrast(int light, int contrast);
-    void averBlur();
-    void midBlur();
-    void gaussBlur();
-    void bilaterBlur();
-    void toGray();
-    void toBinary(int& threshold);
-    void detectEdge(int& threshold);
-    void grayEqualizeHist();
-    void colorEqualizeHist();
-    void laplace();
-    void logEnhance();
-    void gammaCorrect(float& fGamma);
-    void addGaussNoise();
-    void addSaltNoise(int& n);
-    void imageSegmentation(int& threshold);
-    void imageEnlarge();
-    void imageReduct();
-    void imageGuided(float& eps);
-    void imageDefog();
+    bool imageGuided(float& eps);
+    bool imageDefog();
+    bool openImage(const std::string &file_name);
+    bool saveImage(const std::string &file_name);
+    bool changeImageLightContrast(int light, int contrast);
+    bool changeTmpImageLightContrast(int light, int contrast);
+    bool display();
+    bool undo();
+    bool averBlur();
+    bool midBlur();
+    bool gaussBlur();
+    bool bilaterBlur();
+    bool toGray();
+    bool toBinary(int& threshold);
+    bool detectEdge(int& threshold);
+    bool grayEqualizeHist();
+    bool colorEqualizeHist();
+    bool laplace();
+    bool logEnhance();
+    bool gammaCorrect(float& fGamma);
+    bool addGaussNoise();
+    bool addSaltNoise(int& n);
+    bool imageSegmentation(int& threshold);
+    bool imageEnlarge();
+    bool imageReduct();
+    bool trainModel(const std::string &dataPath);
+    bool detectFaces(const std::string &modelPath);
+    bool annotateFaces(const std::string &modelPath);
+    bool beautifyFaces();
+    bool generateHeadshots(const std::string &outputPath);
     std::shared_ptr<ImageList> getImageList();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void setUpdateTmpNotification(std::shared_ptr<Notification> notification);

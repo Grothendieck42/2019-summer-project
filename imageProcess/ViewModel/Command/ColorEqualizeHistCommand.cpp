@@ -1,8 +1,6 @@
 #include "ColorEqualizeHistCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 ColorEqualizeHistCommand::ColorEqualizeHistCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,12 +12,12 @@ ColorEqualizeHistCommand::~ColorEqualizeHistCommand()
     // nothing
 }
 
-void ColorEqualizeHistCommand::exec()
+bool ColorEqualizeHistCommand::exec()
 {
-    viewModel->colorEqualizeHist();
+    return viewModel->colorEqualizeHist();
 }
 
 void ColorEqualizeHistCommand::setParameter(std::any params)
 {
-   //file_name = *std::any_cast<std::string>(&params);
+
 }

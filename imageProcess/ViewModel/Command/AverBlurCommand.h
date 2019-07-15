@@ -12,5 +12,5 @@ public:
     AverBlurCommand(ViewModel* view_model);
     ~AverBlurCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

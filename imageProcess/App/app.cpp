@@ -8,6 +8,7 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setQImage(viewModel->getQImage());
     // view绑定命令
     view->setOpenFileCommand(viewModel->getOpenFileCommand());
+    view->setDisplayNowCommand(viewModel->getDisplayNowCommand());
     view->setSaveFileCommand(viewModel->getSaveFileCommand());
     view->setLightContrastCommand(viewModel->getLightContrastCommand());
     view->setTmpLightContrastCommand(viewModel->getTmpLightContrastCommand());
@@ -30,6 +31,12 @@ ImageApp::ImageApp() : view(std::make_shared<MainWindow>()), model(std::make_sha
     view->setImageReductCommand(viewModel->getImageReductCommand());
     view->setImageGuidedCommand(viewModel->getImageGuidedCommand());
     view->setImageDefogCommand(viewModel->getImageDefogCommand());
+    view->setTrainModelCommand(viewModel->getTrainEigenModelCommand());
+    view->setDetectFacesCommand(viewModel->getDetectFacesCommand());
+    view->setAnnotateFacesCommand(viewModel->getAnnotateFacesCommand());
+    view->setBeautifyFacesCommand(viewModel->getBeautifyFacesCommand());
+    view->setGenerateHeadshotsCommand(viewModel->getGenerateHeadshotsCommand());
+    view->setUndoCommand(viewModel->getUndoCommand());
     // view model绑定notifiacation
     viewModel->setUpdateNotification(view->getNotification());
 }

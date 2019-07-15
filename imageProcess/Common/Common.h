@@ -5,3 +5,4 @@ struct lightContrast
     int light;
     int contrast;
 };
+

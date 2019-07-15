@@ -12,5 +12,5 @@ public:
     BilaterBlurCommand(ViewModel* viewModel);
     ~BilaterBlurCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

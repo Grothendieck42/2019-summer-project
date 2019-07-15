@@ -1,8 +1,6 @@
 #include "ImageSegmentationCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 ImageSegmentationCommand::ImageSegmentationCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,9 +12,9 @@ ImageSegmentationCommand::~ImageSegmentationCommand()
     // nothing
 }
 
-void ImageSegmentationCommand::exec()
+bool ImageSegmentationCommand::exec()
 {
-    viewModel->imageSegmentation(threshold);
+    return viewModel->imageSegmentation(threshold);
 }
 
 void ImageSegmentationCommand::setParameter(std::any params)

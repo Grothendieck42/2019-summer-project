@@ -14,9 +14,9 @@ ImageDefogCommand::~ImageDefogCommand()
     // nothing
 }
 
-void ImageDefogCommand::exec()
+bool ImageDefogCommand::exec()
 {
-    viewModel->imageDefog();
+    return viewModel->imageDefog();
 }
 
 void ImageDefogCommand::setParameter(std::any params)

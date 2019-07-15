@@ -67,3 +67,14 @@ cv::Mat QImageToMat(QImage image)
     }
     return mat;
 }
+
+void progressGo(int old, int value, QProgressDialog* ptr){
+    for(int i=old;i<value;i++)
+    {
+      for(int j=0;j<40000;j++);
+      ptr->setValue(i);
+      QApplication::processEvents();
+      if(ptr->wasCanceled())
+        break;
+    }
+}

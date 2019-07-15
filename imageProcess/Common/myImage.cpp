@@ -28,7 +28,9 @@ Image& Image::operator=(const Image &im)
 
 void Image::openImage(const std::string &file_path)
 {
+    std::cout<<file_path<<std::endl;
     image = cv::imread(file_path);
+    std::cout<<image.size()<<std::endl;
 }
 
 void Image::saveImage(const std::string &file_path)
@@ -69,8 +71,12 @@ void Image::gaussBlur()
 Image Image::bilaterBlur()
 {
     Image new_image;
+    Image res;
     cv::bilateralFilter(image, new_image.image, 15, 50, 10);
-    return new_image;
+    res.image = cv::Mat::zeros(new_image.image.size(),new_image.image.type());
+    cv::Mat kernel = (cv::Mat_<char>(3,3)<<0,-1,0,-1,5,-1,0,-1,0);
+    cv::filter2D(new_image.image, res.image, new_image.image.depth(),kernel);
+    return res;
 }
 
 void Image::toGray(){
@@ -519,8 +525,31 @@ QImage Image::getQImage()
     return MatToQImage(image);
 }
 
-void Image::show()
+bool Image::empty()
 {
-    cv::imshow("hh", image);
-    cv::waitKey(1000);
+    return image.empty();
+}
+
+bool Image::checkGray()
+{
+    if(image.type() == CV_8UC1)
+        return true;
+    else
+        return false;
+}
+
+bool Image::checkColor()
+{
+    if(image.type() == CV_8UC3)
+        return true;
+    else
+        return false;
+}
+
+cv::Mat Image::getMat(){
+    return image;
+}
+
+void Image::setMat(cv::Mat im){
+    image = im;
 }

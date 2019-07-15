@@ -14,5 +14,5 @@ public:
     ToBinaryCommand(ViewModel* view_model);
     ~ToBinaryCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

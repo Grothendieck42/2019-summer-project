@@ -14,5 +14,5 @@ public:
     LightContrastCommand(ViewModel* view_model);
 	~LightContrastCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

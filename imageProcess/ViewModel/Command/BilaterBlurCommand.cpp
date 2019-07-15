@@ -13,9 +13,9 @@ BilaterBlurCommand::~BilaterBlurCommand()
     // nothing
 }
 
-void BilaterBlurCommand::exec()
+bool BilaterBlurCommand::exec()
 {
-    viewModel->bilaterBlur();
+    return viewModel->bilaterBlur();
 }
 
 void BilaterBlurCommand::setParameter(std::any params)

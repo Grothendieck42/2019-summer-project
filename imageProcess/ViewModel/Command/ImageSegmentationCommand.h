@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -14,5 +13,5 @@ public:
     ImageSegmentationCommand(ViewModel* view_model);
     ~ImageSegmentationCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -14,5 +13,5 @@ public:
     ImageGuidedCommand(ViewModel* view_model);
     ~ImageGuidedCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

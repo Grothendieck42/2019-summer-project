@@ -1,8 +1,6 @@
 #include "ImageReductCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 ImageReductCommand::ImageReductCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,9 +12,9 @@ ImageReductCommand::~ImageReductCommand()
     // nothing
 }
 
-void ImageReductCommand::exec()
+bool ImageReductCommand::exec()
 {
-    viewModel->imageReduct();
+    return viewModel->imageReduct();
 }
 
 void ImageReductCommand::setParameter(std::any params)

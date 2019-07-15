@@ -13,9 +13,9 @@ LightContrastCommand::~LightContrastCommand()
     // nothing
 }
 
-void LightContrastCommand::exec()
+bool LightContrastCommand::exec()
 {
-    viewModel->changeImageLightContrast(light, contrast);
+    return viewModel->changeImageLightContrast(light, contrast);
 }
 
 void LightContrastCommand::setParameter(std::any params)

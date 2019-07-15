@@ -17,15 +17,21 @@
 #include "Command/ColorEqualizeHistCommand.h"
 #include "Command/LaplaceCommand.h"
 #include "Command/LogEnhanceCommand.h"
+#include "Command/UndoCommand.h"
 #include "Command/GammaCorrectCommand.h"
 #include "Command/AddGaussNoiseCommand.h"
 #include "Command/AddSaltNoiseCommand.h"
 #include "Command/ImageSegmentationCommand.h"
+#include "Command/DisplayNowCommand.h"
 #include "Command/ImageEnlargeCommand.h"
 #include "Command/ImageReductCommand.h"
 #include "Command/ImageGuidedCommand.h"
 #include "Command/ImageDefogCommand.h"
-
+#include "Command/TrainEigenModelCommand.h"
+#include "Command/DetectFacesCommand.h"
+#include "Command/AnnotateFacesCommand.h"
+#include "Command/BeautifyFacesCommand.h"
+#include "Command/GenerateHeadshotsCommand.h"
 #include "../Common/Notification.h"
 #include "Notification/UpdateDataNotification.h"
 #include "Notification/UpdateTmpNotification.h"
@@ -36,6 +42,8 @@ class ViewModel
 {
 private:
     std::shared_ptr<Model> model;
+    std::shared_ptr<UndoCommand> undoCommand;
+    std::shared_ptr<DisplayNowCommand> displayNowCommand;
     std::shared_ptr<OpenFileCommand> openFileCommand;
     std::shared_ptr<SaveFileCommand> saveFileCommand;
     std::shared_ptr<LightContrastCommand> lightContrastCommand;
@@ -63,6 +71,12 @@ private:
     std::shared_ptr<Notification> notification;
     std::shared_ptr<UpdateDataNotification> updateNotification;
     std::shared_ptr<UpdateTmpNotification> updateTmpNotification;
+    std::shared_ptr<TrainEigenModelCommand> trainEigenModelCommand;
+    std::shared_ptr<DetectFacesCommand> detectFacesCommand;
+    std::shared_ptr<AnnotateFacesCommand> annotateFacesCommand;
+    std::shared_ptr<BeautifyFacesCommand> beautifyFacesCommand;
+    std::shared_ptr<GenerateHeadshotsCommand> generateHeadshotsCommand;
+
 public:
     ViewModel();
     ~ViewModel();
@@ -71,14 +85,16 @@ public:
     std::shared_ptr<Command> getSaveFileCommand();
     std::shared_ptr<Command> getLightContrastCommand();
     std::shared_ptr<Command> getTmpLightContrastCommand();
-    void openImage(const std::string &file_name);
-    void saveImage(const std::string &file_name);
-    void averBlur();
-    void midBlur();
-    void gaussBlur();
-    void bilaterBlur();
-    void changeTmpImageLightContrast(int light, int contrast);
-    void changeImageLightContrast(int light, int contrast);
+    bool openImage(const std::string &file_name);
+    bool saveImage(const std::string &file_name);
+    bool averBlur();
+    bool midBlur();
+    bool gaussBlur();
+    bool bilaterBlur();
+    bool changeTmpImageLightContrast(int light, int contrast);
+    bool changeImageLightContrast(int light, int contrast);
+    std::shared_ptr<Command> getUndoCommand();
+    std::shared_ptr<Command> getDisplayNowCommand();
     std::shared_ptr<Command> getAverBlurCommand();
     std::shared_ptr<Command> getMidBlurCommand();
     std::shared_ptr<Command> getGaussBlurCommand();
@@ -98,23 +114,35 @@ public:
     std::shared_ptr<Command> getImageReductCommand();
     std::shared_ptr<Command> getImageGuidedCommand();
     std::shared_ptr<Command> getImageDefogCommand();
-    void toGray();
-    void toBinary(int& threshold);
-    void detectEdge(int& threshold);
-    void grayEqualizeHist();
-    void colorEqualizeHist();
-    void laplace();
-    void logEnhance();
-    void gammaCorrect(float& fGamma);
-    void addGaussNoise();
-    void addSaltNoise(int& n);
-    void imageSegmentation(int& threshold);
-    void imageEnlarge();
-    void imageReduct();
-    void imageGuided(float& eps);
-    void imageDefog();
+    std::shared_ptr<Command> getTrainEigenModelCommand();
+    std::shared_ptr<Command> getDetectFacesCommand();
+    std::shared_ptr<Command> getAnnotateFacesCommand();
+    std::shared_ptr<Command> getBeautifyFacesCommand();
+    std::shared_ptr<Command> getGenerateHeadshotsCommand();
+    bool imageGuided(float& eps);
+    bool imageDefog();
+    bool display();
+    bool undo();
+    bool toGray();
+    bool toBinary(int& threshold);
+    bool detectEdge(int& threshold);
+    bool grayEqualizeHist();
+    bool colorEqualizeHist();
+    bool laplace();
+    bool logEnhance();
+    bool gammaCorrect(float& fGamma);
+    bool addGaussNoise();
+    bool addSaltNoise(int& n);
+    bool imageSegmentation(int& threshold);
+    bool imageEnlarge();
+    bool imageReduct();
     std::shared_ptr<QImage> getQImage();
     void setUpdateNotification(std::shared_ptr<Notification> notification);
     void convert();
     void notify();
+    bool trainModel(const std::string &dataPath);
+    bool detectFaces(const std::string &modelPath);
+    bool annotateFaces(const std::string &modelPath);
+    bool beautifyFaces();
+    bool generateHeadshots(const std::string &outputPath);
 };
