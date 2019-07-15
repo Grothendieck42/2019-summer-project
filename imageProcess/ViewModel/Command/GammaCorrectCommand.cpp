@@ -1,8 +1,6 @@
 #include "GammaCorrectCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 GammaCorrectCommand::GammaCorrectCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,9 +12,9 @@ GammaCorrectCommand::~GammaCorrectCommand()
     // nothing
 }
 
-void GammaCorrectCommand::exec()
+bool GammaCorrectCommand::exec()
 {
-    viewModel->gammaCorrect(fGamma);
+    return viewModel->gammaCorrect(fGamma);
 }
 
 void GammaCorrectCommand::setParameter(std::any params)

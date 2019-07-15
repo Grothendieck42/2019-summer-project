@@ -13,9 +13,9 @@ GaussBlurCommand::~GaussBlurCommand()
     // nothing
 }
 
-void GaussBlurCommand::exec()
+bool GaussBlurCommand::exec()
 {
-    viewModel->gaussBlur();
+    return viewModel->gaussBlur();
 }
 
 void GaussBlurCommand::setParameter(std::any params)

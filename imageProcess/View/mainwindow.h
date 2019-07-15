@@ -5,6 +5,7 @@
 #include <QGraphicsView>
 #include <QFileDialog>
 #include <QString>
+#include <QMenu>
 #include <QPixmap>
 #include <QGraphicsScene>
 #include <memory>
@@ -25,8 +26,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void update();
+    void error(const QString &content);
     void setQImage(std::shared_ptr<QImage> qImage);
     ~MainWindow();
+    void setDisplayNowCommand(std::shared_ptr<Command> displayNowCommand);
     void setOpenFileCommand(std::shared_ptr<Command> openFileCommand);
     void setSaveFileCommand(std::shared_ptr<Command> saveFileCommand);
     void setAverBlurCommand(std::shared_ptr<Command> averBlurCommand);
@@ -53,6 +56,7 @@ public:
     void setAnnotateFacesCommand(std::shared_ptr<Command> annotateFacesCommand);
     void setBeautifyFacesCommand(std::shared_ptr<Command> beautifyFacesCommand);
     void setGenerateHeadshotsCommand(std::shared_ptr<Command> generateHeadshotsCommand);
+    void setUndoCommand(std::shared_ptr<Command> undoCommand);
     std::shared_ptr<Notification> getNotification();
 private slots:
 
@@ -106,13 +110,18 @@ private slots:
 
     void on_actionGenerateHeadshots_triggered();
 
+    void on_actionchexiao_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<QImage> qImage;
     QGraphicsView* graphView;
     QGraphicsScene *scene;
-
+    QMenu *tool_item;
+    QMenu *adjust_item;
+    QMenu *enlarge_item;
     LightConstractDialog lightDialog;
+
     std::shared_ptr<UpdateNotification> updateNotification;
     std::shared_ptr<Command> openFileCommand;
     std::shared_ptr<Command> saveFileCommand;
@@ -138,6 +147,7 @@ private:
     std::shared_ptr<Command> annotateFacesCommand;
     std::shared_ptr<Command> beautifyFacesCommand;
     std::shared_ptr<Command> generateHeadshotsCommand;
+    std::shared_ptr<Command> undoCommand;
 };
 
 #endif // MAINWINDOW_H

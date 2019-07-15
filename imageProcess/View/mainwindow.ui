@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ImageProcess</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>1054</width>
-     <height>28</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -46,6 +46,9 @@
     <addaction name="menu_2"/>
    </widget>
    <widget class="QMenu" name="menu_3">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="title">
      <string>工具</string>
     </property>
@@ -100,7 +103,14 @@
     <addaction name="actionBeautifyFaces"/>
     <addaction name="actionGenerateHeadshots"/>
    </widget>
+   <widget class="QMenu" name="menu_8">
+    <property name="title">
+     <string>编辑</string>
+    </property>
+    <addaction name="actionchexiao"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_8"/>
    <addaction name="menu_3"/>
    <addaction name="menu_4"/>
    <addaction name="menu_7"/>
@@ -144,6 +154,9 @@
    </property>
   </action>
   <action name="actionToGray">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>转化为灰度图</string>
    </property>
@@ -154,6 +167,9 @@
    </property>
   </action>
   <action name="actionlight">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>调整亮度/对比度</string>
    </property>
@@ -184,6 +200,9 @@
    </property>
   </action>
   <action name="actionGrayEqualizeHist">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>灰度直方图均衡化</string>
    </property>
@@ -262,6 +281,11 @@
   <action name="actionGenerateHeadshots">
    <property name="text">
     <string>Generate Headshots</string>
+   </property>
+  </action>
+  <action name="actionchexiao">
+   <property name="text">
+    <string>撤销</string>
    </property>
   </action>
  </widget>

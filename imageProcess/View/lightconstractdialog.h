@@ -1,6 +1,4 @@
-#ifndef LIGHTCONSTRACTDIALOG_H
-#define LIGHTCONSTRACTDIALOG_H
-
+#pragma once
 #include <QDialog>
 #include <QSlider>
 #include <QSpinBox>
@@ -20,6 +18,7 @@ public:
     ~LightConstractDialog();
     void setLightContrastCommand(std::shared_ptr<Command> lightContrastCommand);
     void setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand);
+    void setDisplayNowCommand(std::shared_ptr<Command> displayNowCommand);
 
 private slots:
     void on_buttonBox_accepted();
@@ -42,8 +41,7 @@ private:
     QSlider* contrastSlider;
     std::shared_ptr<Command> lightContrastCommand;
     std::shared_ptr<Command> tmpLightContrastCommand;
+    std::shared_ptr<Command> displayNowCommand;
     int old_light;
     int old_contrast;
 };
-
-#endif // LIGHTCONSTRACTDIALOG_H

@@ -12,5 +12,5 @@ public:
     GaussBlurCommand(ViewModel* viewModel);
     ~GaussBlurCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

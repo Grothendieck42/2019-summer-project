@@ -13,9 +13,9 @@ TrainEigenModelCommand::~TrainEigenModelCommand()
     // nothing
 }
 
-void TrainEigenModelCommand::exec()
+bool TrainEigenModelCommand::exec()
 {
-    viewModel->trainModel(dataPath);
+    return viewModel->trainModel(dataPath);
 }
 
 void TrainEigenModelCommand::setParameter(std::any params)

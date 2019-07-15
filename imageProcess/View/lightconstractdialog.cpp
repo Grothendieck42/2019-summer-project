@@ -8,6 +8,7 @@ LightConstractDialog::LightConstractDialog(QWidget *parent) :
     ui(new Ui::LightConstractDialog)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_QuitOnClose, false);
     lightBoard = this->findChild<QSpinBox*>("lightBoard");
     contrastBoard = this->findChild<QSpinBox*>("contrastBoard");
     lightSlider = this->findChild<QSlider*>("lightSlide");
@@ -27,6 +28,7 @@ void LightConstractDialog::on_buttonBox_accepted()
 
 void LightConstractDialog::on_buttonBox_rejected()
 {
+    displayNowCommand->exec();
 }
 
 void LightConstractDialog::on_contrastBoard_valueChanged(int arg1)
@@ -61,5 +63,10 @@ void LightConstractDialog::setLightContrastCommand(std::shared_ptr<Command> ligh
 void LightConstractDialog::setTmpLightContrastCommand(std::shared_ptr<Command> tmpLightContrastCommand)
 {
     this->tmpLightContrastCommand = tmpLightContrastCommand;
+}
+
+void LightConstractDialog::setDisplayNowCommand(std::shared_ptr<Command> displayNowCommand)
+{
+    this->displayNowCommand = displayNowCommand;
 }
 

@@ -1,8 +1,6 @@
 #include "AddSaltNoiseCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 AddSaltNoiseCommand::AddSaltNoiseCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,9 +12,9 @@ AddSaltNoiseCommand::~AddSaltNoiseCommand()
     // nothing
 }
 
-void AddSaltNoiseCommand::exec()
+bool AddSaltNoiseCommand::exec()
 {
-    viewModel->addSaltNoise(n);
+    return viewModel->addSaltNoise(n);
 }
 
 void AddSaltNoiseCommand::setParameter(std::any params)

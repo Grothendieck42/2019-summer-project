@@ -19,42 +19,69 @@ Model::~Model()
 // 具体操作写在myImage.cpp Image对象中
 // Model层调用底层的方法
 
-void Model::openImage(const std::string &file_name)
+bool Model::openImage(const std::string &file_name)
 {
     imageList->clearList();
     Image image;
     image.openImage(file_name);
+    if(image.empty())
+        return false;
     imageList->addImage(image);
     notification->notify();
+    return true;
 }
 
-void Model::saveImage(const std::string &file_name)
+bool Model::saveImage(const std::string &file_name)
 {
+    if(imageList->empty())
+        return false;
+    if(imageList->getImage().empty())
+        return false;
     imageList->getImage().saveImage(file_name);
+    return true;
 }
 
-void Model::toGray()
+bool Model::toGray()
 {
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    if(newImage.checkGray())
+        return false;
     newImage.toGray();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::toBinary(int &threshold)
+bool Model::toBinary(int &threshold)
 {
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.toBinary(threshold);
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::detectEdge(int &threshold)
+bool Model::detectEdge(int &threshold)
 {
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    if(!newImage.checkGray())
+        return false;
     newImage.detectEdge(threshold);
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
 std::shared_ptr<ImageList> Model::getImageList()
@@ -62,127 +89,229 @@ std::shared_ptr<ImageList> Model::getImageList()
     return imageList;
 }
 
-void Model::changeImageLightContrast(int light, int contrast)
+bool Model::changeImageLightContrast(int light, int contrast)
 {
+    if(imageList->empty())
+        return false;
 	Image image = imageList->getImage();
+    if(image.empty())
+        return false;
     image.changeImageLightContrast(light, contrast);
 	imageList->addImage(image);
 	notification->notify();
+    return true;
 }
 
-void Model::changeTmpImageLightContrast(int light, int contrast)
+bool Model::changeTmpImageLightContrast(int light, int contrast)
 {
+    if(imageList->empty())
+        return false;
     Image image = imageList->getImage();
+    if(image.empty())
+        return false;
     image.changeImageLightContrast(light, contrast);
     tmpNotification->setParameter(image);
     tmpNotification->notify();
+    return true;
 }
 
-void Model::averBlur()
+bool Model::averBlur()
 {
+    if(imageList->empty())
+        return false;
     Image image = imageList->getImage();
+    if(image.empty())
+        return false;
     image.averBlur();
     imageList->addImage(image);
     notification->notify();
+    return true;
 }
 
-void Model::midBlur()
+bool Model::midBlur()
 {
+    if(imageList->empty())
+        return false;
     Image image = imageList->getImage();
+    if(image.empty())
+        return false;
     image.midBlur();
     imageList->addImage(image);
     notification->notify();
+    return true;
 }
 
-void Model::gaussBlur()
+bool Model::display()
 {
+    notification->notify();
+    return true;
+}
+
+bool Model::undo()
+{
+    if(imageList->empty())
+        return false;
+    imageList->deleteImage();
+    notification->notify();
+    return true;
+}
+
+bool Model::gaussBlur()
+{
+    if(imageList->empty())
+        return false;
     Image image = imageList->getImage();
+    if(image.empty())
+        return false;
     image.gaussBlur();
     imageList->addImage(image);
     notification->notify();
+    return true;
 }
 
-void Model::bilaterBlur()
+bool Model::bilaterBlur()
 {
+    if(imageList->empty())
+        return false;
     Image image = imageList->getImage();
+    if(image.empty())
+        return false;
     imageList->addImage(image.bilaterBlur());
     notification->notify();
+    return true;
 }
 
-void Model::grayEqualizeHist()
+bool Model::grayEqualizeHist()
 {
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    if(!newImage.checkGray())
+        return false;
     newImage.grayEqualizeHist();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::colorEqualizeHist()
+bool Model::colorEqualizeHist()
 {
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    if(!newImage.checkColor())
+        return false;
     newImage.colorEqualizeHist();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::laplace(){
+bool Model::laplace(){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.laplace();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::logEnhance(){
+bool Model::logEnhance(){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.logEnhance();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::gammaCorrect(float &fGamma){
+bool Model::gammaCorrect(float &fGamma){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.gammaCorrect(fGamma);
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::addGaussNoise(){
+bool Model::addGaussNoise(){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.addGaussNoise();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::addSaltNoise(int &n){
+bool Model::addSaltNoise(int &n){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.addSaltNoise(n);
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::imageSegmentation(int &threshold){
+bool Model::imageSegmentation(int &threshold){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
+    if(!newImage.checkColor())
+        return false;
     newImage.imageSegmentation(threshold);
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::imageEnlarge(){
+bool Model::imageEnlarge(){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.imageEnlarge();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::imageReduct(){
+bool Model::imageReduct(){
+    if(imageList->empty())
+        return false;
     Image newImage=imageList->getImage();
+    if(newImage.empty())
+        return false;
     newImage.imageReduct();
     imageList->addImage(newImage);
     notification->notify();
+    return true;
 }
 
-void Model::trainModel(const std::string &dataPath){
-//    std::cout<<"Train data in path: "+dataPath<<std::endl;
+
+bool Model::trainModel(const std::string &dataPath){
+    std::cout<<"Train data in path: "+dataPath<<std::endl;
 //    QProgressDialog *m_pConnectProBar = new QProgressDialog();
 //    m_pConnectProBar->setRange(0,100);
 //    m_pConnectProBar->setOrientation(Qt::Horizontal);
@@ -190,50 +319,52 @@ void Model::trainModel(const std::string &dataPath){
 //    m_pConnectProBar->setVisible(true);
 //    m_pConnectProBar->setWindowTitle("Please Wait");
 //    m_pConnectProBar->setLabelText("Starting...");
+//    train_dir = dataPath;
+//    string list_name = dataPath+"/list";
+//    ifstream info_list(list_name);
+//    char buf[100];
+//    while (!info_list.eof() && type_number<maxnum)
+//    {
+//        memset(buf, 0, 100);
+//        info_list.getline(buf, 100);
+//        buf[strlen(buf)-1] = 0;
+//        std::string file = dataPath + "/" + string(buf);
+//        cout << file << endl;
+//        cv::Mat img,gray;
+//        vector<Rect> faces;
 
-    string list_name = dataPath+"/list";
-    ifstream info_list(list_name);
-    char buf[100];
-    while (!info_list.eof() && type_number<maxnum)
-    {
-        memset(buf, 0, 100);
-        info_list.getline(buf, 100);
-        const std::string file = train_dir + "/" + string(buf);
-        cout << file << endl;
-        cv::Mat img,gray;
-        vector<Rect> faces;
-        img = cv::imread(file);
-        Image *image = new Image();
-        image->openImage(file);
-        cout << image->getMat().size() << endl;
-        if (!img.empty()) {
-            cout << file << endl;
-            addphoto();
-            cvtColor(img, gray, CV_BGR2GRAY);
-            equalizeHist(gray, gray);
-            resize(gray, gray, Size(model_width, model_height));
-            addrow(gray);
+//        img = cv::imread(file);
 
-        }
-    }
+//        cout << img.size() << endl;
+//        if (!img.empty()) {
+//            cout << file << endl;
+//            addphoto();
+//            cvtColor(img, gray, CV_BGR2GRAY);
+//            equalizeHist(gray, gray);
+//            resize(gray, gray, Size(model_width, model_height));
+//            addrow(gray);
+
+//        }
+//    }
     train_eigen_face(dataPath, NULL);
 //    m_pConnectProBar->setVisible(false);
+    return true;
 }
 
-void Model::detectFaces(const std::string &modelPath){
-
+bool Model::detectFaces(const std::string &modelPath){
+    return true;
 }
 
-void Model::annotateFaces(const std::string &modelPath){
-
+bool Model::annotateFaces(const std::string &modelPath){
+    return true;
 }
 
-void Model::beautifyFaces(){
-
+bool Model::beautifyFaces(){
+    return true;
 }
 
-void Model::generateHeadshots(const std::string &outputPath){
-
+bool Model::generateHeadshots(const std::string &outputPath){
+    return true;
 }
 
 void Model::setUpdateNotification(std::shared_ptr<Notification> notification)

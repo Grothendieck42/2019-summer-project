@@ -2,7 +2,9 @@
 #include "../Model/Model.h"
 
 ViewModel::ViewModel() 
-    : openFileCommand(std::make_shared<OpenFileCommand>(this)),
+    : undoCommand(std::make_shared<UndoCommand>(this)),
+      displayNowCommand(std::make_shared<DisplayNowCommand>(this)),
+      openFileCommand(std::make_shared<OpenFileCommand>(this)),
       saveFileCommand(std::make_shared<SaveFileCommand>(this)),
       lightContrastCommand(std::make_shared<LightContrastCommand>(this)),
       tmpLightContrastCommand(std::make_shared<TmpLightContrastCommand>(this)),
@@ -41,6 +43,16 @@ void ViewModel::setModel(std::shared_ptr<Model> model_ptr)
     model = model_ptr;
     model->setUpdateNotification(updateNotification);
     model->setUpdateTmpNotification(updateTmpNotification);
+}
+
+std::shared_ptr<Command> ViewModel::getDisplayNowCommand()
+{
+    return displayNowCommand;
+}
+
+std::shared_ptr<Command> ViewModel::getUndoCommand()
+{
+    return undoCommand;
 }
 
 std::shared_ptr<Command> ViewModel::getOpenFileCommand()
@@ -139,6 +151,16 @@ std::shared_ptr<Command> ViewModel::getImageSegmentationCommand()
     return imageSegmentationCommand;
 }
 
+bool ViewModel::undo()
+{
+    return model->undo();
+}
+
+bool ViewModel::display()
+{
+    return model->display();
+}
+
 std::shared_ptr<Command> ViewModel::getImageEnlargeCommand(){
     return imageEnlargeCommand;
 }
@@ -167,123 +189,123 @@ std::shared_ptr<Command> ViewModel::getGenerateHeadshotsCommand(){
     return generateHeadshotsCommand;
 }
 
-void ViewModel::openImage(const std::string &file_name)
+bool ViewModel::openImage(const std::string &file_name)
 {
-    model->openImage(file_name);
+    return model->openImage(file_name);
 }
 
-void ViewModel::saveImage(const std::string &file_name)
+bool ViewModel::saveImage(const std::string &file_name)
 {
-    model->saveImage(file_name);
+    return model->saveImage(file_name);
 }
 
 
-void ViewModel::changeImageLightContrast(int light, int contrast)
+bool ViewModel::changeImageLightContrast(int light, int contrast)
 {
-    model->changeImageLightContrast(light, contrast);
+    return model->changeImageLightContrast(light, contrast);
 }
 
-void ViewModel::changeTmpImageLightContrast(int light, int contrast)
+bool ViewModel::changeTmpImageLightContrast(int light, int contrast)
 {
-    model->changeTmpImageLightContrast(light, contrast);
+    return model->changeTmpImageLightContrast(light, contrast);
 }
 
-void ViewModel::averBlur()
+bool ViewModel::averBlur()
 {
-  model->averBlur();
+    return model->averBlur();
 }
 
-void ViewModel::midBlur()
+bool ViewModel::midBlur()
 {
-  model->midBlur();
+    return model->midBlur();
 }
 
-void ViewModel::gaussBlur()
+bool ViewModel::gaussBlur()
 {
-  model->gaussBlur();
+    return model->gaussBlur();
 }
 
-void ViewModel::bilaterBlur()
+bool ViewModel::bilaterBlur()
 {
-  model->bilaterBlur();
+    return model->bilaterBlur();
 }
 
 
-void ViewModel::toGray()
+bool ViewModel::toGray()
 {
-    model->toGray();
+    return model->toGray();
 }
 
-void ViewModel::toBinary(int& threshold)
+bool ViewModel::toBinary(int& threshold)
 {
-    model->toBinary(threshold);
+    return model->toBinary(threshold);
 }
 
-void ViewModel::detectEdge(int &threshold)
+bool ViewModel::detectEdge(int &threshold)
 {
-    model->detectEdge(threshold);
+    return model->detectEdge(threshold);
 }
 
-void ViewModel::grayEqualizeHist()
+bool ViewModel::grayEqualizeHist()
 {
-    model->grayEqualizeHist();
+    return model->grayEqualizeHist();
 }
 
-void ViewModel::colorEqualizeHist()
+bool ViewModel::colorEqualizeHist()
 {
-    model->colorEqualizeHist();
+    return model->colorEqualizeHist();
 }
 
-void ViewModel::laplace(){
-    model->laplace();
+bool ViewModel::laplace(){
+    return model->laplace();
 }
 
-void ViewModel::logEnhance(){
-    model->logEnhance();
+bool ViewModel::logEnhance(){
+    return model->logEnhance();
 }
 
-void ViewModel::gammaCorrect(float &fGamma){
-    model->gammaCorrect(fGamma);
+bool ViewModel::gammaCorrect(float &fGamma){
+    return model->gammaCorrect(fGamma);
 }
 
-void ViewModel::addGaussNoise(){
-    model->addGaussNoise();
+bool ViewModel::addGaussNoise(){
+    return model->addGaussNoise();
 }
 
-void ViewModel::addSaltNoise(int &n){
-    model->addSaltNoise(n);
+bool ViewModel::addSaltNoise(int &n){
+    return model->addSaltNoise(n);
 }
 
-void ViewModel::imageSegmentation(int &threshold){
-    model->imageSegmentation(threshold);
+bool ViewModel::imageSegmentation(int &threshold){
+    return model->imageSegmentation(threshold);
 }
 
-void ViewModel::imageEnlarge(){
-    model->imageEnlarge();
+bool ViewModel::imageEnlarge(){
+    return model->imageEnlarge();
 }
 
-void ViewModel::imageReduct(){
-    model->imageReduct();
+bool ViewModel::imageReduct(){
+    return model->imageReduct();
 }
 
-void ViewModel::trainModel(const std::string &dataPath){
-    model->trainModel(dataPath);
+bool ViewModel::trainModel(const std::string &dataPath){
+    return model->trainModel(dataPath);
 }
 
-void ViewModel::detectFaces(const std::string &modelPath){
-    model->detectFaces(modelPath);
+bool ViewModel::detectFaces(const std::string &modelPath){
+    return model->detectFaces(modelPath);
 }
 
-void ViewModel::annotateFaces(const std::string &modelPath){
-    model->annotateFaces(modelPath);
+bool ViewModel::annotateFaces(const std::string &modelPath){
+    return model->annotateFaces(modelPath);
 }
 
-void ViewModel::beautifyFaces(){
-    model->beautifyFaces();
+bool ViewModel::beautifyFaces(){
+    return model->beautifyFaces();
 }
 
-void ViewModel::generateHeadshots(const std::string &outputPath){
-    model->generateHeadshots(outputPath);
+bool ViewModel::generateHeadshots(const std::string &outputPath){
+    return model->generateHeadshots(outputPath);
 }
 
 std::shared_ptr<QImage> ViewModel::getQImage()

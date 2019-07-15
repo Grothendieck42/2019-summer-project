@@ -2,7 +2,6 @@
 #include "../ViewModel.h"
 #include <any>
 #include <string>
-#include <QDebug>
 
 OpenFileCommand::OpenFileCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,9 +13,9 @@ OpenFileCommand::~OpenFileCommand()
     // nothing
 }
 
-void OpenFileCommand::exec()
+bool OpenFileCommand::exec()
 {
-    viewModel->openImage(file_name);
+    return viewModel->openImage(file_name);
 }
 
 void OpenFileCommand::setParameter(std::any params)

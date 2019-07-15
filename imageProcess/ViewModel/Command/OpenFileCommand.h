@@ -14,5 +14,5 @@ public:
     OpenFileCommand(ViewModel* view_model);
 	~OpenFileCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

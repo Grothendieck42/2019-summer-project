@@ -1,8 +1,6 @@
 #include "ImageEnlargeCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 ImageEnlargeCommand::ImageEnlargeCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,9 +12,9 @@ ImageEnlargeCommand::~ImageEnlargeCommand()
     // nothing
 }
 
-void ImageEnlargeCommand::exec()
+bool ImageEnlargeCommand::exec()
 {
-    viewModel->imageEnlarge();
+    return viewModel->imageEnlarge();
 }
 
 void ImageEnlargeCommand::setParameter(std::any params)

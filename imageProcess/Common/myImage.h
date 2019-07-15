@@ -14,7 +14,7 @@ public:
     ~Image();
     Image(const Image& im);
     Image& operator=(const Image &im);
-    void show();
+    bool empty();
     QImage getQImage();
     cv::Mat getMat();
     void openImage(const std::string &file_path);
@@ -36,6 +36,8 @@ public:
     void addGaussNoise();
     void addSaltNoise(int& n);
     void imageSegmentation(int& threshold);
+    bool checkGray();
+    bool checkColor();
     void imageEnlarge();
     void imageReduct();
 };

@@ -14,6 +14,6 @@ public:
     TmpLightContrastCommand(ViewModel* view_model);
     ~TmpLightContrastCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };
 

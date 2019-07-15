@@ -1,8 +1,4 @@
-#ifndef DETECTFACES_H
-#define DETECTFACES_H
-
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -16,7 +12,6 @@ public:
     DetectFacesCommand(ViewModel* view_model);
     ~DetectFacesCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };
 
-#endif // DETECTFACES_H

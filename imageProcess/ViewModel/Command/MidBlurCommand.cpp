@@ -13,9 +13,9 @@ MidBlurCommand::~MidBlurCommand()
     // nothing
 }
 
-void MidBlurCommand::exec()
+bool MidBlurCommand::exec()
 {
-    viewModel->midBlur();
+    return viewModel->midBlur();
 }
 
 void MidBlurCommand::setParameter(std::any params)

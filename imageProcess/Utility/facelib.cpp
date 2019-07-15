@@ -310,35 +310,34 @@ bool train_eigen_face(string dataPath, QProgressDialog* progressDialog){
     train_dir = dataPath;
     CascadeClassifier cascade(cascader);
     type_matrix = Mat( Size(model_size, maxnum), CV_32F);
-//    string list_name = dataPath+"/list";
-//    ifstream info_list(list_name);
-//    char buf[100];
-//    if (!info_list.is_open()) {
-//        cerr << "cannot open the file" << endl;
-//        return false;
-//    }
-//    while (!info_list.eof() && type_number<maxnum)
-//    {
-//        memset(buf, 0, 100);
-//        info_list.getline(buf, 100);
-//        const string name = train_dir + "/" + string(buf);
-//        cout << name << endl;
-//        cv::Mat img,gray;
-//        vector<Rect> faces;
-//        img = cv::imread(name);
-//        Image *image = new Image();
-//        image->openImage(name);
-//        cout << img.size() << endl;
-//        if (!img.empty()) {
-//            cout << name << endl;
-//            addphoto();
-//            cvtColor(img, gray, CV_BGR2GRAY);
-//            equalizeHist(gray, gray);
-//            resize(gray, gray, Size(model_width, model_height));
-//            addrow(gray);
+    string list_name = dataPath+"/list";
+    ifstream info_list(list_name);
+    char buf[100];
+    if (!info_list.is_open()) {
+        cerr << "cannot open the file" << endl;
+        return false;
+    }
+    while (!info_list.eof() && type_number<maxnum)
+    {
+        memset(buf, 0, 100);
+        info_list.getline(buf, 100);
+        buf[strlen(buf)-1]=0;
+        const string name = train_dir + "/" + string(buf);
+        cout << name << endl;
+        cv::Mat img,gray;
+        vector<Rect> faces;
+        img = cv::imread(name);
+        cout << img.size() << endl;
+        if (!img.empty()) {
+            cout << name << endl;
+            addphoto();
+            cvtColor(img, gray, CV_BGR2GRAY);
+            equalizeHist(gray, gray);
+            resize(gray, gray, Size(model_width, model_height));
+            addrow(gray);
 
-//        }
-//    }
+        }
+    }
     get_cov_mat();
     string modeldata = dataPath + "/"+model;
 

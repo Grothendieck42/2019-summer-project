@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -13,5 +12,5 @@ public:
     LaplaceCommand(ViewModel* view_model);
     ~LaplaceCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };

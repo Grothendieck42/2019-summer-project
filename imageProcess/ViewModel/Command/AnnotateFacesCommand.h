@@ -1,8 +1,4 @@
-#ifndef ANNOTATEFACESCOMMAND_H
-#define ANNOTATEFACESCOMMAND_H
-
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -16,6 +12,5 @@ public:
     AnnotateFacesCommand(ViewModel* view_model);
     ~AnnotateFacesCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };
-#endif // ANNOTATEFACESCOMMAND_H

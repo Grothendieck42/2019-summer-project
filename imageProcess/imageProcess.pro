@@ -62,8 +62,11 @@ SOURCES += \
         ViewModel/Command/MidBlurCommand.cpp \
         ViewModel/Command/GaussBlurCommand.cpp \
         ViewModel/Command/BilaterBlurCommand.cpp \
-    ViewModel/Command/TrainEigenModelCommand.cpp \
-    Utility/facelib.cpp
+        ViewModel/Command/DisplayNowCommand.cpp \
+        ViewModel/Command/UndoCommand.cpp \
+        ViewModel/Command/TrainEigenModelCommand.cpp \
+        Utility/facelib.cpp \
+        View/dialog.cpp
 
 HEADERS += \
         View/mainwindow.h \
@@ -85,7 +88,7 @@ HEADERS += \
         ViewModel/Command/LaplaceCommand.h \
         ViewModel/Command/LogEnhanceCommand.h \
         ViewModel/Command/SaveFileCommand.h \
-        ViewModel/Command/ToBinaryCommand.h \
+        ViewModel/Command/ToBibaryCommand.h \
         ViewModel/Command/ToGrayCommand.h \
         ViewModel/Command/AverBlurCommand.h \
         Common/myImage.h \
@@ -94,24 +97,28 @@ HEADERS += \
         Common/Notification.h \
         View/Notification/UpdateNotification.h \
         ViewModel/Notification/UpdateDataNotification.h \
+        ViewModel/Command/DisplayNowCommand.h \
+        ViewModel/Command/UndoCommand.h \
         View/lightconstractdialog.h \
         ViewModel/Notification/UpdateTmpNotification.h \
         ViewModel/Command/TmpLightContrastCommand.h \
         ViewModel/Command/MidBlurCommand.h \
         ViewModel/Command/GaussBlurCommand.h \
         ViewModel/Command/BilaterBlurCommand.h \
-    ViewModel/Command/DetectFacesCommand.h \
-    ViewModel/Command/LoadEigenModeCommand.h \
-    ViewModel/Command/TrainEigenModelCommand.h \
-    ViewModel/Command/AnnotateFacesCommand.h \
-    ViewModel/Command/BeautifyFacesCommand.h \
-    Common/Common.h \
-    ViewModel/Command/GenerateHeadshotsCommand.h \
-    Utility/facelib.h
+        ViewModel/Command/DetectFacesCommand.h \
+        ViewModel/Command/LoadEigenModeCommand.h \
+        ViewModel/Command/TrainEigenModelCommand.h \
+        ViewModel/Command/AnnotateFacesCommand.h \
+        ViewModel/Command/BeautifyFacesCommand.h \
+        Common/Common.h \
+        ViewModel/Command/GenerateHeadshotsCommand.h \
+        Utility/facelib.h \
+        View/dialog.h
 
 FORMS += \
        View/mainwindow.ui \
-       View/lightconstractdialog.ui
+       View/lightconstractdialog.ui \
+    View/dialog.ui
 
 INCLUDEPATH += /usr/local/include/
 

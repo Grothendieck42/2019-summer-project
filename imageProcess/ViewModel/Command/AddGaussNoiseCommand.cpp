@@ -1,8 +1,6 @@
 #include "AddGaussNoiseCommand.h"
 #include "../ViewModel.h"
 #include <any>
-#include <string>
-#include <QDebug>
 
 AddGaussNoiseCommand::AddGaussNoiseCommand(ViewModel* view_model) : viewModel(view_model)
 {
@@ -14,12 +12,11 @@ AddGaussNoiseCommand::~AddGaussNoiseCommand()
     // nothing
 }
 
-void AddGaussNoiseCommand::exec()
+bool AddGaussNoiseCommand::exec()
 {
-    viewModel->addGaussNoise();
+    return viewModel->addGaussNoise();
 }
 
 void AddGaussNoiseCommand::setParameter(std::any params)
 {
-   //file_name = *std::any_cast<std::string>(&params);
 }

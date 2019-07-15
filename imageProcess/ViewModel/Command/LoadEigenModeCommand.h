@@ -1,9 +1,4 @@
-#ifndef LOADEIGENMODE_H
-#define LOADEIGENMODE_H
-
-
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -17,10 +12,9 @@ public:
     LoadEigenModelCommand(ViewModel* view_model);
     ~LoadEigenModelCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };
 
 
 
 
-#endif // LOADEIGENMODE_H

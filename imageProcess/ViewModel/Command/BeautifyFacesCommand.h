@@ -1,7 +1,4 @@
-#ifndef BEAUTIFYFACESCOMMAND_H
-#define BEAUTIFYFACESCOMMAND_H
 #pragma once
-#include <string>
 #include "../../Common/Command.h"
 
 class ViewModel;
@@ -15,6 +12,5 @@ public:
     BeautifyFacesCommand(ViewModel* view_model);
     ~BeautifyFacesCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };
-#endif // BEAUTIFYFACESCOMMAND_H

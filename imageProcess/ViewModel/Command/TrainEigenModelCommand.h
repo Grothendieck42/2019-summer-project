@@ -1,6 +1,3 @@
-#ifndef TRAINEIGENMODEL_H
-#define TRAINEIGENMODEL_H
-
 #pragma once
 #include <string>
 #include "../../Common/Command.h"
@@ -17,7 +14,5 @@ public:
     TrainEigenModelCommand(ViewModel* view_model);
     ~TrainEigenModelCommand();
     void setParameter(std::any params);
-    void exec();
+    bool exec();
 };
-
-#endif // TRAINEIGENMODEL_H

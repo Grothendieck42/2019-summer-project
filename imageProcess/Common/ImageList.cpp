@@ -24,11 +24,11 @@ void ImageList::deleteImage()
 	image_list.pop_back();
 }
 
-int ImageList::size()
-{
-    return image_list.size();
-}
-
 void ImageList::clearList(){
     std::vector<Image>().swap(image_list);
+}
+
+bool ImageList::empty()
+{
+    return image_list.empty();
 }
