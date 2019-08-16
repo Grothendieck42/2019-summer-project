@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     updateNotification(std::make_shared<UpdateNotification>(this))
 {
     ui->setupUi(this);
-
     scene = new QGraphicsScene;//图像显示
     graphView = this->findChild<QGraphicsView*>("image1");
     tool_item = this->findChild<QMenu*>("menu_3");
