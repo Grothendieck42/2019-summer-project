@@ -12,7 +12,7 @@
 
 - 本项目基于**QT5.12.1** 遵循**C++17**标准
 
-- 整体架构基于**MVVM(Model-View-ViewModel)**实现
+- 整体架构基于**MVVM**（Model-View-ViewModel）实现
 
 - 采用**Git**进行版本控制 使用**Travis CI**持续集成
 
@@ -64,7 +64,7 @@
 
 第0轮迭代仅仅实现了一个图像打开功能，如图所示能够在软件的正中央显示打开的图像。
 
-![7](/Users/liangchao/Documents/2019-summer-project/image/7.png)
+![7](./image/7.png)
 
 
 
@@ -78,33 +78,33 @@
 
 #### 调节亮度对比度
 
-![8](/Users/liangchao/Documents/2019-summer-project/image/8.png)
+![8](./image/8.png)
 
-![9](/Users/liangchao/Documents/2019-summer-project/image/9.png)
+![9](./image/9.png)
 
 #### 各种滤波
 
-![10](/Users/liangchao/Documents/2019-summer-project/image/10.png)
+![10](./image/10.png)
 
 #### 保存图像
 
-![11](/Users/liangchao/Documents/2019-summer-project/image/11.png)
+![11](./image/11.png)
 
 #### 均值滤波
 
-![12](/Users/liangchao/Documents/2019-summer-project/image/12.png)
+![12](./image/12.png)
 
 #### 中值滤波
 
-![13](/Users/liangchao/Documents/2019-summer-project/image/13.png)
+![13](./image/13.png)
 
 #### 高斯滤波
 
-![14](/Users/liangchao/Documents/2019-summer-project/image/14.png)
+![14](./image/14.png)
 
 #### 双边滤波
 
-![15](/Users/liangchao/Documents/2019-summer-project/image/15.png)
+![15](./image/15.png)
 
 
 
@@ -124,17 +124,17 @@
 
 ### 项目目录树
 
-![1](/Users/liangchao/Documents/2019-summer-project/image/1.png)
+![1](./image/1.png)
 
-![2](/Users/liangchao/Documents/2019-summer-project/image/2.png)
+![2](./image/2.png)
 
-![3](/Users/liangchao/Documents/2019-summer-project/image/3.png)
+![3](./image/3.png)
 
-![4](/Users/liangchao/Documents/2019-summer-project/image/4.png)
+![4](./image/4.png)
 
-![5](/Users/liangchao/Documents/2019-summer-project/image/5.png)
+![5](./image/5.png)
 
-![6](/Users/liangchao/Documents/2019-summer-project/image/6.png)
+![6](./image/6.png)
 
 
 
