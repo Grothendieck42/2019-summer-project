@@ -321,7 +321,7 @@ void MainWindow::on_actionLogEnhance_triggered()
 
 void MainWindow::on_actionGamma_triggered()
 {
-    float fGamma=0.4f;
+    float fGamma=3.0f;
     gammaCorrectCommand->setParameter(fGamma);
     if(!gammaCorrectCommand->exec())
     {

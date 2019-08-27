@@ -6,6 +6,7 @@
 #include <QString>
 #include <QSlider>
 #include <QSpinBox>
+#include <memory>
 #include "../Common/Command.h"
 
 namespace Ui {
