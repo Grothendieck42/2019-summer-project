@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ImageProcess</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -84,6 +84,9 @@
     <addaction name="actionReduct"/>
    </widget>
    <widget class="QMenu" name="menuFace">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="title">
      <string>高级功能</string>
     </property>
@@ -94,6 +97,9 @@
     <addaction name="actionGenerateHeadshots"/>
    </widget>
    <widget class="QMenu" name="menu_8">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="title">
      <string>编辑</string>
     </property>
@@ -129,6 +135,9 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionToGray">
